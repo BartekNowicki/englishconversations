@@ -9,12 +9,12 @@
 
 const paragraph7_1 = {
   header: ``,
-  content: `Zajęcia indywidualne odbywają się u mnie na warszawskim Gocławiu, lub u ucznia.`
+  content: `Zajęcia indywidualne odbywają się online lub u mnie na warszawskim Gocławiu, albo u ucznia.`
 };
 
 const paragraph7_2 = {
   header: ``,
-  content: `Zajęcia grupowe odbywają się w centrum w Warszawie (dokładna lokalizacja jest w trakcie ustalania)`
+  content: `Zajęcia grupowe odbywają się u klienta lub w centrum w Warszawie (dokładna lokalizacja jest w trakcie ustalania)`
 };
 
 const paragraph7_3 = {

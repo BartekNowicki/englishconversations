@@ -15,6 +15,10 @@ import metodologia from '../metodologia.jpg';
 import zapisy from '../zapisy.jpg';
 import cennik from '../cennik.jpg';
 import lokalizacja from '../lokalizacja.jpg';
+import english_in_movement from '../english_in_movement.jpg';
+import english_in_psychology from '../english_in_psychology.jpg';
+import english_in_it from '../english_in_it.jpg';
+import english_general from '../english_general.jpg';
 
 const sections = [
   {
@@ -29,6 +33,36 @@ const sections = [
     text: [paragraph2a_1, paragraph2a_2, paragraph2a_3, paragraph2a_4, paragraph2a_5],
     image: rozwiazanie
   },
+  {
+      id: "courseList",
+      header: 'Oferta lekcji konwersacyjnych',
+      courses: [
+        {
+          id: 'course1',
+          title: 'Konwersacje ogólne',
+          description: 'Join our General English Conversation class, designed for anyone looking to improve their fluency and confidence in everyday English. Whether you’re preparing for travel, work, or simply want to enhance your communication skills, this class provides a friendly, relaxed environment to practice speaking. You’ll engage in discussions on various topics, expand your vocabulary, and improve your pronunciation while receiving personalized feedback. Perfect for learners of all levels who want to speak English more naturally and confidently.',
+          image: english_general,
+        },
+        {
+          id: 'course2',
+          title: 'English in Sports and Movement',
+          description: 'Are you a yoga teacher, Pilates instructor, fitness coach, or dance trainer teaching in English? English In Movement is a unique conversation class designed to help you accurately describe movements, postures, and adjustments with confidence. Practice giving clear instructions, refine your language skills, and learn to express corrections effectively, all in the context of teaching physical activities. This class is perfect for movement professionals who want to improve their communication while leading classes in English.',
+          image: english_in_movement,
+        },
+        {
+          id: 'course3',
+          title: 'English in Psychology and Psychotherapy',
+          description: 'Enhance your ability to communicate effectively in English within the field of psychology and psychotherapy. This course is designed for professionals who want to improve their language skills when discussing psychological concepts, client interactions, and therapeutic practices. You’ll practice key terminology, engage in role-playing sessions, and learn how to articulate complex psychological ideas clearly and empathetically in English. Ideal for psychologists, therapists, and counselors working in international or English-speaking environments.',
+          image: english_in_psychology,
+        },
+        {
+          id: 'course4',
+          title: 'English in IT',
+          description: 'Boost your professional communication skills with English tailored for the IT industry. This course is perfect for IT professionals who need to discuss technical concepts, collaborate with international teams, or present ideas clearly in English. You’ll focus on industry-specific terminology, technical writing, and effective communication during meetings or presentations. Whether you’re a developer, project manager, or IT support specialist, this course will help you excel in an English-speaking tech environment.',
+          image: english_in_it,
+        },
+      ],
+    },
   {
     id: "section2b",
     header: "Warsztaty",
