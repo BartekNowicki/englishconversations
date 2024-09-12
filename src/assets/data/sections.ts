@@ -19,6 +19,11 @@ import english_in_movement from '../english_in_movement.jpg';
 import english_in_psychology from '../english_in_psychology.jpg';
 import english_in_it from '../english_in_it.jpg';
 import english_general from '../english_general.jpg';
+import english_on_the_go from '../english_on_the_go.jpg';
+import english_with_ai from '../english_with_ai.jpg';
+import english_for_school from '../english_for_school.jpg';
+import english_for_business from '../english_for_business.jpg';
+import english_for_job_interview from '../english_for_job_interview.jpg';
 
 const sections = [
   {
@@ -61,6 +66,36 @@ const sections = [
           description: 'Boost your professional communication skills with English tailored for the IT industry. This course is perfect for IT professionals who need to discuss technical concepts, collaborate with international teams, or present ideas clearly in English. You’ll focus on industry-specific terminology, technical writing, and effective communication during meetings or presentations. Whether you’re a developer, project manager, or IT support specialist, this course will help you excel in an English-speaking tech environment.',
           image: english_in_it,
         },
+        {
+          id: 'course5',
+          title: 'English on the Go',
+          description: 'Tired of sitting in a classroom after a long day at work? "English on the Go" is designed for those who want to learn by talking while walking! This fun and active approach not only helps you improve your English conversation skills, but it’s also great for your health. Enjoy dynamic lessons outdoors, practicing real-life communication in a relaxed, natural setting. Perfect for learners who want to stay active while mastering English.',
+          image: english_on_the_go,
+        },
+        {
+          id: 'course6',
+          title: 'English with AI',
+          description: 'Let’s explore where AI takes us in conversation! "English with AI" is designed for learners who want to practice their English skills by using AI-generated answers as conversation material. No more sitting in a classroom feeling tired – this course combines technology with interactive learning, making every lesson dynamic and engaging. Join us as we dive into fun, AI-led discussions, sparking curiosity and improving your speaking abilities in a new and innovative way.',
+          image: english_with_ai,
+        },
+        {
+          id: 'course7',
+          title: 'English for School',
+          description: 'This course is designed for individuals working in academia or students at any level, from primary school to university. Whether you are a teacher, researcher, or learner, "English for School" will equip you with the language skills necessary to master your subject in English. Covering both the humanities and the sciences—including mathematics, biology, chemistry, and physics—this course ensures that you can communicate and understand academic content effectively, enhancing both your educational and professional pursuits.',
+          image: english_for_school,
+        },
+        {
+          id: 'course8',
+          title: 'Business English',
+          description: 'Our "Business English" course is tailored for professionals who need to communicate effectively in the corporate world. Whether you are drafting emails, negotiating deals, or delivering presentations, this course will help you refine your language skills in real-world business contexts. Focused on enhancing both written and verbal communication, "Business English" prepares you to excel in meetings, networking events, and global business interactions with confidence and clarity.',
+          image: english_for_business,
+        },
+        {
+          id: 'course9',
+          title: 'Job Interview Prep',
+          description: 'The "Job Interview Prep" course is designed to help you navigate the interview process with confidence and poise. Whether you are preparing for your first job or advancing in your career, this course will equip you with essential language skills, common interview questions, and strategies for presenting yourself effectively in English. Learn how to communicate your strengths, answer challenging questions, and leave a lasting impression on employers.',
+          image: english_for_job_interview,
+        }
       ],
     },
   {
