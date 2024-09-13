@@ -8,23 +8,14 @@ import Bartek_interpreting from './assets/Bartek_interpreting.jpg';
 import KazimierzDolny from './assets/KazimierzDolny.jpg';
 import sections from './assets/data/sections';
 
+import Paragraph from './components/Paragraph';
 import Header from './components/Header';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Popup from './components/Popup';
 import PopupContent from './components/PopupContent130924';
 
 import { scrollToSection } from './utils';
-
-interface ParagraphProps {
-  header: string;
-  content: string;
-}
-
-const Paragraph: React.FC<ParagraphProps> = ({ header, content }) => (
-  <p>
-    <span className="paragraph-header">{header}</span>{content}
-  </p>
-);
 
 function App() {
 const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -75,6 +66,7 @@ const handleImageClick = () => {
                   <img src={section.image} alt={`Section ${index + 1}`} />
                   {Array.isArray(section.text) ? (
                     section.text.map((paragraph, i) => (
+
                       <div
                         key={`${section.id}-${i}`}
                         className={
@@ -134,7 +126,11 @@ const handleImageClick = () => {
               )}
             </div>
           ))}
+
+        <Contact />
+
         </div>
+
         <Footer />
         {isPopupOpen && <Popup popupContent={popupContent} onClose={closePopup} />}
       </div>

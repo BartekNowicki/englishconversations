@@ -98,24 +98,7 @@ h2 {
 .darker-background {
   background-color: #f5e6e8; /* Light shade of burgundy white */
 }
-.footer {
-  background-color: black;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  margin-top: 20px;
-}
 
-.footer div {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.reviews {
-  width: 50%;
-  margin: 0 auto;
-  display: block;
-}
 
 ul {
   list-style-type: disc;
@@ -130,13 +113,73 @@ strong {
   font-weight: bold;
 }
 
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modern-button {
+    font-family: 'Roboto Condensed', Arial, sans-serif; /* Use the imported font */
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.modern-button:hover {
+    background-color: #45a049;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modern-button:active {
+    background-color: #388E3C;
+    box-shadow: none; /* Remove shadow on click */
+}
+
+.modern-button:focus {
+    outline: none;
+}
+
+.email {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.email span {
+    margin-left: 10px;
+}
+
+.facebook-icon {
+    margin-left: 10px;
+    color: #4267B2;
+}
+
+.facebook-icon:hover {
+    color: #3b5998;
+}
+
 /* Media queries for responsive design */
 @media (min-width: 768px) {
-  body {
-    padding: 60px 40px 60px 40px; /* Adjust for sticky header and footer */
-  }
+body {
+  padding: 60px 40px 60px 40px; /* Adjust for sticky header and footer */
+}
 
-  .container {
-    margin: 0 auto;
-  }
+.container {
+  margin: 0 auto;
+}
+
 }

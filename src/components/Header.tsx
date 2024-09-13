@@ -16,7 +16,7 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header-content">
-        <div className="email">
+        <div className="navbar-email">
           <FontAwesomeIcon icon={faEnvelope} />
           <span>bardo@bardo.edu.pl</span>
           <a href="https://www.facebook.com/BardoLanguageDevelopment" target="_blank" rel="noopener noreferrer" className="facebook-icon">
@@ -38,6 +38,7 @@ const Header: React.FC = () => {
            <li><a href="#section5" onClick={(e) => { e.preventDefault(); scrollToSection('section5', setIsOpen); }}>Zapisy</a></li>
            <li><a href="#section6" onClick={(e) => { e.preventDefault(); scrollToSection('section6', setIsOpen); }}>Cennik</a></li>
            <li><a href="#section7" onClick={(e) => { e.preventDefault(); scrollToSection('section7', setIsOpen); }}>Lokalizacja</a></li>
+           <li><a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact', setIsOpen); }}>Kontakt</a></li>
            </ul>
         </nav>
       )}
