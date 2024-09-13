@@ -35,10 +35,33 @@ const Contact: React.FC = () => {
                   </a>
         </div>
            <div className="button-group">
-                <button className="modern-button" onClick={handleCopyEmail}>Skopiuj adres</button>
-                <button className="modern-button" onClick={handleOpenEmailApp}>Wyślij email</button>
-                <button className="modern-button" onClick={handleOpenMessenger}>Wyślij wiadomość przez Messenger</button>
-            </div>
+               <button
+                 className="modern-button"
+                 onClick={() => {
+                   fbq('track', 'Lead', { content_name: 'Skopiuj Adres Button' }); // Track "Lead" event for this button
+                   handleCopyEmail(); // Keep the original functionality
+                 }}>
+                 Skopiuj adres
+               </button>
+
+               <button
+                 className="modern-button"
+                 onClick={() => {
+                   fbq('track', 'Contact', { content_name: 'Wyślij Email Button' }); // Track "Contact" event for this button
+                   handleOpenEmailApp(); // Keep the original functionality
+                 }}>
+                 Wyślij email
+               </button>
+
+               <button
+                 className="modern-button"
+                 onClick={() => {
+                   fbq('track', 'Contact', { content_name: 'Messenger Button' }); // Track "Contact" event for this button
+                   handleOpenMessenger(); // Keep the original functionality
+                 }}>
+                 Wyślij wiadomość przez Messenger
+               </button>
+           </div>
     </div>
   );
 };
