@@ -4,18 +4,18 @@ const paragraph6_1 = {
 };
 
 const paragraph6_2 = {
-  header: `Konwersacje indywidualne u mnie (Warszawa - Gocław) lub online:`,
-  content: ` 100zł / 60min`
+  header: `1. Ceny podane pod opisem zajęć dotyczą spotkań u mnie (Warszawa - Gocław) lub online.`,
+  content: ``
 };
 
 const paragraph6_3 = {
-  header: `Konwersacje indywidualne z dojazdem do ucznia:`,
-  content: ` 120zł / 60min`
+  header: `2. W przypadku konwersacji indywidualnych z dojazdem do ucznia poza obszar Gocławia/Saskiej Kępy do podanej ceny należy doliczyć +20zł`,
+  content: ``
 };
 
 const paragraph6_4 = {
-  header: `Konwersacje grupowe semestr I 2024 (20 spotkań x 60min, grupa 3-5 osób):`,
-  content: ` 1990zł`
+  header: `3. Zajęcia trwają 60 minut. Możliwe są też zajęcia 30-minutowe - skontaktuj się ze mną w celu ustalenia szczegółów.`,
+  content: ``
 };
 
 const paragraph6_5 = {

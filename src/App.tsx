@@ -15,6 +15,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Popup from './components/Popup';
 import PopupContent from './components/PopupContent130924';
+import PriceList from './components/PriceList';
 
 import { scrollToSection } from './utils';
 
@@ -75,11 +76,15 @@ const handleImageClick = () => {
                                 <EslDialog />
                               </>
                             )}
-
-
-
-
-
+                        {course.id === 'course10' || course.id === 'course5' ? (
+                                                <PriceList
+                                                  price1="50zł"
+                                                  price2="30zł/osoba"
+                                                  price3="75zł/grupa"
+                                                />
+                                              ) : (
+                                                <PriceList />
+                                              )}
                     </div>
                   ))}
                 </div>
