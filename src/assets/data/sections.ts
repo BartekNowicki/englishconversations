@@ -24,6 +24,7 @@ import english_with_ai from '../english_with_ai.jpg';
 import english_for_school from '../english_for_school.jpg';
 import english_for_business from '../english_for_business.jpg';
 import english_for_job_interview from '../english_for_job_interview.jpg';
+import chess from '../chess.jpg';
 
 const sections = [
   {
@@ -95,6 +96,12 @@ const sections = [
           title: 'Job Interview Prep',
           description: 'The "Job Interview Prep" course is designed to help you navigate the interview process with confidence and poise. Whether you are preparing for your first job or advancing in your career, this course will equip you with essential language skills, common interview questions, and strategies for presenting yourself effectively in English. Learn how to communicate your strengths, answer challenging questions, and leave a lasting impression on employers.',
           image: english_for_job_interview,
+        },
+        {
+          id: 'course10',
+          title: 'Chess & Board Games in English',
+          description: 'If you are a chess lover, this course offers the perfect opportunity to combine your passion for chess with language learning. We will play and discuss gameplay strategies in English, helping you improve your conversational skills while analyzing the game. Whether you are a beginner or an intermediate player, you will learn how to communicate your moves, tactics, and thoughts in a relaxed, engaging environment. And if chess is not your game, do not worry—we can play and discuss any card or board game of your choice!',
+          image: chess,
         }
       ],
     },
