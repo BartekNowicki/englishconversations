@@ -41,6 +41,10 @@ const PriceList = ({ price1 = '100zł', price2 = '60zł/osoba', price3 = '120zł
     fontWeight: 'bold',
   };
 
+  const correctedPositioningStyle: React.CSSProperties = {
+      marginRight: '15px', // Moves the text
+    };
+
   return (
     <div style={priceListStyle}>
       <div style={rowStyle}>
@@ -66,7 +70,8 @@ const PriceList = ({ price1 = '100zł', price2 = '60zł/osoba', price3 = '120zł
       <div style={rowStyle}>
         <div style={leftColumnStyle}><span style={textStyle}>{price1}</span></div>
         <div style={columnStyle}><span style={textStyle}>{price2}</span></div>
-        <div style={columnStyle}><span style={textStyle}>{price3}</span></div>
+        <div style={columnStyle}> <span style={{ ...textStyle, ...correctedPositioningStyle }}>{price3}</span></div>
+
       </div>
     </div>
   );

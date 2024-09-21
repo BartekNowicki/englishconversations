@@ -99,7 +99,7 @@ const sections = [
         },
         {
           id: 'course10',
-          title: 'Chess, Trivial Pursuit & Other Board Games in English',
+          title: 'Play Chess, Trivial Pursuit & Other Board Games in English',
           description: 'If you are a chess lover, this course offers the perfect opportunity to combine your passion for chess with language learning. We will play and discuss gameplay strategies in English, helping you improve your conversational skills while analyzing the game. Whether you are a beginner or an intermediate player, you will learn how to communicate your moves, tactics, and thoughts in a relaxed, engaging environment. And if chess is not your game, do not worry—we can play and discuss any card or board game of your choice!',
           image: chess,
         }
