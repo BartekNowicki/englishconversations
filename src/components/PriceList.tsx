@@ -1,42 +1,42 @@
-import React from 'react';
 import person from '../assets/person.png';
 import plus from '../assets/plus.png';
 
 const PriceList = ({ price1 = '100zł', price2 = '60zł/osoba', price3 = '120zł/grupa' }) => {
-  const priceListStyle = {
+  // Casting style to React.CSSProperties
+  const priceListStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
-    gap: '0px',  // Adjust gap between rows
-    marginTop: '20px',  // Top margin for the whole PriceList
-    border: '1px solid #800020',  // Thin burgundy border
+    gap: '0px',
+    marginTop: '20px',
+    border: '1px solid #800020',
     borderRadius: '5px',
     padding: '20px',
   };
 
-  const rowStyle = {
+  const rowStyle: React.CSSProperties = {
     display: 'flex',
-    justifyContent: 'space-between',  // Space between columns
-    padding: '0px',  // Padding inside each row
+    justifyContent: 'space-between',
+    padding: '0px',
   };
 
-  const columnStyle = {
+  const columnStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',  // Centers the content inside each column
-    padding: '0px',  // Padding inside each cell
+    justifyContent: 'center',
+    padding: '0px',
   };
 
-  const leftColumnStyle = {
+  const leftColumnStyle: React.CSSProperties = {
     ...columnStyle,
-    paddingLeft: '20px',  // Left padding for the first column only
+    paddingLeft: '20px',
   };
 
-  const smallImageStyle = {
-    width: '30px',  // Set the size of the image to 30px
-    height: 'auto', // Maintain aspect ratio
+  const smallImageStyle: React.CSSProperties = {
+    width: '30px',
+    height: 'auto',
   };
 
-  const textStyle = {
+  const textStyle: React.CSSProperties = {
     color: 'darkgreen',
     fontWeight: 'bold',
   };
@@ -66,7 +66,7 @@ const PriceList = ({ price1 = '100zł', price2 = '60zł/osoba', price3 = '120zł
       <div style={rowStyle}>
         <div style={leftColumnStyle}><span style={textStyle}>{price1}</span></div>
         <div style={columnStyle}><span style={textStyle}>{price2}</span></div>
-        <div style={columnStyle}><span style={textStyle}>{price3}&nbsp;&nbsp;</span></div>
+        <div style={columnStyle}><span style={textStyle}>{price3}</span></div>
       </div>
     </div>
   );
