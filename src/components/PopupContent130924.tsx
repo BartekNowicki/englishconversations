@@ -3,7 +3,7 @@ import KazimierzDolny from '../assets/KazimierzDolny.jpg';
 
 const PopupContent130924: React.FC = () => (
   <div className="section">
-    <h1>{`Language Immersion in Kazimierz Dolny - September 13th-15th, 2024`}</h1>
+    <h1>{`Language Immersion in Kazimierz Dolny - October 2024`}</h1>
     <img src={KazimierzDolny} alt="Warsztaty językowe Kazimierz Dolny" className="" />
 
     <p>Join us for an immersive English language experience in the charming town of Kazimierz Dolny. This unique workshop is designed for those who wish to improve their conversational English in a relaxed and engaging environment.</p>

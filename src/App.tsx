@@ -92,7 +92,7 @@ const handleImageClick = () => {
 
                         {section.id === 'section2b' && i === 3 && (
                           <p>
-                            Zapisz się na{' '}
+                            Zapytaj się o{' '}
                             <a
                               href="#kazimierz-dolny"
                               onClick={(e) => {
