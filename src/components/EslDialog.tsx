@@ -5,7 +5,7 @@ const eslDialogDivStyle = {
         backgroundSize: '100% 100%',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'top left',
-        padding: '70px 70px 70px 70px',
+        padding: '150px 70px 150px 70px',
         color: 'brown',
         height: '100%',
         minHeight: '100%',
