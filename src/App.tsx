@@ -10,6 +10,7 @@ import sections from './assets/data/sections';
 
 import Paragraph from './components/Paragraph';
 import Header from './components/Header';
+import EslDialog from './components/EslDialog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Popup from './components/Popup';
@@ -57,6 +58,28 @@ const handleImageClick = () => {
                       <img src={course.image} alt={course.title} />
                       <h2>{course.title}</h2>
                       <p>{course.description}</p>
+
+
+                      {course.id === "course1" && (
+                              <>
+                                <p>
+                                  Unless a student suggests otherwise, in this class we will mostly use
+                                  these kinds of dialogs as a starter for:
+                                </p>
+                                <ul>
+                                    <li>Discussion</li>
+                                    <li>Phrase analysis</li>
+                                    <li>Comparing and contrasting</li>
+                                    <li>Synonym and antonym practice</li>
+                                  </ul>
+                                <EslDialog />
+                              </>
+                            )}
+
+
+
+
+
                     </div>
                   ))}
                 </div>
