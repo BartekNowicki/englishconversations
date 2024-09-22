@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting.....</title>
+    <title>Redirecting.</title>
     <script type="text/javascript">
-        // This script reloads the base URL but keeps the original path intact for React Router
-        if (window.location.pathname !== "/") {
-            window.location.replace("/index.html" + window.location.pathname + window.location.search);
-        }
+        // Redirect to the root ("/") and preserve the original path
+        var path = window.location.pathname + window.location.search;
+        window.history.replaceState({}, "", path);
+        window.location.href = "/";
     </script>
 </head>
 <body></body>
