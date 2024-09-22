@@ -1,6 +1,6 @@
 {
-  "homepage": "https://bardo.edu.pl",
-  "name": "bardo",
+  "homepage": "https://englishconversations.pl",
+  "name": "englishconversations",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -35,6 +35,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:BartekNowicki/bardo.git"
+    "url": "git@github.com:BartekNowicki/englishconversations.git"
   }
 }
