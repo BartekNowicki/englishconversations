@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script type="text/javascript">
-        // Redirect to index.html but keep the full pathname for React Router
-        window.location.replace("/index.html" + window.location.pathname + window.location.search);
+        // Redirect to the root ("/") without changing the actual URL
+        window.location.replace("/" + window.location.pathname + window.location.search + window.location.hash);
     </script>
 </head>
 <body></body>
