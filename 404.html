@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script type="text/javascript">
-        // Redirect to the base of the site without modifying the path
-        window.location.replace("/" + window.location.pathname + window.location.search);
+        // This script ensures that if the user is on a custom route (e.g., /1a),
+        // the app reloads index.html but keeps the path intact for React Router
+        if (window.location.pathname !== "/") {
+            window.location.replace("/?" + window.location.pathname + window.location.search);
+        }
     </script>
 </head>
 <body></body>
