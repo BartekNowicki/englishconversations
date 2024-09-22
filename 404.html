@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
+    <title>Redirecting.....</title>
     <script type="text/javascript">
-        // This script ensures that if the user is on a custom route (e.g., /1a),
-        // the app reloads index.html but keeps the path intact for React Router
+        // This script reloads the base URL but keeps the original path intact for React Router
         if (window.location.pathname !== "/") {
-            window.location.replace("/?" + window.location.pathname + window.location.search);
+            window.location.replace("/index.html" + window.location.pathname + window.location.search);
         }
     </script>
 </head>
