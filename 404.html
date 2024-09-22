@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="0;url=/">
     <script type="text/javascript">
-        // Redirect to the root ("/") without changing the actual URL
-        window.location.replace("/" + window.location.pathname + window.location.search + window.location.hash);
+        // Use JavaScript to reload the base URL and keep the path intact for React Router
+        var path = window.location.pathname || "/";
+        window.history.replaceState({}, "", path); // Update the browser's URL to the current path
     </script>
 </head>
 <body></body>
