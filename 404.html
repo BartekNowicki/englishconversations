@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="0; url=/" />
+    <script>
+        // This script ensures that if the user was trying to access a sub-route, we redirect them properly
+        var pathname = window.location.pathname;
+        if (pathname !== "/") {
+          window.location.replace("/#" + pathname);
+        }
+    </script>
+</head>
+<body></body>
+</html>
