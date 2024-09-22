@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useParams } from 'react-router-dom'; // Use HashRouter
 import './App.css';
 
 // Dynamically load all conversation files in the "assets/conversations" folder
