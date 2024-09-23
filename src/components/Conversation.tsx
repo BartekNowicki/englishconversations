@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './conversation.css';
 import { useParams } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';

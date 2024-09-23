@@ -1,15 +1,22 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Drawer, List, ListItem, ListItemText, Select, MenuItem } from '@mui/material';
+import { Drawer, List, ListItem, ListItemText, Select, MenuItem, SelectChangeEvent } from '@mui/material';
 
-function NavigationPanel() {
+// Define the type for the props, including `onConversationSelect`
+interface NavigationPanelProps {
+  onConversationSelect: (id: string) => void;
+}
+
+function NavigationPanel({ onConversationSelect }: NavigationPanelProps) {
   const navigate = useNavigate();
   const [selectedConversation, setSelectedConversation] = useState('');
 
-  const handleConversationChange = (event: any) => {
-    const conversationId = event.target.value;
+  // Update the event type to `SelectChangeEvent`
+  const handleConversationChange = (event: SelectChangeEvent) => {
+    const conversationId = event.target.value as string;
     setSelectedConversation(conversationId);
     navigate(`/${conversationId}`);
+    onConversationSelect(conversationId); // Call the function passed via props
   };
 
   return (
@@ -27,36 +34,27 @@ function NavigationPanel() {
       }}
     >
       <List>
-        <ListItem sx={{ cursor: 'default' }} button="true" onClick={() => navigate('/')}>
+        <ListItem sx={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
           <ListItemText primary="Login" />
         </ListItem>
 
-        <ListItem sx={{ cursor: 'default' }} button="true" onClick={() => navigate('/phrases')}>
+        <ListItem sx={{ cursor: 'pointer' }} onClick={() => navigate('/phrases')}>
           <ListItemText primary="My Phrases" />
         </ListItem>
 
-        <ListItem sx={{ cursor: 'default' }} >
+        <ListItem>
           <Select
             value={selectedConversation}
-            onChange={handleConversationChange}
+            onChange={handleConversationChange}  // This is now correctly typed
             displayEmpty
             fullWidth
             sx={{
-              backgroundColor: '#fff', // Light background for the select
-              color: '#000', // Black text inside the select
-              '.MuiOutlinedInput-notchedOutline': {
-                borderColor: '#fff', // White border for the dropdown
-              },
-              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#fff', // Keep the border white when focused
-              },
-              '.MuiSvgIcon-root': {
-                color: '#000', // Black arrow icon for contrast
-              },
+              color: 'white',
+              '& .MuiSelect-icon': { color: 'white' },
             }}
           >
             <MenuItem value="" disabled>
-              <em>Select a Conversation</em>
+              Select a Conversation
             </MenuItem>
             <MenuItem value="1a">Conversation 1a</MenuItem>
             <MenuItem value="1b">Conversation 1b</MenuItem>
