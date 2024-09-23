@@ -1,25 +1,42 @@
-import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
-import './App.css';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import NavigationPanel from './components/NavigationPanel';
+import Conversation from './components/Conversation';
 import Login from './components/Login';
 import Phrases from './components/Phrases';
-import Conversation from './components/Conversation';
 
 function App() {
   return (
     <Router>
       <Box sx={{ display: 'flex' }}>
-        {/* Navigation Drawer */}
-        <NavigationPanel />
-
-        {/* Main Content */}
-        <Box sx={{ flexGrow: 1, p: 3 }}>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/phrases" element={<Phrases />} />
-            <Route path="/:id" element={<Conversation />} />
-          </Routes>
+        <NavigationPanel onConversationSelect={(id) => console.log(`Selected: ${id}`)} />
+        <Box
+          sx={{
+            flexGrow: 1,
+            p: 3,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '100vh',
+            backgroundColor: 'black',
+          }}
+        >
+          <Box
+            sx={{
+              width: '60%',
+              maxWidth: 800,
+              padding: '0px',
+              backgroundColor: '#DCEDC8',
+              borderRadius: '10px',
+              boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)',
+            }}
+          >
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/phrases" element={<Phrases />} />
+              <Route path="/:id" element={<Conversation />} />
+            </Routes>
+          </Box>
         </Box>
       </Box>
     </Router>

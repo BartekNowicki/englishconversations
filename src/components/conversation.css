@@ -22,11 +22,6 @@
   margin-bottom: 20px;
 }
 
-.dialog-line {
-  margin-bottom: 10px;
-  line-height: 2;
-}
-
 .clickable {
   background-color: #C5E1A5;
   border-radius: 5px;
@@ -41,3 +36,8 @@
 .clickable.clicked {
   border: 1px solid brown;
 }
+
+.speaker {
+  font-weight: bold;
+}
+

@@ -3,7 +3,6 @@ import './conversation.css';
 import { useParams } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 
-// Dynamically load all conversation files in the "assets/conversations" folder
 const conversationModules = import.meta.glob('../assets/conversations/*.ts');
 
 interface ConversationModule {
@@ -66,20 +65,28 @@ function Conversation() {
   };
 
   return (
-    <div className="central-wrapper">
-      <div className="central-pane">
-        <h2>{title}</h2>
-        {conversation.length > 0 ? (
-          conversation.map((dialog, index) => (
-            <p key={index} className="dialog-line">
-              <strong>{dialog.speaker}:</strong> {renderTextWithClickables(dialog.text)}
-            </p>
-          ))
-        ) : (
-          <Typography>Loading conversation...</Typography>
-        )}
-      </div>
-    </div>
+    <Box sx={{ padding: '40px' }}>
+      <Typography
+              variant="h2"
+              sx={{
+                fontSize: '2rem',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                marginBottom: '20px'
+              }}
+            >
+              {title}
+            </Typography>
+      {conversation.length > 0 ? (
+        conversation.map((dialog, index) => (
+          <Typography key={index} sx={{ lineHeight: 2 }}>
+              <span className="speaker">{dialog.speaker}:</span> {renderTextWithClickables(dialog.text)}
+          </Typography>
+        ))
+      ) : (
+        <Typography>Loading conversation...</Typography>
+      )}
+    </Box>
   );
 }
 
