@@ -20,14 +20,14 @@ function App() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: 'black', // Keep the background black
+            backgroundColor: 'black',
           }}
         >
           {/* Central Pane */}
           <Box
             sx={{
-              width: '60%',
-              maxWidth: 800,
+              width: '90%',
+              maxWidth: 1200,
               padding: '0px',
               backgroundColor: '#DCEDC8', // Greenish background for the central pane
               borderRadius: '10px',

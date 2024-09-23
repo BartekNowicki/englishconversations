@@ -11,7 +11,7 @@ interface NavigationPanelProps {
 function NavigationPanel({ onConversationSelect }: NavigationPanelProps) {
   const navigate = useNavigate();
   const [selectedConversation, setSelectedConversation] = useState('');
-  const [drawerOpen, setDrawerOpen] = useState(false); // State to control drawer visibility
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleConversationChange = (event: any) => {
     const conversationId = event.target.value;
@@ -26,15 +26,13 @@ function NavigationPanel({ onConversationSelect }: NavigationPanelProps) {
 
   return (
     <Box>
-      {/* Toggle Button to Open/Close Drawer */}
       <IconButton
         onClick={toggleDrawer}
-        sx={{ color: 'white', position: 'fixed', top: 16, left: 16 }}
+        sx={{ color: 'white', position: 'fixed', top: 16, left: 16, zIndex: drawerOpen ? 9999 : 1 }}
       >
         {drawerOpen ? <CloseIcon /> : <MenuIcon />}
       </IconButton>
 
-      {/* Temporary Drawer */}
       <Drawer
         open={drawerOpen}
         onClose={toggleDrawer}
@@ -43,6 +41,7 @@ function NavigationPanel({ onConversationSelect }: NavigationPanelProps) {
             width: 240,
             backgroundColor: '#000',
             color: 'white',
+            paddingTop: '75px'
           },
         }}
       >
