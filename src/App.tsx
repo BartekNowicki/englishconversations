@@ -13,9 +13,10 @@ interface ConversationModule {
 
 function Conversation() {
   const { id } = useParams();
+  const [title, setTitle] = useState<string>("");
   const [conversation, setConversation] = useState<any[]>([]);
   const [clickables, setClickables] = useState<string[]>([]);
-  const [title, setTitle] = useState<string>("");
+  const [clicked, setClicked] = useState<string[]>([]);
 
   useEffect(() => {
     const loadConversation = async () => {
@@ -39,16 +40,24 @@ function Conversation() {
   }, [id]);
 
   const handleClick = (phrase: string) => {
-    console.log(`You clicked: ${phrase}`);
-  };
+      setClicked(prev =>
+        prev.includes(phrase)
+          ? prev.filter(p => p !== phrase)
+          : [...prev, phrase]
+      );
+    };
 
   const renderTextWithClickables = (text: string) => {
     const parts = text.split(new RegExp(`(${clickables.join("|")})`, "g"));
     return parts.map((part, index) =>
       clickables.includes(part) ? (
-        <span key={index} onClick={() => handleClick(part)} className="clickable">
-          {part}
-        </span>
+        <span
+                  key={index}
+                  onClick={() => handleClick(part)}
+                  className={`clickable ${clicked.includes(part) ? 'clicked' : ''}`}
+                >
+                  {part}
+                </span>
       ) : (
         <span key={index}>{part}</span>
       )

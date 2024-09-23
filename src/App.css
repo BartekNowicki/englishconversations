@@ -52,3 +52,7 @@ body {
   background-color: #a3f0a3; /* Slightly lighter green on hover */
 }
 
+.clickable.clicked {
+  border: 1px solid brown;
+}
+
