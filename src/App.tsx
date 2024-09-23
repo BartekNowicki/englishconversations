@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useParams } from 'react-router-dom'; // Use HashRouter
+import { HashRouter as Router, Routes, Route, useParams, useNavigate } from 'react-router-dom';
+import { Drawer, List, ListItem, ListItemText, Typography, Box, Select, MenuItem, Button } from '@mui/material';
 import './App.css';
 
 // Dynamically load all conversation files in the "assets/conversations" folder
@@ -40,24 +41,24 @@ function Conversation() {
   }, [id]);
 
   const handleClick = (phrase: string) => {
-      setClicked(prev =>
-        prev.includes(phrase)
-          ? prev.filter(p => p !== phrase)
-          : [...prev, phrase]
-      );
-    };
+    setClicked(prev =>
+      prev.includes(phrase)
+        ? prev.filter(p => p !== phrase)
+        : [...prev, phrase]
+    );
+  };
 
   const renderTextWithClickables = (text: string) => {
     const parts = text.split(new RegExp(`(${clickables.join("|")})`, "g"));
     return parts.map((part, index) =>
       clickables.includes(part) ? (
         <span
-                  key={index}
-                  onClick={() => handleClick(part)}
-                  className={`clickable ${clicked.includes(part) ? 'clicked' : ''}`}
-                >
-                  {part}
-                </span>
+          key={index}
+          onClick={() => handleClick(part)}
+          className={`clickable ${clicked.includes(part) ? 'clicked' : ''}`}
+        >
+          {part}
+        </span>
       ) : (
         <span key={index}>{part}</span>
       )
@@ -65,34 +66,110 @@ function Conversation() {
   };
 
   return (
-    <div className="central-wrapper">
-      <div className="central-pane">
-        <h2>{title}</h2>
-        {conversation.length > 0 ? (
-          conversation.map((dialog, index) => (
-            <p key={index} className="dialog-line">
-              <strong>{dialog.speaker}:</strong> {renderTextWithClickables(dialog.text)}
-            </p>
-          ))
-        ) : (
-          <p>Loading conversation...</p>
-        )}
-      </div>
-    </div>
+    <Box>
+      <Typography variant="h2">{title}</Typography>
+      {conversation.length > 0 ? (
+        conversation.map((dialog, index) => (
+          <Typography key={index} className="dialog-line">
+            <strong>{dialog.speaker}:</strong> {renderTextWithClickables(dialog.text)}
+          </Typography>
+        ))
+      ) : (
+        <Typography>Loading conversation...</Typography>
+      )}
+    </Box>
   );
 }
 
-function Welcome() {
-  return <h1>Welcome</h1>;
+function Login() {
+  return (
+    <Box>
+      <Typography variant="h4">Login</Typography>
+      <Typography>Login form would go here...</Typography>
+    </Box>
+  );
+}
+
+function Phrases() {
+  const mockPhrases = ['Hello World', 'Good morning', 'How are you?'];
+  return (
+    <Box>
+      <Typography variant="h4">My Phrases</Typography>
+      <List>
+        {mockPhrases.map((phrase, index) => (
+          <ListItem key={index}>
+            <ListItemText primary={phrase} />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+}
+
+function NavigationPanel({ onConversationSelect }: { onConversationSelect: (id: string) => void }) {
+  const navigate = useNavigate();
+  const [selectedConversation, setSelectedConversation] = useState('');
+
+  const handleConversationChange = (event: any) => {
+    const conversationId = event.target.value;
+    setSelectedConversation(conversationId);
+    navigate(`/${conversationId}`);
+  };
+
+  return (
+    <Drawer
+      variant="permanent"
+      sx={{
+        width: 240,
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
+          width: 240,
+          boxSizing: 'border-box',
+        },
+      }}
+    >
+      <List>
+        <ListItem button onClick={() => navigate('/')}>
+          <ListItemText primary="Login" />
+        </ListItem>
+
+        <ListItem button onClick={() => navigate('/phrases')}>
+          <ListItemText primary="My Phrases" />
+        </ListItem>
+
+        <ListItem>
+          <Select
+            value={selectedConversation}
+            onChange={handleConversationChange}
+            displayEmpty
+            fullWidth
+          >
+            <MenuItem value="" disabled>
+              Select a Conversation
+            </MenuItem>
+            <MenuItem value="1a">Conversation 1a</MenuItem>
+            <MenuItem value="1b">Conversation 1b</MenuItem>
+          </Select>
+        </ListItem>
+      </List>
+    </Drawer>
+  );
 }
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/:id" element={<Conversation />} />
-      </Routes>
+      <Box sx={{ display: 'flex' }}>
+        <NavigationPanel onConversationSelect={(id) => console.log(`Selected: ${id}`)} />
+
+        <Box sx={{ flexGrow: 1, p: 3 }}>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/phrases" element={<Phrases />} />
+            <Route path="/:id" element={<Conversation />} />
+          </Routes>
+        </Box>
+      </Box>
     </Router>
   );
 }
