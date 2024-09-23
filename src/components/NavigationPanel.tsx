@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Drawer, List, ListItem, ListItemText, Select, MenuItem, SelectChangeEvent } from '@mui/material';
+import { Drawer, List, ListItem, ListItemText, Select, MenuItem, IconButton, Box } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
-// Define the type for the props, including `onConversationSelect`
 interface NavigationPanelProps {
   onConversationSelect: (id: string) => void;
 }
@@ -10,58 +11,71 @@ interface NavigationPanelProps {
 function NavigationPanel({ onConversationSelect }: NavigationPanelProps) {
   const navigate = useNavigate();
   const [selectedConversation, setSelectedConversation] = useState('');
+  const [drawerOpen, setDrawerOpen] = useState(false); // State to control drawer visibility
 
-  // Update the event type to `SelectChangeEvent`
-  const handleConversationChange = (event: SelectChangeEvent) => {
-    const conversationId = event.target.value as string;
+  const handleConversationChange = (event: any) => {
+    const conversationId = event.target.value;
     setSelectedConversation(conversationId);
     navigate(`/${conversationId}`);
-    onConversationSelect(conversationId); // Call the function passed via props
+    onConversationSelect(conversationId);
+  };
+
+  const toggleDrawer = () => {
+    setDrawerOpen(!drawerOpen);
   };
 
   return (
-    <Drawer
-      variant="permanent"
-      sx={{
-        width: 240,
-        flexShrink: 0,
-        '& .MuiDrawer-paper': {
-          width: 240,
-          boxSizing: 'border-box',
-          backgroundColor: '#000',
-          color: 'white',
-        },
-      }}
-    >
-      <List>
-        <ListItem sx={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
-          <ListItemText primary="Login" />
-        </ListItem>
+    <Box>
+      {/* Toggle Button to Open/Close Drawer */}
+      <IconButton
+        onClick={toggleDrawer}
+        sx={{ color: 'white', position: 'fixed', top: 16, left: 16 }}
+      >
+        {drawerOpen ? <CloseIcon /> : <MenuIcon />}
+      </IconButton>
 
-        <ListItem sx={{ cursor: 'pointer' }} onClick={() => navigate('/phrases')}>
-          <ListItemText primary="My Phrases" />
-        </ListItem>
+      {/* Temporary Drawer */}
+      <Drawer
+        open={drawerOpen}
+        onClose={toggleDrawer}
+        sx={{
+          '& .MuiDrawer-paper': {
+            width: 240,
+            backgroundColor: '#000',
+            color: 'white',
+          },
+        }}
+      >
+        <List>
+          <ListItem sx={{ cursor: 'pointer' }} onClick={() => { navigate('/'); toggleDrawer(); }}>
+            <ListItemText primary="Login" />
+          </ListItem>
 
-        <ListItem>
-          <Select
-            value={selectedConversation}
-            onChange={handleConversationChange}  // This is now correctly typed
-            displayEmpty
-            fullWidth
-            sx={{
-              color: 'white',
-              '& .MuiSelect-icon': { color: 'white' },
-            }}
-          >
-            <MenuItem value="" disabled>
-              Select a Conversation
-            </MenuItem>
-            <MenuItem value="1a">Conversation 1a</MenuItem>
-            <MenuItem value="1b">Conversation 1b</MenuItem>
-          </Select>
-        </ListItem>
-      </List>
-    </Drawer>
+          <ListItem sx={{ cursor: 'pointer' }} onClick={() => { navigate('/phrases'); toggleDrawer(); }}>
+            <ListItemText primary="My Phrases" />
+          </ListItem>
+
+          <ListItem>
+            <Select
+              value={selectedConversation}
+              onChange={handleConversationChange}
+              displayEmpty
+              fullWidth
+              sx={{
+                color: 'white',
+                '& .MuiSelect-icon': { color: 'white' },
+              }}
+            >
+              <MenuItem value="" disabled>
+                Select a Conversation
+              </MenuItem>
+              <MenuItem value="1a">Conversation 1a</MenuItem>
+              <MenuItem value="1b">Conversation 1b</MenuItem>
+            </Select>
+          </ListItem>
+        </List>
+      </Drawer>
+    </Box>
   );
 }
 
