@@ -7,7 +7,7 @@ export const conversation1a = [
   },
   {
     speaker: "Sara",
-    text: "I know! It feels like we just rang in the New Year.",
+    text: "I know! It feels like we just celebrated the New Year.",
   },
   {
     speaker: "Tom",
@@ -41,12 +41,52 @@ export const conversation1a = [
     speaker: "Sara",
     text: "Yeah, it’s easy to get caught up in work and other responsibilities.",
   },
+  {
+    speaker: "Tom",
+    text: "And before we know it, another year has passed, and we wonder where the time went.",
+  },
+  {
+    speaker: "Sara",
+    text: "Exactly. It feels like we’re always in a rush, always chasing after the next thing.",
+  },
+  {
+    speaker: "Tom",
+    text: "And when we do finally slow down, we realize how much we've missed along the way.",
+  },
+  {
+    speaker: "Sara",
+    text: "Yeah, like the simple things—just spending time with friends or enjoying a quiet afternoon.",
+  },
+  {
+    speaker: "Tom",
+    text: "I know what you mean. It’s so important to find time for those moments.",
+  },
+  {
+    speaker: "Sara",
+    text: "But it’s hard, isn’t it? We get so wrapped up in deadlines and tasks that we forget to take a breather.",
+  },
+  {
+    speaker: "Tom",
+    text: "Absolutely. And then when we finally do stop, we feel guilty for not being productive.",
+  },
+  {
+    speaker: "Sara",
+    text: "It’s a vicious cycle. We need to remind ourselves that it’s okay to slow down sometimes.",
+  },
+  {
+    speaker: "Tom",
+    text: "I agree. Maybe that’s something we can focus on next year—finding more balance.",
+  },
+  {
+    speaker: "Sara",
+    text: "That sounds like a plan. Hopefully, next year won’t fly by as quickly!",
+  }
 ];
 
 export const clickables = [
   "Time really flies by",
   "crept up on us",
-  "rang in the New Year",
+  "celebrated the New Year",
   "barely scratched the surface",
   "Same here",
   "I was supposed to",
@@ -59,4 +99,18 @@ export const clickables = [
   "have so much going on",
   "pops up",
   "get caught up in",
+  "wondering where all the time went",
+  "always in a rush",
+  "chasing after the next thing",
+  "slow down",
+  "missed along the way",
+  "spending time with friends",
+  "enjoying a quiet afternoon",
+  "find time for those moments",
+  "wrapped up in deadlines",
+  "forget to take a breather",
+  "feel guilty",
+  "vicious cycle",
+  "finding more balance",
+  "next year won’t fly by",
 ];
