@@ -1,16 +1,37 @@
 import { Box } from '@mui/material';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import NavigationPanel from './components/NavigationPanel';
 import Conversation from './components/Conversation';
 import Login from './components/Login';
 import Phrases from './components/Phrases';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+  };
+
   return (
     <Router>
       <Box sx={{ display: 'flex', minHeight: '100vh' }}>
         {/* Navigation Panel */}
-        <NavigationPanel onConversationSelect={(id: string) => console.log(`Selected: ${id}`)} />
+        {isLoggedIn && (
+          <NavigationPanel onConversationSelect={(id: string) => console.log(`Selected: ${id}`)} isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+        )}
 
         {/* Main Content */}
         <Box
@@ -29,15 +50,15 @@ function App() {
               width: '90%',
               maxWidth: 1200,
               padding: '0px',
-              backgroundColor: '#DCEDC8', // Greenish background for the central pane
+              backgroundColor: '#DCEDC8',
               borderRadius: '10px',
               boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)',
             }}
           >
             <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/phrases" element={<Phrases />} />
-              <Route path="/:id" element={<Conversation />} />
+              <Route path="/" element={isLoggedIn ? <Navigate to="/phrases" /> : <Login onLogin={handleLogin} />} />
+              <Route path="/phrases" element={isLoggedIn ? <Phrases /> : <Navigate to="/" />} />
+              <Route path="/:id" element={isLoggedIn ? <Conversation /> : <Navigate to="/" />} />
             </Routes>
           </Box>
         </Box>

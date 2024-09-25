@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography, Paper } from '@mui/material';
 import { useState } from 'react';
 
-function Login() {
+function Login({ onLogin }: { onLogin: () => void }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -27,6 +27,7 @@ function Login() {
         localStorage.setItem('token', token);
         console.log('You have been logged in');
         console.log('Token:', token);
+        onLogin();
       } else {
         console.error('Login failed:', response.statusText);
       }
