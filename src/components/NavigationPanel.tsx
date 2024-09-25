@@ -8,6 +8,7 @@ interface NavigationPanelProps {
   onConversationSelect: (id: string) => void;
   isLoggedIn: boolean;
   onLogout: () => void;
+  errorMessage: string;
 }
 
 function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: NavigationPanelProps) {

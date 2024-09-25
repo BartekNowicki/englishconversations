@@ -1,24 +1,25 @@
 import { Box, Button, TextField, Typography, Paper } from '@mui/material';
 import { useState } from 'react';
 
-function Login({ onLogin }: { onLogin: () => void }) {
+interface LoginProps {
+  onLogin: () => void;
+  errorMessage: string;
+  setErrorMessage: (message: string) => void;
+}
+
+function Login({ onLogin, errorMessage, setErrorMessage }: LoginProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const payload = {
-      email,
-      password,
-    };
+    const payload = { email, password };
 
     try {
       const response = await fetch('https://ec-auth-53ee47810f36.herokuapp.com/auth/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
@@ -26,13 +27,15 @@ function Login({ onLogin }: { onLogin: () => void }) {
         const token = await response.text();
         localStorage.setItem('token', token);
         console.log('You have been logged in');
-        console.log('Token:', token);
         onLogin();
       } else {
-        console.error('Login failed:', response.statusText);
+        const errorText = await response.text();
+        setErrorMessage(errorText);
+        console.error('Login failed:', errorText);
       }
     } catch (error) {
       console.error('Error during login:', error);
+      setErrorMessage('An unexpected error occurred.');
     }
   };
 
@@ -56,12 +59,7 @@ function Login({ onLogin }: { onLogin: () => void }) {
           borderRadius: '10px',
         }}
       >
-        <Typography
-          variant="h4"
-          align="center"
-          gutterBottom
-          sx={{ color: '#f5f5f5' }}
-        >
+        <Typography variant="h4" align="center" gutterBottom sx={{ color: '#f5f5f5' }}>
           Login
         </Typography>
 
@@ -77,15 +75,9 @@ function Login({ onLogin }: { onLogin: () => void }) {
               backgroundColor: '#333',
               input: { color: '#fff' },
               '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  borderColor: '#555',
-                },
-                '&:hover fieldset': {
-                  borderColor: '#777',
-                },
-                '&.Mui-focused fieldset': {
-                  borderColor: '#fff',
-                },
+                '& fieldset': { borderColor: '#555' },
+                '&:hover fieldset': { borderColor: '#777' },
+                '&.Mui-focused fieldset': { borderColor: '#fff' },
               },
             }}
             value={email}
@@ -102,15 +94,9 @@ function Login({ onLogin }: { onLogin: () => void }) {
               backgroundColor: '#333',
               input: { color: '#fff' },
               '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  borderColor: '#555',
-                },
-                '&:hover fieldset': {
-                  borderColor: '#777',
-                },
-                '&.Mui-focused fieldset': {
-                  borderColor: '#fff',
-                },
+                '& fieldset': { borderColor: '#555' },
+                '&:hover fieldset': { borderColor: '#777' },
+                '&.Mui-focused fieldset': { borderColor: '#fff' },
               },
             }}
             value={password}
@@ -124,15 +110,19 @@ function Login({ onLogin }: { onLogin: () => void }) {
             sx={{
               marginTop: '20px',
               backgroundColor: '#555',
-              '&:hover': {
-                backgroundColor: '#777',
-              },
+              '&:hover': { backgroundColor: '#777' },
             }}
             type="submit"
             fullWidth
           >
             Login
           </Button>
+
+          {errorMessage && (
+            <Typography variant="body2" color="error" align="center" sx={{ marginTop: 2 }}>
+              {errorMessage}
+            </Typography>
+          )}
         </Box>
       </Paper>
     </Box>

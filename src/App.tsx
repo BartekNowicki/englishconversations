@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -18,6 +19,7 @@ function App() {
 
   const handleLogin = () => {
     setIsLoggedIn(true);
+    setErrorMessage('');
   };
 
   const handleLogout = () => {
@@ -30,7 +32,7 @@ function App() {
       <Box sx={{ display: 'flex', minHeight: '100vh' }}>
         {/* Navigation Panel */}
         {isLoggedIn && (
-          <NavigationPanel onConversationSelect={(id: string) => console.log(`Selected: ${id}`)} isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+          <NavigationPanel onConversationSelect={(id: string) => console.log(`Selected: ${id}`)} isLoggedIn={isLoggedIn} onLogout={handleLogout} errorMessage={errorMessage}/>
         )}
 
         {/* Main Content */}
@@ -56,7 +58,7 @@ function App() {
             }}
           >
             <Routes>
-              <Route path="/" element={isLoggedIn ? <Navigate to="/phrases" /> : <Login onLogin={handleLogin} />} />
+              <Route path="/" element={isLoggedIn ? <Navigate to="/phrases" /> : <Login onLogin={handleLogin} errorMessage={errorMessage} setErrorMessage={setErrorMessage} />} />
               <Route path="/phrases" element={isLoggedIn ? <Phrases /> : <Navigate to="/" />} />
               <Route path="/:id" element={isLoggedIn ? <Conversation /> : <Navigate to="/" />} />
             </Routes>
