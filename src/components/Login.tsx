@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography, Paper } from '@mui/material';
+import { Box, Button, TextField, Typography, Paper, Link } from '@mui/material';
 import { useState } from 'react';
 
 interface LoginProps {
@@ -10,14 +10,24 @@ interface LoginProps {
 function Login({ onLogin, errorMessage, setErrorMessage }: LoginProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [mode, setMode] = useState<'login' | 'register'>('login');
 
-  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleLoginOrRegister = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const payload = { email, password };
+    const payload = mode === 'login' ? { email, password } : { email, password, username: username };
+
+    const url = mode === 'login'
+      ? 'https://ec-auth-53ee47810f36.herokuapp.com/auth/login'
+      : 'https://ec-auth-53ee47810f36.herokuapp.com/auth/register';
+
+//     const url = mode === 'login'
+//       ? 'http://localhost:8080/auth/login'
+//       : 'http://localhost:8080/auth/register';
 
     try {
-      const response = await fetch('https://ec-auth-53ee47810f36.herokuapp.com/auth/login', {
+      const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -25,18 +35,24 @@ function Login({ onLogin, errorMessage, setErrorMessage }: LoginProps) {
 
       if (response.ok) {
         const token = await response.text();
+
         localStorage.setItem('token', token);
-        console.log('You have been logged in');
+        console.log(`You have been ${mode === 'login' ? 'logged in' : 'registered and logged in'}`);
         onLogin();
       } else {
         const errorText = await response.text();
         setErrorMessage(errorText);
-        console.error('Login failed:', errorText);
+        console.error(`${mode === 'login' ? 'Login' : 'Registration'} failed:`, errorText);
       }
     } catch (error) {
-      console.error('Error during login:', error);
+      console.error('Error during login/registration:', error);
       setErrorMessage('An unexpected error occurred.');
     }
+  };
+
+  const toggleMode = () => {
+    setMode((prevMode) => (prevMode === 'login' ? 'register' : 'login'));
+    setErrorMessage('');
   };
 
   return (
@@ -60,10 +76,30 @@ function Login({ onLogin, errorMessage, setErrorMessage }: LoginProps) {
         }}
       >
         <Typography variant="h4" align="center" gutterBottom sx={{ color: '#f5f5f5' }}>
-          Login
+          {mode === 'login' ? 'Login' : 'Register'}
         </Typography>
 
-        <Box component="form" onSubmit={handleLogin} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Box component="form" onSubmit={handleLoginOrRegister} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          {mode === 'register' && (
+            <TextField
+              label="Username"
+              variant="outlined"
+              fullWidth
+              required
+              InputLabelProps={{ style: { color: '#ccc' } }}
+              sx={{
+                backgroundColor: '#333',
+                input: { color: '#fff' },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': { borderColor: '#555' },
+                  '&:hover fieldset': { borderColor: '#777' },
+                  '&.Mui-focused fieldset': { borderColor: '#fff' },
+                },
+              }}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          )}
           <TextField
             label="Email"
             variant="outlined"
@@ -115,7 +151,7 @@ function Login({ onLogin, errorMessage, setErrorMessage }: LoginProps) {
             type="submit"
             fullWidth
           >
-            Login
+            {mode === 'login' ? 'Login' : 'Register'}
           </Button>
 
           {errorMessage && (
@@ -123,6 +159,18 @@ function Login({ onLogin, errorMessage, setErrorMessage }: LoginProps) {
               {errorMessage}
             </Typography>
           )}
+
+          <Typography variant="body2" align="center" sx={{ color: '#ccc', marginTop: 2 }}>
+            {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}
+            <Link
+              component="button"
+              variant="body2"
+              onClick={toggleMode}
+              sx={{ marginLeft: 1, color: '#fff', cursor: 'pointer' }}
+            >
+              {mode === 'login' ? 'Register' : 'Login'}
+            </Link>
+          </Typography>
         </Box>
       </Paper>
     </Box>
