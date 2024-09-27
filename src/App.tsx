@@ -5,34 +5,48 @@ import Conversation from './components/Conversation';
 import Login from './components/Login';
 import Phrases from './components/Phrases';
 import { useState, useEffect } from 'react';
+import { useLearnables } from './hooks/useLearnables';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [token, setToken] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
       setIsLoggedIn(true);
+      setToken(storedToken);
     }
   }, []);
 
   const handleLogin = () => {
+    const storedToken = localStorage.getItem('token');
     setIsLoggedIn(true);
+    setToken(storedToken);
     setErrorMessage('');
   };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     setIsLoggedIn(false);
+    setToken(null);
   };
+
+  // Use the custom hook to fetch learnables if the token is available
+  const { learnables, loading, error } = useLearnables(token || '');
 
   return (
     <Router>
       <Box sx={{ display: 'flex', minHeight: '100vh' }}>
         {/* Navigation Panel */}
         {isLoggedIn && (
-          <NavigationPanel onConversationSelect={(id: string) => console.log(`Selected: ${id}`)} isLoggedIn={isLoggedIn} onLogout={handleLogout} errorMessage={errorMessage}/>
+          <NavigationPanel
+            onConversationSelect={(id: string) => console.log(`Selected: ${id}`)}
+            isLoggedIn={isLoggedIn}
+            onLogout={handleLogout}
+            errorMessage={errorMessage}
+          />
         )}
 
         {/* Main Content */}
@@ -58,9 +72,32 @@ function App() {
             }}
           >
             <Routes>
-              <Route path="/" element={isLoggedIn ? <Navigate to="/phrases" /> : <Login onLogin={handleLogin} errorMessage={errorMessage} setErrorMessage={setErrorMessage} />} />
-              <Route path="/phrases" element={isLoggedIn ? <Phrases /> : <Navigate to="/" />} />
-              <Route path="/:id" element={isLoggedIn ? <Conversation /> : <Navigate to="/" />} />
+              <Route
+                path="/"
+                element={
+                  isLoggedIn ? (
+                    <Navigate to="/phrases" />
+                  ) : (
+                    <Login
+                      onLogin={handleLogin}
+                      errorMessage={errorMessage}
+                      setErrorMessage={setErrorMessage}
+                    />
+                  )
+                }
+              />
+              <Route
+                path="/phrases"
+                element={isLoggedIn ? (
+                  <Phrases learnables={learnables} loading={loading} error={error} />
+                ) : (
+                  <Navigate to="/" />
+                )}
+              />
+              <Route
+                path="/:id"
+                element={isLoggedIn ? <Conversation /> : <Navigate to="/" />}
+              />
             </Routes>
           </Box>
         </Box>

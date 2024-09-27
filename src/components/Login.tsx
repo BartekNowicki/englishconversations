@@ -18,13 +18,13 @@ function Login({ onLogin, errorMessage, setErrorMessage }: LoginProps) {
 
     const payload = mode === 'login' ? { email, password } : { email, password, username: username };
 
-    const url = mode === 'login'
-      ? 'https://ec-auth-53ee47810f36.herokuapp.com/auth/login'
-      : 'https://ec-auth-53ee47810f36.herokuapp.com/auth/register';
-
 //     const url = mode === 'login'
-//       ? 'http://localhost:8080/auth/login'
-//       : 'http://localhost:8080/auth/register';
+//       ? 'https://ec-auth-53ee47810f36.herokuapp.com/auth/login'
+//       : 'https://ec-auth-53ee47810f36.herokuapp.com/auth/register';
+
+    const url = mode === 'login'
+      ? 'http://localhost:8080/auth/login'
+      : 'http://localhost:8080/auth/register';
 
     try {
       const response = await fetch(url, {
