@@ -66,9 +66,9 @@ function App() {
               width: '90%',
               maxWidth: 1200,
               padding: '0px',
-              backgroundColor: '#333',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
               borderRadius: '10px',
-              boxShadow: '0 0 20px rgba(255, 255, 255, 0.5)',
+              boxShadow: '0 0 7px rgba(255, 255, 255, 0.3)',
             }}
           >
             <Routes>

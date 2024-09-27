@@ -1,6 +1,6 @@
 import React from 'react';
-import { CircularProgress, Typography } from '@mui/material';
-import LearnablesTable from './LearnablesTable'; // Import your MUI Table component
+import { CircularProgress, Typography, Box } from '@mui/material';
+import LearnablesTable from './LearnablesTable';
 
 interface PhrasesProps {
   learnables: any[];
@@ -11,9 +11,9 @@ interface PhrasesProps {
 const Phrases: React.FC<PhrasesProps> = ({ learnables, loading, error }) => {
   if (loading) {
     return (
-      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+      <Box textAlign="center" mt={2}>
         <CircularProgress />
-      </div>
+      </Box>
     );
   }
 
@@ -34,12 +34,12 @@ const Phrases: React.FC<PhrasesProps> = ({ learnables, loading, error }) => {
   }
 
   return (
-    <div>
+    <Box sx={{ padding: '40px'}}>
       <Typography variant="h4" align="center" gutterBottom sx={{ color: '#fff' }}>
         Phrases
       </Typography>
       <LearnablesTable token={localStorage.getItem('token') || ''} />
-    </div>
+    </Box>
   );
 };
 

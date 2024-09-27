@@ -20,6 +20,12 @@ import {
 import { Learnable } from '../types';
 import { useLearnables } from '../hooks/useLearnables';
 
+// Define variables for the button colors and cell border bottom color
+const CellBorderBottomColor = 'rgba(128, 128, 128, 0.5)';
+const newButtonColor = 'primary'; // Blue
+const editButtonColor = 'success'; // Green
+const deleteButtonColor = 'error'; // Red
+
 interface LearnablesTableProps {
   token: string;
 }
@@ -115,19 +121,31 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleAddNew} sx={{ marginBottom: 2 }}>
+      <Button
+        variant="contained"
+        color={newButtonColor} // Using variable for color
+        onClick={handleAddNew}
+        sx={{ marginBottom: 2 }}
+      >
         Add New
       </Button>
 
-      <TableContainer component={Paper} sx={{ backgroundColor: '#1c1c1c', color: '#fff' }}>
-        <Table sx={{ minWidth: 650 }}>
+      <TableContainer
+        component={Paper}
+        sx={{
+          backgroundColor: '#141414',
+          color: '#fff',
+          boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+        }}
+      >
+        <Table sx={{ minWidth: 800 }}>
           <TableHead>
             <TableRow>
-              <TableCell sx={{ color: '#fff', width: '25%' }}>Phrase</TableCell>
-              <TableCell align="right" sx={{ color: '#fff', width: '25%' }}>Translation</TableCell>
-              <TableCell align="right" sx={{ color: '#fff', width: '25%' }}>Comment</TableCell>
-              <TableCell align="right" sx={{ color: '#fff' }}>Retention</TableCell>
-              <TableCell align="right" sx={{ color: '#fff' }}>Actions</TableCell>
+              <TableCell sx={{ color: '#fff', borderBottom: `2px solid ${CellBorderBottomColor}`, width: '25%' }}>Phrase</TableCell>
+              <TableCell align="left" sx={{ color: '#fff', borderBottom: `2px solid ${CellBorderBottomColor}`, width: '25%' }}>Translation</TableCell>
+              <TableCell align="left" sx={{ color: '#fff', borderBottom: `2px solid ${CellBorderBottomColor}`, width: '25%' }}>Comment</TableCell>
+              <TableCell align="center" sx={{ color: '#fff', borderBottom: `2px solid ${CellBorderBottomColor}` }}>Retention</TableCell>
+              <TableCell align="center" sx={{ color: '#fff', borderBottom: `2px solid ${CellBorderBottomColor}` }}>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -151,16 +169,22 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
               </TableRow>
             ) : (
               learnables.map((learnable) => (
-                <TableRow key={learnable.id} sx={{ backgroundColor: '#2a2a2a', '& td': { whiteSpace: 'normal', wordWrap: 'break-word' } }}>
-                  <TableCell sx={{ color: '#fff' }}>{learnable.phrase}</TableCell>
-                  <TableCell align="right" sx={{ color: '#fff' }}>{learnable.translation}</TableCell>
-                  <TableCell align="right" sx={{ color: '#fff' }}>{learnable.comment}</TableCell>
-                  <TableCell align="right" sx={{ color: '#fff' }}>{learnable.retention}</TableCell>
-                  <TableCell align="right">
-                    <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <TableRow
+                  key={learnable.id}
+                  sx={{
+                    backgroundColor: '#1a1a1a', // Darker background
+                    '& td': { whiteSpace: 'normal', wordWrap: 'break-word' }, // Ensures text wraps within columns
+                  }}
+                >
+                  <TableCell sx={{ color: '#fff', borderBottom: `2px solid ${CellBorderBottomColor}`, textAlign: 'left' }}>{learnable.phrase}</TableCell>
+                  <TableCell align="left" sx={{ color: '#fff', borderBottom: `2px solid ${CellBorderBottomColor}` }}>{learnable.translation}</TableCell>
+                  <TableCell align="left" sx={{ color: '#fff', borderBottom: `2px solid ${CellBorderBottomColor}` }}>{learnable.comment}</TableCell>
+                  <TableCell align="center" sx={{ color: '#fff', borderBottom: `2px solid ${CellBorderBottomColor}` }}>{learnable.retention}</TableCell>
+                  <TableCell align="center" sx={{ borderBottom: `2px solid ${CellBorderBottomColor}` }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                       <Button
                         variant="contained"
-                        color="primary"
+                        color={editButtonColor} // Using variable for color
                         onClick={() => handleEdit(learnable)}
                         sx={{ marginRight: 1 }}
                       >
@@ -168,7 +192,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
                       </Button>
                       <Button
                         variant="contained"
-                        color="error"
+                        color={deleteButtonColor} // Using variable for color
                         onClick={() => handleDelete(learnable.id)}
                       >
                         Delete
@@ -184,10 +208,10 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
 
       {/* Modal for Adding/Editing Learnable */}
       <Dialog open={isModalOpen} onClose={handleCloseModal}>
-        <DialogTitle sx={{ backgroundColor: '#1c1c1c', color: '#fff' }}>
+        <DialogTitle sx={{ backgroundColor: '#141414', color: '#fff' }}>
           {isEditing ? 'Edit Learnable' : 'Add New Learnable'}
         </DialogTitle>
-        <DialogContent sx={{ backgroundColor: '#1c1c1c', color: '#fff' }}>
+        <DialogContent sx={{ backgroundColor: '#141414', color: '#fff' }}>
           <TextField
             label="Phrase"
             fullWidth
@@ -226,9 +250,9 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
             sx={{ input: { color: '#fff' } }}
           />
         </DialogContent>
-        <DialogActions sx={{ backgroundColor: '#1c1c1c' }}>
+        <DialogActions sx={{ backgroundColor: '#141414' }}>
           <Button onClick={handleCloseModal} sx={{ color: '#fff' }}>Cancel</Button>
-          <Button onClick={handleSave} variant="contained" color="primary">
+          <Button onClick={handleSave} variant="contained" color={editButtonColor}>
             {isEditing ? 'Save Changes' : 'Create'}
           </Button>
         </DialogActions>

@@ -3,6 +3,12 @@ import './conversation.css';
 import { useParams } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 
+const CellBorderBottomColor = 'rgba(128, 128, 128, 0.1)';
+const clickableBackground = 'rgba(255, 255, 255, 0.2)';
+const clickableBorderColor = 'rgba(118, 255, 3, 0.6)';
+const textColor = '#fff';
+const speakerColor = 'rgba(118, 255, 3, 0.6)';
+
 const conversationModules = import.meta.glob('../assets/conversations/*.ts');
 
 interface ConversationModule {
@@ -55,6 +61,25 @@ function Conversation() {
           key={index}
           onClick={() => handleClick(part)}
           className={`clickable ${clicked.includes(part) ? 'clicked' : ''}`}
+          style={{
+            cursor: 'pointer',
+            backgroundColor: clickableBackground,
+            padding: '2px 4px',
+            borderRadius: '4px',
+            color: '#fff',
+            transition: 'border 0.3s',
+            border: clicked.includes(part)
+              ? `1px solid ${clickableBorderColor}`
+              : '1px solid transparent',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.border = `1px solid ${clickableBorderColor}`;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.border = clicked.includes(part)
+              ? `1px solid ${clickableBorderColor}`
+              : '1px solid transparent';
+          }}
         >
           {part}
         </span>
@@ -65,26 +90,38 @@ function Conversation() {
   };
 
   return (
-    <Box sx={{ padding: '40px' }}>
+    <Box
+      sx={{
+        padding: '40px',
+        backgroundColor: '#141414',
+        color: textColor,
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+        border: `2px solid ${CellBorderBottomColor}`,
+        borderRadius: '10px',
+      }}
+    >
       <Typography
-              variant="h2"
-              sx={{
-                fontSize: '2rem',
-                fontWeight: 'bold',
-                textAlign: 'center',
-                marginBottom: '20px'
-              }}
-            >
-              {title}
-            </Typography>
+        variant="h2"
+        sx={{
+          fontSize: '2rem',
+          fontWeight: 'bold',
+          textAlign: 'center',
+          marginBottom: '40px',
+          padding: '20px',
+          color: textColor,
+        }}
+      >
+        {title}
+      </Typography>
       {conversation.length > 0 ? (
         conversation.map((dialog, index) => (
-          <Typography key={index} sx={{ lineHeight: 2 }}>
-              <span className="speaker">{dialog.speaker}:</span> {renderTextWithClickables(dialog.text)}
+          <Typography key={index} sx={{ lineHeight: 2, borderBottom: `2px solid ${CellBorderBottomColor}`, paddingBottom: '10px', marginBottom: '10px' }}>
+            <span style={{ fontWeight: 'bold', color: speakerColor }}>{index + 1}. {dialog.speaker}:</span>{' '}
+            {renderTextWithClickables(dialog.text)}
           </Typography>
         ))
       ) : (
-        <Typography>Loading conversation...</Typography>
+        <Typography sx={{ color: textColor }}>Loading conversation...</Typography>
       )}
     </Box>
   );
