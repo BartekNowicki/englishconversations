@@ -14,7 +14,8 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  TextField
+  TextField,
+  Box
 } from '@mui/material';
 import { Learnable } from '../types';
 import { useLearnables } from '../hooks/useLearnables';
@@ -122,9 +123,9 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
         <Table sx={{ minWidth: 650 }}>
           <TableHead>
             <TableRow>
-              <TableCell sx={{ color: '#fff' }}>Phrase</TableCell>
-              <TableCell align="right" sx={{ color: '#fff' }}>Translation</TableCell>
-              <TableCell align="right" sx={{ color: '#fff' }}>Comment</TableCell>
+              <TableCell sx={{ color: '#fff', width: '25%' }}>Phrase</TableCell>
+              <TableCell align="right" sx={{ color: '#fff', width: '25%' }}>Translation</TableCell>
+              <TableCell align="right" sx={{ color: '#fff', width: '25%' }}>Comment</TableCell>
               <TableCell align="right" sx={{ color: '#fff' }}>Retention</TableCell>
               <TableCell align="right" sx={{ color: '#fff' }}>Actions</TableCell>
             </TableRow>
@@ -150,27 +151,29 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
               </TableRow>
             ) : (
               learnables.map((learnable) => (
-                <TableRow key={learnable.id} sx={{ backgroundColor: '#2a2a2a' }}>
+                <TableRow key={learnable.id} sx={{ backgroundColor: '#2a2a2a', '& td': { whiteSpace: 'normal', wordWrap: 'break-word' } }}>
                   <TableCell sx={{ color: '#fff' }}>{learnable.phrase}</TableCell>
                   <TableCell align="right" sx={{ color: '#fff' }}>{learnable.translation}</TableCell>
                   <TableCell align="right" sx={{ color: '#fff' }}>{learnable.comment}</TableCell>
                   <TableCell align="right" sx={{ color: '#fff' }}>{learnable.retention}</TableCell>
                   <TableCell align="right">
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={() => handleEdit(learnable)}
-                      sx={{ marginRight: 1 }}
-                    >
-                      Edit
-                    </Button>
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      onClick={() => handleDelete(learnable.id)}
-                    >
-                      Delete
-                    </Button>
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => handleEdit(learnable)}
+                        sx={{ marginRight: 1 }}
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="error"
+                        onClick={() => handleDelete(learnable.id)}
+                      >
+                        Delete
+                      </Button>
+                    </Box>
                   </TableCell>
                 </TableRow>
               ))
@@ -224,7 +227,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
           />
         </DialogContent>
         <DialogActions sx={{ backgroundColor: '#1c1c1c' }}>
-          <Button onClick={handleCloseModal}>Cancel</Button>
+          <Button onClick={handleCloseModal} sx={{ color: '#fff' }}>Cancel</Button>
           <Button onClick={handleSave} variant="contained" color="primary">
             {isEditing ? 'Save Changes' : 'Create'}
           </Button>
