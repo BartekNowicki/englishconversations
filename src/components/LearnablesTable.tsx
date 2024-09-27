@@ -118,15 +118,15 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
         Add New
       </Button>
 
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="learnables table">
+      <TableContainer component={Paper} sx={{ backgroundColor: '#1c1c1c', color: '#fff' }}>
+        <Table sx={{ minWidth: 650 }}>
           <TableHead>
             <TableRow>
-              <TableCell>Phrase</TableCell>
-              <TableCell align="right">Translation</TableCell>
-              <TableCell align="right">Comment</TableCell>
-              <TableCell align="right">Retention</TableCell>
-              <TableCell align="right">Actions</TableCell>
+              <TableCell sx={{ color: '#fff' }}>Phrase</TableCell>
+              <TableCell align="right" sx={{ color: '#fff' }}>Translation</TableCell>
+              <TableCell align="right" sx={{ color: '#fff' }}>Comment</TableCell>
+              <TableCell align="right" sx={{ color: '#fff' }}>Retention</TableCell>
+              <TableCell align="right" sx={{ color: '#fff' }}>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -144,17 +144,17 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
               </TableRow>
             ) : learnables.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={5} align="center">
+                <TableCell colSpan={5} align="center" sx={{ color: '#fff' }}>
                   <Typography>No learnables found.</Typography>
                 </TableCell>
               </TableRow>
             ) : (
               learnables.map((learnable) => (
-                <TableRow key={learnable.id}>
-                  <TableCell>{learnable.phrase}</TableCell>
-                  <TableCell align="right">{learnable.translation}</TableCell>
-                  <TableCell align="right">{learnable.comment}</TableCell>
-                  <TableCell align="right">{learnable.retention}</TableCell>
+                <TableRow key={learnable.id} sx={{ backgroundColor: '#2a2a2a' }}>
+                  <TableCell sx={{ color: '#fff' }}>{learnable.phrase}</TableCell>
+                  <TableCell align="right" sx={{ color: '#fff' }}>{learnable.translation}</TableCell>
+                  <TableCell align="right" sx={{ color: '#fff' }}>{learnable.comment}</TableCell>
+                  <TableCell align="right" sx={{ color: '#fff' }}>{learnable.retention}</TableCell>
                   <TableCell align="right">
                     <Button
                       variant="contained"
@@ -181,14 +181,18 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
 
       {/* Modal for Adding/Editing Learnable */}
       <Dialog open={isModalOpen} onClose={handleCloseModal}>
-        <DialogTitle>{isEditing ? 'Edit Learnable' : 'Add New Learnable'}</DialogTitle>
-        <DialogContent>
+        <DialogTitle sx={{ backgroundColor: '#1c1c1c', color: '#fff' }}>
+          {isEditing ? 'Edit Learnable' : 'Add New Learnable'}
+        </DialogTitle>
+        <DialogContent sx={{ backgroundColor: '#1c1c1c', color: '#fff' }}>
           <TextField
             label="Phrase"
             fullWidth
             margin="dense"
             value={phrase}
             onChange={(e) => setPhrase(e.target.value)}
+            InputLabelProps={{ style: { color: '#fff' } }}
+            sx={{ input: { color: '#fff' } }}
           />
           <TextField
             label="Translation"
@@ -196,6 +200,8 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
             margin="dense"
             value={translation}
             onChange={(e) => setTranslation(e.target.value)}
+            InputLabelProps={{ style: { color: '#fff' } }}
+            sx={{ input: { color: '#fff' } }}
           />
           <TextField
             label="Comment"
@@ -203,6 +209,8 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
             margin="dense"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
+            InputLabelProps={{ style: { color: '#fff' } }}
+            sx={{ input: { color: '#fff' } }}
           />
           <TextField
             label="Retention"
@@ -211,9 +219,11 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
             type="number"
             value={retention}
             onChange={(e) => setRetention(parseInt(e.target.value, 10))}
+            InputLabelProps={{ style: { color: '#fff' } }}
+            sx={{ input: { color: '#fff' } }}
           />
         </DialogContent>
-        <DialogActions>
+        <DialogActions sx={{ backgroundColor: '#1c1c1c' }}>
           <Button onClick={handleCloseModal}>Cancel</Button>
           <Button onClick={handleSave} variant="contained" color="primary">
             {isEditing ? 'Save Changes' : 'Create'}

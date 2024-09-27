@@ -27,7 +27,7 @@ const Phrases: React.FC<PhrasesProps> = ({ learnables, loading, error }) => {
 
   if (learnables.length === 0) {
     return (
-      <Typography variant="h6" align="center">
+      <Typography variant="h6" align="center" sx={{ color: '#fff' }}>
         No phrases found.
       </Typography>
     );
@@ -35,8 +35,8 @@ const Phrases: React.FC<PhrasesProps> = ({ learnables, loading, error }) => {
 
   return (
     <div>
-      <Typography variant="h4" align="center" gutterBottom>
-
+      <Typography variant="h4" align="center" gutterBottom sx={{ color: '#fff' }}>
+        Phrases
       </Typography>
       <LearnablesTable token={localStorage.getItem('token') || ''} />
     </div>

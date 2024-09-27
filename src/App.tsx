@@ -38,7 +38,7 @@ function App() {
 
   return (
     <Router>
-      <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+      <Box sx={{ display: 'flex', minHeight: '100vh', backgroundColor: '#000' }}>
         {/* Navigation Panel */}
         {isLoggedIn && (
           <NavigationPanel
@@ -57,7 +57,7 @@ function App() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: 'black',
+            backgroundColor: '#000',
           }}
         >
           {/* Central Pane */}
@@ -66,9 +66,9 @@ function App() {
               width: '90%',
               maxWidth: 1200,
               padding: '0px',
-              backgroundColor: '#DCEDC8',
+              backgroundColor: '#333',
               borderRadius: '10px',
-              boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)',
+              boxShadow: '0 0 20px rgba(255, 255, 255, 0.5)',
             }}
           >
             <Routes>
