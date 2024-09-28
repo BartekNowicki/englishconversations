@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Drawer, List, ListItem, ListItemText, Select, MenuItem, IconButton, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -11,11 +11,35 @@ interface NavigationPanelProps {
   errorMessage: string;
 }
 
+const conversationModules = import.meta.glob('../assets/conversations/*.ts'); // Access all conversation files
+
 function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: NavigationPanelProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedConversation, setSelectedConversation] = useState('');
+  const [availableConversations, setAvailableConversations] = useState<{ id: string; title: string }[]>([]); // Fixed type for conversation array
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  useEffect(() => {
+    const loadConversations = () => {
+      const filenames = Object.keys(conversationModules);
+
+      // Parse filenames into titles like "1a Passing of Time" and "1b Passing of Time"
+      const conversations = filenames.map((filePath) => {
+        const filename = filePath.split('/').pop()?.replace('.ts', '');
+        if (filename) {
+          const [number, ...titleParts] = filename.split('_');
+          const title = titleParts.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); // Capitalize title
+          return { id: number, title: `${number} ${title}` };
+        }
+        return null;
+      }).filter(Boolean) as { id: string; title: string }[];
+
+      setAvailableConversations(conversations);
+    };
+
+    loadConversations();
+  }, []);
 
   const handleConversationChange = (event: any) => {
     const conversationId = event.target.value;
@@ -60,6 +84,12 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
               <ListItem sx={{ cursor: 'pointer' }} onClick={() => { navigate('/phrases'); toggleDrawer(); }}>
                 <ListItemText primary="My Phrases" />
               </ListItem>
+
+              {/* Conversation Header with Consistent Style */}
+              <ListItem>
+                <ListItemText primary="Conversations" />
+              </ListItem>
+
               <ListItem>
                 <Select
                   value={selectedConversation}
@@ -74,8 +104,11 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
                   <MenuItem value="" disabled>
                     Select a Conversation
                   </MenuItem>
-                  <MenuItem value="1a">Conversation 1a</MenuItem>
-                  <MenuItem value="1b">Conversation 1b</MenuItem>
+                  {availableConversations.map(({ id, title }) => (
+                    <MenuItem key={id} value={id}>
+                      {title}
+                    </MenuItem>
+                  ))}
                 </Select>
               </ListItem>
             </>

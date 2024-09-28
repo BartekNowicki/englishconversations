@@ -8,6 +8,7 @@ const clickableBackground = 'rgba(255, 255, 255, 0.2)';
 const clickableBorderColor = 'rgba(118, 255, 3, 0.6)';
 const textColor = '#fff';
 const speakerColor = 'rgba(118, 255, 3, 0.6)';
+const conversationFontSize = '1.2rem'; // Adjust conversation font size
 
 const conversationModules = import.meta.glob('../assets/conversations/*.ts');
 
@@ -15,20 +16,20 @@ interface ConversationModule {
   [key: string]: any;
   clickables: string[];
   title: string;
-  discussionQuestions: string[]; // Add this for discussion questions
+  discussionQuestions: string[];
 }
 
 function Conversation() {
   const { id } = useParams();
-  const [title, setTitle] = useState<string>("");
+  const [title, setTitle] = useState<string>('');
   const [conversation, setConversation] = useState<any[]>([]);
   const [clickables, setClickables] = useState<string[]>([]);
   const [clicked, setClicked] = useState<string[]>([]);
-  const [discussionQuestions, setDiscussionQuestions] = useState<string[]>([]); // State to store questions
+  const [discussionQuestions, setDiscussionQuestions] = useState<string[]>([]);
 
   useEffect(() => {
     const loadConversation = async () => {
-      const filePath = `../assets/conversations/conversation${id}.ts`;
+      const filePath = `../assets/conversations/${id}_passing_of_time.ts`;
 
       if (conversationModules[filePath]) {
         try {
@@ -36,28 +37,28 @@ function Conversation() {
           setConversation(module[`conversation${id}`]);
           setClickables(module.clickables);
           setTitle(module.title);
-          setDiscussionQuestions(module.discussionQuestions || []); // Load questions
+          setDiscussionQuestions(module.discussionQuestions || []);
         } catch (error) {
           console.error('Error loading conversation:', error);
         }
       } else {
-        console.error('No conversation found for this ID');
+        console.error(`No conversation found for this ID: ${id}`);
       }
     };
 
-    loadConversation();
+    if (id) {
+      loadConversation();
+    }
   }, [id]);
 
   const handleClick = (phrase: string) => {
-    setClicked(prev =>
-      prev.includes(phrase)
-        ? prev.filter(p => p !== phrase)
-        : [...prev, phrase]
+    setClicked((prev) =>
+      prev.includes(phrase) ? prev.filter((p) => p !== phrase) : [...prev, phrase]
     );
   };
 
   const renderTextWithClickables = (text: string) => {
-    const parts = text.split(new RegExp(`(${clickables.join("|")})`, "g"));
+    const parts = text.split(new RegExp(`(${clickables.join('|')})`, 'g'));
     return parts.map((part, index) =>
       clickables.includes(part) ? (
         <span
@@ -116,10 +117,23 @@ function Conversation() {
       >
         {title}
       </Typography>
+
+      {/* Conversation Section */}
       {conversation.length > 0 ? (
         conversation.map((dialog, index) => (
-          <Typography key={index} sx={{ lineHeight: 2, borderBottom: `2px solid ${CellBorderBottomColor}`, paddingBottom: '10px', marginBottom: '10px' }}>
-            <span style={{ fontWeight: 'bold', color: speakerColor }}>{index + 1}. {dialog.speaker}:</span>{' '}
+          <Typography
+            key={index}
+            sx={{
+              lineHeight: 2,
+              borderBottom: `2px solid ${CellBorderBottomColor}`,
+              paddingBottom: '10px',
+              marginBottom: '10px',
+              fontSize: conversationFontSize, // Apply font size for conversation lines
+            }}
+          >
+            <span style={{ fontWeight: 'bold', color: speakerColor }}>
+              {index + 1}. {dialog.speaker}:
+            </span>{' '}
             {renderTextWithClickables(dialog.text)}
           </Typography>
         ))
@@ -137,18 +151,31 @@ function Conversation() {
               marginBottom: '10px',
               color: textColor,
               fontSize: '1.5rem',
-              fontWeight: 'bold'
+              fontWeight: 'bold',
             }}
           >
             Discussion Topics
           </Typography>
-          <Typography sx={{ textAlign: 'center', marginBottom: '20px', color: '#aaa' }}>
+          <Typography
+            sx={{
+              textAlign: 'center',
+              marginBottom: '20px',
+              color: '#aaa',
+              fontSize: conversationFontSize, // Ensure same font size as conversation lines
+            }}
+          >
             Use the phrases from the dialog to discuss the following questions:
           </Typography>
           <ul>
             {discussionQuestions.map((question, index) => (
               <li key={index}>
-                <Typography sx={{ color: textColor, fontSize: '1.2rem', lineHeight: 1.6 }}>
+                <Typography
+                  sx={{
+                    color: textColor,
+                    fontSize: conversationFontSize, // Apply same font size for discussion questions
+                    lineHeight: 1.6,
+                  }}
+                >
                   {question}
                 </Typography>
               </li>
