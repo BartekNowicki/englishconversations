@@ -3,114 +3,111 @@ export const title = "The Passing of Time";
 export const conversation1a = [
   {
     speaker: "Tom",
-    text: "Wow, can you believe it’s already September? Time really flies by and before you know it, September has crept up on us.",
+    text: "Wow, can you believe it’s already September? Time really flies. It feels like summer was just here, and now it's gone.",
   },
   {
     speaker: "Sara",
-    text: "I know! It feels like we just celebrated the New Year.",
+    text: "I know! It seems like the New Year was only a few months ago.",
   },
   {
     speaker: "Tom",
-    text: "I had so many plans at the start of the year, but now I feel like I’ve barely scratched the surface.",
+    text: "I made so many plans for this year, but I haven’t done most of them.",
   },
   {
     speaker: "Sara",
-    text: "Same here. I was supposed to take up jogging, but I guess that idea just fell by the wayside.",
+    text: "Same here. I wanted to start jogging, but I didn’t have time.",
   },
   {
     speaker: "Tom",
-    text: "Haha, yeah, life gets in the way. I was going to learn the guitar, but somehow, time just slipped through my fingers.",
+    text: "Yeah, life gets busy. I wanted to learn the guitar, but I didn’t stick with it.",
   },
   {
     speaker: "Sara",
-    text: "It happens. One minute, you’re setting goals, and the next, you’re wondering where all the time went.",
+    text: "It’s hard to keep up with everything. One minute, you make plans, and the next, the whole year has passed.",
   },
   {
     speaker: "Tom",
-    text: "It’s like, the older we get, the faster time seems to fly by.",
+    text: "It feels like time moves faster as we get older.",
   },
   {
     speaker: "Sara",
-    text: "Right. I remember being a kid, and summers seemed to last forever. Now, they’re gone in the blink of an eye!",
+    text: "I remember when I was a kid, summers felt like they lasted forever. Now they just fly by!",
   },
   {
     speaker: "Tom",
-    text: "I guess it’s because we have so much going on these days. There’s always something that pops up.",
+    text: "Yeah, maybe we’re too busy now. There's always something that needs to be done.",
   },
   {
     speaker: "Sara",
-    text: "Yeah, it’s easy to get caught up in work and other responsibilities.",
+    text: "Exactly. And before we know it, another year is gone, and we wonder where the time went.",
   },
   {
     speaker: "Tom",
-    text: "And before we know it, another year has passed, and we wonder where the time went.",
+    text: "It seems like we’re always rushing and never have time to enjoy the little things.",
   },
   {
     speaker: "Sara",
-    text: "Exactly. It feels like we’re always in a rush, always chasing after the next thing.",
+    text: "Yes, like just hanging out with friends or enjoying a day off.",
   },
   {
     speaker: "Tom",
-    text: "And when we do finally slow down, we realize how much we've missed along the way.",
+    text: "We should make time for those moments. They’re important.",
   },
   {
     speaker: "Sara",
-    text: "Yeah, like the simple things—just spending time with friends or enjoying a quiet afternoon.",
+    text: "But it’s hard. We’re always busy with work and other things.",
   },
   {
     speaker: "Tom",
-    text: "I know what you mean. It’s so important to find time for those moments.",
+    text: "Exactly. And when we do relax, we sometimes feel bad for not working.",
   },
   {
     speaker: "Sara",
-    text: "But it’s hard, isn’t it? We get so wrapped up in deadlines and tasks that we forget to take a breather.",
+    text: "It’s true. We need to remind ourselves that it’s okay to slow down sometimes.",
   },
   {
     speaker: "Tom",
-    text: "Absolutely. And then when we finally do stop, we feel guilty for not being productive.",
+    text: "Maybe next year we can focus on that. Finding time for the important things.",
   },
   {
     speaker: "Sara",
-    text: "It’s a vicious cycle. We need to remind ourselves that it’s okay to slow down sometimes.",
+    text: "Yes, let's try to slow down and enjoy the moments more.",
   },
   {
     speaker: "Tom",
-    text: "I agree. Maybe that’s something we can focus on next year—finding more balance.",
+    text: "I really hope I can do that next year. Time goes by too fast when we’re not paying attention.",
   },
   {
     speaker: "Sara",
-    text: "That sounds like a plan. Hopefully, next year won’t fly by as quickly!",
+    text: "Agreed! Let’s make it a priority to slow down and live in the moment more often."
   }
 ];
 
 export const clickables = [
-  "Time really flies by",
-  "crept up on us",
-  "celebrated the New Year",
-  "barely scratched the surface",
+  "Time really flies",
+  "gone",
+  "I haven’t done most of them",
   "Same here",
-  "I was supposed to",
-  "fell by the wayside",
-  "life gets in the way",
-  "slipped through my fingers",
-  "setting goals",
-  "seems to fly by",
-  "gone in the blink of an eye",
-  "have so much going on",
-  "pops up",
-  "get caught up in",
-  "wondering where all the time went",
-  "always in a rush",
-  "chasing after the next thing",
-  "slow down",
-  "missed along the way",
-  "spending time with friends",
-  "enjoying a quiet afternoon",
-  "find time for those moments",
-  "wrapped up in deadlines",
-  "forget to take a breather",
-  "feel guilty",
-  "vicious cycle",
-  "finding more balance",
-  "next year won’t fly by",
+  "didn’t have time",
+  "life gets busy",
+  "didn’t stick with it",
+  "keep up with everything",
+  "passed",
+  "moves faster",
+  "fly by",
+  "needs to be done",
+  "wonder where the time went",
+  "always rushing",
+  "little things",
+  "make time",
+  "important",
+  "relax",
+  "feel bad",
+  "it’s okay to slow down",
+];
+
+export const discussionQuestions = [
+  "Do you find it hard to stick to your plans throughout the year? Why or why not?",
+  "How can you find more time to enjoy the little things in life?",
+  "What’s one goal you didn’t achieve this year that you’d like to focus on next year?"
 ];

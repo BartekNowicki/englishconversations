@@ -3,75 +3,111 @@ export const title = "The Passing of Time";
 export const conversation1b = [
   {
     speaker: "Lily",
-    text: "It’s incredible how quickly time slips through our fingers, isn't it? I swear, it feels like we just wrapped up summer, and now winter is creeping in again.",
+    text: "It’s astonishing how time slips through our fingers, isn't it? It feels like summer just wrapped up, and now winter is creeping in again.",
   },
   {
     speaker: "Tom",
-    text: "Tell me about it. The pace of time accelerates as we get older, or maybe we just get too wrapped up in the daily grind to notice the seasons changing.",
+    text: "Exactly. As we get older, time seems to accelerate. We get so caught up in our daily routines that we barely notice the seasons changing.",
   },
   {
     speaker: "Lily",
-    text: "Exactly. The days seem to blur together, and before you know it, months have flown by. I used to anticipate winter, but now it feels like it sneaks up on me.",
+    text: "Right, the days blur together, and suddenly, months have flown by. I used to look forward to winter, but now it sneaks up on me.",
   },
   {
     speaker: "Tom",
-    text: "I’ve noticed the same thing. When we were kids, we’d count down the days to the holidays, but now they just appear out of nowhere. I think we’re too bogged down with responsibilities to really stop and savor the moment.",
+    text: "When we were younger, we counted down the days to the holidays, but now they just seem to pop up out of nowhere. I guess we're too bogged down with work to appreciate the little things.",
   },
   {
     speaker: "Lily",
-    text: "True. Life has a way of distracting you. If you’re not careful, entire weeks slip away before you even realize it. I keep telling myself to slow down and take it all in, but it's easier said than done.",
+    text: "It’s true. Life tends to pull us in so many directions, and before we know it, whole weeks have slipped away. I keep telling myself to stop and enjoy the moment, but it's easier said than done.",
   },
   {
     speaker: "Tom",
-    text: "It’s all about finding balance, I guess. We get so caught up in planning for the future that we forget to live in the present. Winter coming isn’t just about the weather—it's a reminder that another year is winding down.",
+    text: "Finding balance is the key. We spend so much time planning for the future that we forget to live in the present. Winter isn’t just about the cold—it's a reminder that another year is winding down.",
   },
   {
     speaker: "Lily",
-    text: "Yes, and it hits you hard when you think about how much you still wanted to accomplish. Another year gone, and the list of unchecked goals only grows longer.",
+    text: "It hits hard when you think about all the goals you didn’t check off the list. Another year gone, and the to-do list just keeps getting longer.",
   },
   {
     speaker: "Tom",
-    text: "That’s the catch, though, right? We set these lofty ambitions, but time has a way of undermining even the best-laid plans. I suppose the key is to adjust our expectations and not let time run our lives.",
+    text: "That’s the tricky part, right? We set these big ambitions, but time has a way of undermining even the best-laid plans. Maybe the trick is to be more flexible with ourselves.",
   },
   {
     speaker: "Lily",
-    text: "Absolutely. We need to pace ourselves, otherwise we’ll always feel like we’re racing against the clock. Winter’s just a season, but it’s also a metaphor for slowing down and reflecting on what’s truly important.",
+    text: "Absolutely. We need to pace ourselves, or else we’ll constantly feel like we’re racing against the clock. Winter should be a time to slow down and reflect on what really matters.",
   },
   {
     speaker: "Tom",
-    text: "Well said. Maybe instead of dreading it, we should embrace the slower pace winter brings. It’s a chance to regroup, recharge, and get ready for the next round.",
+    text: "Exactly. Instead of dreading it, maybe we should embrace the slower pace that winter brings. It’s a chance to recharge and prepare for what’s ahead.",
+  },
+  {
+    speaker: "Lily",
+    text: "But it’s not always easy to adjust, is it? We get so used to running on high speed that slowing down feels unnatural.",
+  },
+  {
+    speaker: "Tom",
+    text: "True. It almost feels like we’re expected to be productive all the time, even when nature tells us to slow down.",
+  },
+  {
+    speaker: "Lily",
+    text: "Yes, there’s this constant pressure to always be achieving something. Sometimes, just taking a break feels like you're falling behind.",
+  },
+  {
+    speaker: "Tom",
+    text: "That’s the thing. We’re conditioned to think that slowing down is a bad thing, but it’s actually essential for staying balanced.",
+  },
+  {
+    speaker: "Lily",
+    text: "Exactly. Without balance, it’s easy to burn out. I’ve been learning that it’s okay to take it easy sometimes.",
+  },
+  {
+    speaker: "Tom",
+    text: "That’s a lesson I’m still working on. I’m always making plans, but I need to remember to leave space for rest.",
+  },
+  {
+    speaker: "Lily",
+    text: "Yes, finding that balance is a lifelong process, but we get better at it with practice.",
+  },
+  {
+    speaker: "Tom",
+    text: "Hopefully! I want to make sure I’m not letting the years slip by without enjoying the present.",
+  },
+  {
+    speaker: "Lily",
+    text: "That’s a good goal. Let's try to keep each other accountable next year and make sure we take time to slow down.",
+  },
+  {
+    speaker: "Tom",
+    text: "Definitely. We can't let another year just disappear without making time to live in the moment."
   }
 ];
 
 export const clickables = [
   "slips through our fingers",
-  "we just wrapped up summer",
-  "The pace of time accelerates",
+  "just wrapped up",
   "creeping in",
-  "wrapped up in the daily grind",
-  "seasons changing",
+  "accelerate",
   "blur together",
   "months have flown by",
-  "to anticipate winter",
   "sneaks up on me",
-  "count down the days to",
-  "appear out of nowhere",
-  "bogged down with",
-  "savor the moment",
-  "has a way of",
-  "slip away",
-  "I keep telling myself",
-  "take it all in",
-  "it's easier said than done",
-  "get so caught up in",
+  "counted down the days",
+  "pop up out of nowhere",
+  "bogged down",
+  "pull us in so many directions",
+  "slipped away",
+  "easier said than done",
   "winding down",
-  "it hits you hard",
-  "unchecked goals",
-  "That’s the catch",
+  "check off the list",
   "best-laid plans",
-  "let time run our lives",
-  "to pace ourselves",
+  "undermining",
+  "pace ourselves",
   "racing against the clock",
-  "instead of dreading it",
-  "embrace the slower pace"
+  "embrace the slower pace",
+];
+
+export const discussionQuestions = [
+  "Do you think the passage of time feels faster as we age? Why might that be?",
+  "How do you balance long-term goals with living in the present? Is it possible to do both effectively?",
+  "What strategies can you adopt to make sure you're not always 'racing against the clock' in your daily life?"
 ];

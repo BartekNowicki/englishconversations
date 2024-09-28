@@ -15,6 +15,7 @@ interface ConversationModule {
   [key: string]: any;
   clickables: string[];
   title: string;
+  discussionQuestions: string[]; // Add this for discussion questions
 }
 
 function Conversation() {
@@ -23,6 +24,7 @@ function Conversation() {
   const [conversation, setConversation] = useState<any[]>([]);
   const [clickables, setClickables] = useState<string[]>([]);
   const [clicked, setClicked] = useState<string[]>([]);
+  const [discussionQuestions, setDiscussionQuestions] = useState<string[]>([]); // State to store questions
 
   useEffect(() => {
     const loadConversation = async () => {
@@ -34,6 +36,7 @@ function Conversation() {
           setConversation(module[`conversation${id}`]);
           setClickables(module.clickables);
           setTitle(module.title);
+          setDiscussionQuestions(module.discussionQuestions || []); // Load questions
         } catch (error) {
           console.error('Error loading conversation:', error);
         }
@@ -122,6 +125,36 @@ function Conversation() {
         ))
       ) : (
         <Typography sx={{ color: textColor }}>Loading conversation...</Typography>
+      )}
+
+      {/* Discussion Section */}
+      {discussionQuestions.length > 0 && (
+        <Box sx={{ marginTop: '70px', marginBottom: '70px' }}>
+          <Typography
+            variant="h4"
+            sx={{
+              textAlign: 'center',
+              marginBottom: '10px',
+              color: textColor,
+              fontSize: '1.5rem',
+              fontWeight: 'bold'
+            }}
+          >
+            Discussion Topics
+          </Typography>
+          <Typography sx={{ textAlign: 'center', marginBottom: '20px', color: '#aaa' }}>
+            Use the phrases from the dialog to discuss the following questions:
+          </Typography>
+          <ul>
+            {discussionQuestions.map((question, index) => (
+              <li key={index}>
+                <Typography sx={{ color: textColor, fontSize: '1.2rem', lineHeight: 1.6 }}>
+                  {question}
+                </Typography>
+              </li>
+            ))}
+          </ul>
+        </Box>
       )}
     </Box>
   );
