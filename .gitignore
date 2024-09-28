@@ -1,4 +1,7 @@
 src/private/
+.env
+.env.production
+.env.development
 
 
 # Logs

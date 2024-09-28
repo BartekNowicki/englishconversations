@@ -13,18 +13,16 @@ function Login({ onLogin, errorMessage, setErrorMessage }: LoginProps) {
   const [username, setUsername] = useState('');
   const [mode, setMode] = useState<'login' | 'register'>('login');
 
+  const base_ec_auth_URL = import.meta.env.VITE_EC_AUTH_API_BASE_URL;
+
   const handleLoginOrRegister = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const payload = mode === 'login' ? { email, password } : { email, password, username: username };
 
-//     const url = mode === 'login'
-//       ? 'https://ec-auth-53ee47810f36.herokuapp.com/auth/login'
-//       : 'https://ec-auth-53ee47810f36.herokuapp.com/auth/register';
-
     const url = mode === 'login'
-      ? 'http://localhost:8080/auth/login'
-      : 'http://localhost:8080/auth/register';
+      ? `${base_ec_auth_URL}/auth/login`
+      : `${base_ec_auth_URL}/auth/register`;
 
     try {
       const response = await fetch(url, {

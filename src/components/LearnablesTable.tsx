@@ -20,7 +20,6 @@ import {
 import { Learnable } from '../types';
 import { useLearnables } from '../hooks/useLearnables';
 
-// Define variables for the button colors and cell border bottom color
 const CellBorderBottomColor = 'rgba(128, 128, 128, 0.5)';
 const newButtonColor = 'primary'; // Blue
 const editButtonColor = 'success'; // Green
@@ -39,6 +38,8 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
   const [translation, setTranslation] = useState('');
   const [comment, setComment] = useState('');
   const [retention, setRetention] = useState<number>(0);
+
+  const base_ec_main_app_URL = import.meta.env.VITE_EC_MAIN_APP_API_BASE_URL;
 
   const handleEdit = (learnable: Learnable) => {
     setSelectedLearnable(learnable);
@@ -69,8 +70,8 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
     const learnableData = { phrase, translation, comment, retention };
     const method = isEditing ? 'PUT' : 'POST';
     const url = isEditing
-      ? `http://localhost:8080/learnables/${selectedLearnable?.id}`
-      : 'http://localhost:8080/learnables';
+      ? `${base_ec_main_app_URL}/learnables/${selectedLearnable?.id}`
+      : `${base_ec_main_app_URL}/learnables`;
 
     try {
       const response = await fetch(url, {
@@ -99,7 +100,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
     const confirmed = window.confirm('Are you sure you want to delete this learnable?');
     if (confirmed) {
       try {
-        const response = await fetch(`http://localhost:8080/learnables/${id}`, {
+        const response = await fetch(`${base_ec_main_app_URL}/learnables/${id}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -123,7 +124,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
     <div>
       <Button
         variant="contained"
-        color={newButtonColor} // Using variable for color
+        color={newButtonColor}
         onClick={handleAddNew}
         sx={{ marginBottom: 2 }}
       >
@@ -172,8 +173,8 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
                 <TableRow
                   key={learnable.id}
                   sx={{
-                    backgroundColor: '#1a1a1a', // Darker background
-                    '& td': { whiteSpace: 'normal', wordWrap: 'break-word' }, // Ensures text wraps within columns
+                    backgroundColor: '#1a1a1a',
+                    '& td': { whiteSpace: 'normal', wordWrap: 'break-word' },
                   }}
                 >
                   <TableCell sx={{ color: '#fff', borderBottom: `2px solid ${CellBorderBottomColor}`, textAlign: 'left' }}>{learnable.phrase}</TableCell>
@@ -184,7 +185,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
                     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                       <Button
                         variant="contained"
-                        color={editButtonColor} // Using variable for color
+                        color={editButtonColor}
                         onClick={() => handleEdit(learnable)}
                         sx={{ marginRight: 1 }}
                       >
@@ -192,7 +193,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
                       </Button>
                       <Button
                         variant="contained"
-                        color={deleteButtonColor} // Using variable for color
+                        color={deleteButtonColor}
                         onClick={() => handleDelete(learnable.id)}
                       >
                         Delete

@@ -6,6 +6,8 @@ export const useLearnables = (token: string) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const base_ec_main_app_URL = import.meta.env.VITE_EC_MAIN_APP_API_BASE_URL;
+
   useEffect(() => {
     if (token) {
       const fetchLearnables = async () => {
@@ -24,7 +26,9 @@ export const useLearnables = (token: string) => {
 //         console.log("Request Options:", requestOptions);
 
         try {
-          const response = await fetch('http://localhost:8080/learnables', requestOptions);
+            console.log(`YO: ${base_ec_main_app_URL}/learnables`);
+//           const response = await fetch('http://localhost:8080/learnables', requestOptions);
+          const response = await fetch(`${base_ec_main_app_URL}/learnables`, requestOptions);
 
           if (response.ok) {
             const data: Learnable[] = await response.json();
