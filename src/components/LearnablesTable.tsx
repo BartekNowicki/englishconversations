@@ -17,6 +17,7 @@ import {
   TextField,
   Box
 } from '@mui/material';
+import { useTheme } from '@mui/material/styles'; // Import useTheme
 import { Learnable } from '../types';
 import { useLearnables } from '../hooks/useLearnables';
 
@@ -40,6 +41,8 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
   const [retention, setRetention] = useState<number>(0);
 
   const base_ec_main_app_URL = import.meta.env.VITE_EC_MAIN_APP_API_BASE_URL;
+
+  const theme = useTheme(); // Access MUI theme
 
   const handleEdit = (learnable: Learnable) => {
     setSelectedLearnable(learnable);
@@ -209,8 +212,8 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
 
       {/* Modal for Adding/Editing Learnable */}
       <Dialog open={isModalOpen} onClose={handleCloseModal}>
-        <DialogTitle sx={{ backgroundColor: '#141414', color: '#fff' }}>
-          {isEditing ? 'Edit Learnable' : 'Add New Learnable'}
+        <DialogTitle sx={{ backgroundColor: isEditing ? theme.palette.success.main : theme.palette.primary.main, color: '#fff' }}>
+          {isEditing ? 'Edit Learnable' : 'Add New Phrase'}
         </DialogTitle>
         <DialogContent sx={{ backgroundColor: '#141414', color: '#fff' }}>
           <TextField

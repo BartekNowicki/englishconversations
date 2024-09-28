@@ -25,9 +25,15 @@ export const useLearnables = (token: string) => {
           const response = await fetch(`${base_ec_main_app_URL}/learnables`, requestOptions);
 
           if (response.ok) {
-            const data: Learnable[] = await response.json();
-            console.log("Learnables data fetched successfully:", data);
-            setLearnables(data);
+            const text = await response.text();
+            if (text) {
+              const data: Learnable[] = JSON.parse(text);
+              console.log("Learnables data fetched successfully:", data);
+              setLearnables(data);
+            } else {
+              console.log("No learnables found for this user.");
+              setLearnables([]);
+            }
           } else {
             const errorText = await response.text().catch(() => 'Unknown error');
             setError(`Failed to fetch learnables: ${response.status} - ${errorText}`);
