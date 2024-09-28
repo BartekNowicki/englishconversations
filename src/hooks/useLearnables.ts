@@ -21,13 +21,7 @@ export const useLearnables = (token: string) => {
           },
         };
 
-//         console.log("Fetching learnables with the following request:");
-//         console.log("URL:", 'http://localhost:8080/learnables');
-//         console.log("Request Options:", requestOptions);
-
         try {
-            console.log(`YO: ${base_ec_main_app_URL}/learnables`);
-//           const response = await fetch('http://localhost:8080/learnables', requestOptions);
           const response = await fetch(`${base_ec_main_app_URL}/learnables`, requestOptions);
 
           if (response.ok) {
