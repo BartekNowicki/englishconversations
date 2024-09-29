@@ -17,14 +17,16 @@ import {
   TextField,
   Box
 } from '@mui/material';
-import { useTheme } from '@mui/material/styles'; // Import useTheme
+import { useTheme } from '@mui/material/styles';
 import { Learnable } from '../types';
 import { useLearnables } from '../hooks/useLearnables';
+import { saveLearnable } from '../utils/saveLearnable';
+import { deleteLearnable } from '../utils/deleteLearnable';
 
 const CellBorderBottomColor = 'rgba(128, 128, 128, 0.5)';
-const newButtonColor = 'primary'; // Blue
-const editButtonColor = 'success'; // Green
-const deleteButtonColor = 'error'; // Red
+const newButtonColor = 'primary';
+const editButtonColor = 'success';
+const deleteButtonColor = 'error';
 
 interface LearnablesTableProps {
   token: string;
@@ -40,9 +42,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
   const [comment, setComment] = useState('');
   const [retention, setRetention] = useState<number>(0);
 
-  const base_ec_main_app_URL = import.meta.env.VITE_EC_MAIN_APP_API_BASE_URL;
-
-  const theme = useTheme(); // Access MUI theme
+  const theme = useTheme();
 
   const handleEdit = (learnable: Learnable) => {
     setSelectedLearnable(learnable);
@@ -70,30 +70,14 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
   };
 
   const handleSave = async () => {
-    const learnableData = { phrase, translation, comment, retention };
-    const method = isEditing ? 'PUT' : 'POST';
-    const url = isEditing
-      ? `${base_ec_main_app_URL}/learnables/${selectedLearnable?.id}`
-      : `${base_ec_main_app_URL}/learnables`;
+    const learnableData = { phrase, translation, comment, retention }; // Ensure it's structured correctly
 
     try {
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(learnableData),
-      });
-
-      if (response.ok) {
-        alert(isEditing ? 'Learnable updated successfully' : 'Learnable created successfully');
-        window.location.reload(); // Reload the page to reflect changes
-      } else {
-        alert(`Failed to ${isEditing ? 'update' : 'create'} learnable`);
-      }
+      await saveLearnable(learnableData, token, isEditing, selectedLearnable?.id);
+      alert(isEditing ? 'Learnable updated successfully' : 'Learnable created successfully');
+      window.location.reload(); // Reload the page to reflect changes
     } catch (error) {
-      console.error(`Error during ${isEditing ? 'update' : 'create'}:`, error);
+      console.error('Error during save:', error);
     }
 
     handleCloseModal();
@@ -103,20 +87,9 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
     const confirmed = window.confirm('Are you sure you want to delete this learnable?');
     if (confirmed) {
       try {
-        const response = await fetch(`${base_ec_main_app_URL}/learnables/${id}`, {
-          method: 'DELETE',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (response.ok) {
-          alert('Learnable deleted successfully');
-          window.location.reload(); // Reload the page to reflect changes
-        } else {
-          alert('Failed to delete learnable');
-        }
+        await deleteLearnable(id, token);
+        alert('Learnable deleted successfully');
+        window.location.reload(); // Reload the page to reflect changes
       } catch (error) {
         console.error('Error deleting learnable:', error);
       }

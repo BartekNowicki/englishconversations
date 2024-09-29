@@ -32,7 +32,6 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
           {title}
         </Typography>
 
-        {/* Display the list of items */}
         {items.length > 0 && (
           <ul>
             {items.map((item, index) => (

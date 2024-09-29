@@ -33,7 +33,6 @@ function App() {
     setToken(null);
   };
 
-  // Use the custom hook to fetch learnables if the token is available
   const { learnables, loading, error } = useLearnables(token || '');
 
   return (

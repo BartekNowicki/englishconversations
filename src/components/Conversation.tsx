@@ -3,7 +3,7 @@ import './conversation.css';
 import { useParams } from 'react-router-dom';
 import { Box, Typography, Button } from '@mui/material';
 import ConfirmationModal from './ConfirmationModal';
-import { savePhrase } from '../utils/savePhrase';
+import { saveLearnable } from '../utils/saveLearnable';
 
 const CellBorderBottomColor = 'rgba(128, 128, 128, 0.1)';
 const clickableBackground = 'rgba(255, 255, 255, 0.2)';
@@ -28,8 +28,8 @@ function Conversation({ token }: { token: string }) {
   const [clickables, setClickables] = useState<string[]>([]);
   const [clicked, setClicked] = useState<string[]>([]);
   const [discussionQuestions, setDiscussionQuestions] = useState<string[]>([]);
-  const [showModal, setShowModal] = useState(false); // State for confirmation modal
-  const [saving, setSaving] = useState(false); // State to track saving progress
+  const [showModal, setShowModal] = useState(false);
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     const loadConversation = async () => {
@@ -70,7 +70,8 @@ function Conversation({ token }: { token: string }) {
     setSaving(true);
     try {
       for (const phrase of clicked) {
-        await savePhrase(phrase, token);
+        const learnableData = { phrase };
+        await saveLearnable(learnableData, token);
       }
       alert('All phrases saved successfully!');
       setClicked([]);
