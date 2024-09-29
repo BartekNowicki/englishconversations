@@ -95,7 +95,7 @@ export const clickables = [
   "fly by",
   "before we know it",
   "wonder where the time went",
-  " we’re always rushing",
+  "we’re always rushing",
   "enjoy the little things",
   "hanging out with friends",
   "enjoying a day off",
@@ -104,6 +104,29 @@ export const clickables = [
   "it’s okay to slow down",
   "make it a priority to",
   "live in the moment",
+];
+
+export const clickablesPl = [
+  "Czas naprawdę leci",
+  "to minęło",
+  "Nie zrobiłem większości z nich",
+  "Tak samo tutaj",
+  "życie robi się zajęte",
+  "nie wytrwałem w tym",
+  "nadążać za wszystkim",
+  "porusza się szybciej, gdy się starzejemy",
+  "przelatuje",
+  "zanim się obejrzymy",
+  "zastanawiam się, gdzie się podział czas",
+  "zawsze się spieszymy",
+  "cieszyć się drobnymi rzeczami",
+  "spotykanie się z przyjaciółmi",
+  "cieszenie się dniem wolnym",
+  "znaleźć czas",
+  "czuć się źle z powodu",
+  "to w porządku, żeby zwolnić",
+  "priorytetowo traktować",
+  "żyć chwilą",
 ];
 
 export const discussionQuestions = [

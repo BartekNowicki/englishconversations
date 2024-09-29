@@ -17,6 +17,7 @@ const conversationModules = import.meta.glob('../assets/conversations/*.ts');
 interface ConversationModule {
   [key: string]: any;
   clickables: string[];
+  clickablesPl: string[];
   title: string;
   discussionQuestions: string[];
 }
@@ -26,6 +27,7 @@ function Conversation({ token }: { token: string }) {
   const [title, setTitle] = useState<string>('');
   const [conversation, setConversation] = useState<any[]>([]);
   const [clickables, setClickables] = useState<string[]>([]);
+  const [clickablesPl, setClickablesPl] = useState<string[]>([]); // Store the Polish version of clickables
   const [clicked, setClicked] = useState<string[]>([]);
   const [discussionQuestions, setDiscussionQuestions] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
@@ -40,6 +42,7 @@ function Conversation({ token }: { token: string }) {
           const module = (await conversationModules[filePath]()) as ConversationModule;
           setConversation(module[`conversation${id}`]);
           setClickables(module.clickables);
+          setClickablesPl(module.clickablesPl);
           setTitle(module.title);
           setDiscussionQuestions(module.discussionQuestions || []);
         } catch (error) {
@@ -68,7 +71,8 @@ function Conversation({ token }: { token: string }) {
   const confirmSave = async () => {
     try {
       for (const phrase of clicked) {
-        const learnableData = { phrase };
+        const translation = getTranslation(phrase);
+        const learnableData = { phrase, translation };
         await saveLearnable(learnableData, token);
       }
       setStatusMessage('All phrases saved successfully!');
@@ -79,6 +83,11 @@ function Conversation({ token }: { token: string }) {
     } finally {
       setShowModal(false); // Close confirmation modal
     }
+  };
+
+  const getTranslation = (phrase: string): string => {
+    const index = clickables.indexOf(phrase);
+    return index !== -1 ? clickablesPl[index] : '';
   };
 
   const renderTextWithClickables = (text: string) => {

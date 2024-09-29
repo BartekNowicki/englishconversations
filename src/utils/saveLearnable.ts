@@ -1,5 +1,5 @@
 export const saveLearnable = async (
-  learnableData: { phrase: string; translation?: string; comment?: string; retention?: number },
+  learnableData: { phrase: string; translation: string; comment?: string; retention?: number },
   token: string,
   isEditing = false,
   id?: number
@@ -8,10 +8,10 @@ export const saveLearnable = async (
   const url = isEditing && id ? `${base_ec_main_app_URL}/learnables/${id}` : `${base_ec_main_app_URL}/learnables`;
 
   const defaultLearnableData = {
-    translation: '',
-    comment: '',
-    retention: 0,
-    ...learnableData, // Override with provided learnable data
+    translation: learnableData.translation,
+    comment: learnableData.comment || '',
+    retention: learnableData.retention || 0,
+    phrase: learnableData.phrase,
   };
 
   try {
