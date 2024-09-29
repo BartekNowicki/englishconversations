@@ -96,7 +96,7 @@ function App() {
               />
               <Route
                 path="/:id"
-                element={isLoggedIn ? <Conversation /> : <Navigate to="/" />}
+                element={isLoggedIn ? <Conversation token={token || ''} /> : <Navigate to="/" />}
               />
             </Routes>
           </Box>

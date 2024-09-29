@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import './conversation.css';
 import { useParams } from 'react-router-dom';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
+import ConfirmationModal from './ConfirmationModal';
+import { savePhrase } from '../utils/savePhrase';
 
 const CellBorderBottomColor = 'rgba(128, 128, 128, 0.1)';
 const clickableBackground = 'rgba(255, 255, 255, 0.2)';
 const clickableBorderColor = 'rgba(118, 255, 3, 0.6)';
 const textColor = '#fff';
 const speakerColor = 'rgba(118, 255, 3, 0.6)';
-const conversationFontSize = '1.2rem'; // Adjust conversation font size
+const conversationFontSize = '1.2rem';
 
 const conversationModules = import.meta.glob('../assets/conversations/*.ts');
 
@@ -19,13 +21,15 @@ interface ConversationModule {
   discussionQuestions: string[];
 }
 
-function Conversation() {
+function Conversation({ token }: { token: string }) {
   const { id } = useParams();
   const [title, setTitle] = useState<string>('');
   const [conversation, setConversation] = useState<any[]>([]);
   const [clickables, setClickables] = useState<string[]>([]);
   const [clicked, setClicked] = useState<string[]>([]);
   const [discussionQuestions, setDiscussionQuestions] = useState<string[]>([]);
+  const [showModal, setShowModal] = useState(false); // State for confirmation modal
+  const [saving, setSaving] = useState(false); // State to track saving progress
 
   useEffect(() => {
     const loadConversation = async () => {
@@ -57,6 +61,27 @@ function Conversation() {
     );
   };
 
+  const handleSave = () => {
+    // Open confirmation modal
+    setShowModal(true);
+  };
+
+  const confirmSave = async () => {
+    setSaving(true);
+    try {
+      for (const phrase of clicked) {
+        await savePhrase(phrase, token);
+      }
+      alert('All phrases saved successfully!');
+      setClicked([]);
+      setSaving(false);
+    } catch (error) {
+      console.error('Error saving phrases:', error);
+    } finally {
+      setShowModal(false);
+    }
+  };
+
   const renderTextWithClickables = (text: string) => {
     const parts = text.split(new RegExp(`(${clickables.join('|')})`, 'g'));
     return parts.map((part, index) =>
@@ -76,14 +101,6 @@ function Conversation() {
               ? `1px solid ${clickableBorderColor}`
               : '1px solid transparent',
           }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.border = `1px solid ${clickableBorderColor}`;
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.border = clicked.includes(part)
-              ? `1px solid ${clickableBorderColor}`
-              : '1px solid transparent';
-          }}
         >
           {part}
         </span>
@@ -102,8 +119,37 @@ function Conversation() {
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
         border: `2px solid ${CellBorderBottomColor}`,
         borderRadius: '10px',
+        position: 'relative',
       }}
     >
+      {/* Fixed Black Overlay Bar */}
+      <Box
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          backgroundColor: '#000',
+          color: '#fff',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '10px 0',
+          zIndex: 10000,
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.6)',
+        }}
+      >
+        {clicked.length > 0 && (
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleSave}
+          >
+            Save Marked Phrases
+          </Button>
+        )}
+      </Box>
+
       <Typography
         variant="h2"
         sx={{
@@ -113,6 +159,7 @@ function Conversation() {
           marginBottom: '40px',
           padding: '20px',
           color: textColor,
+          marginTop: '60px',
         }}
       >
         {title}
@@ -128,7 +175,7 @@ function Conversation() {
               borderBottom: `2px solid ${CellBorderBottomColor}`,
               paddingBottom: '10px',
               marginBottom: '10px',
-              fontSize: conversationFontSize, // Apply font size for conversation lines
+              fontSize: conversationFontSize,
             }}
           >
             <span style={{ fontWeight: 'bold', color: speakerColor }}>
@@ -161,7 +208,7 @@ function Conversation() {
               textAlign: 'center',
               marginBottom: '20px',
               color: '#aaa',
-              fontSize: conversationFontSize, // Ensure same font size as conversation lines
+              fontSize: conversationFontSize,
             }}
           >
             Use the phrases from the dialog to discuss the following questions:
@@ -172,7 +219,7 @@ function Conversation() {
                 <Typography
                   sx={{
                     color: textColor,
-                    fontSize: conversationFontSize, // Apply same font size for discussion questions
+                    fontSize: conversationFontSize,
                     lineHeight: 1.6,
                   }}
                 >
@@ -183,6 +230,15 @@ function Conversation() {
           </ul>
         </Box>
       )}
+
+      <ConfirmationModal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        onConfirm={confirmSave}
+        title="Are you sure you want to save the following phrases?"
+        items={clicked}
+        disabled={saving}
+      />
     </Box>
   );
 }
