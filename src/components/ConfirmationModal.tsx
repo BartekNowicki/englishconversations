@@ -7,7 +7,6 @@ interface ConfirmationModalProps {
   onConfirm?: () => void;
   title: string;
   items?: string[];
-  hideButtons?: boolean;
   isMessage?: boolean; // differentiate between message and confirmation modal
 }
 
@@ -17,8 +16,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   onConfirm,
   title,
   items = [],
-  hideButtons = false,
-  isMessage = false,
+  isMessage = false, // default is not a message modal
 }) => {
   return (
     <Dialog

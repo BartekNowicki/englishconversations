@@ -237,7 +237,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
         onClose={() => setConfirmationMessage('')}
         onConfirm={() => setConfirmationMessage('')}
         title={confirmationMessage}
-        hideButtons
+        isMessage={true}
       />
 
       {learnableToDelete && (

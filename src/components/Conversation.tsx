@@ -235,7 +235,6 @@ function Conversation({ token }: { token: string }) {
         open={!!statusMessage} // Show modal if there's a message
         onClose={() => setStatusMessage(null)}
         title={statusMessage || ''}
-        showButtons={true} // Show "OK" button
         isMessage={true}
       />
 
