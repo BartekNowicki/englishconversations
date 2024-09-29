@@ -46,6 +46,7 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
     setSelectedConversation(conversationId);
     navigate(`/${conversationId}`);
     onConversationSelect(conversationId);
+    setDrawerOpen(false);
   };
 
   const toggleDrawer = () => {
