@@ -1,12 +1,13 @@
 import React from 'react';
-import { Box, Typography, Button, Modal, Paper } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
 
 interface ConfirmationModalProps {
   open: boolean;
   onClose: () => void;
-  onConfirm: () => void;
+  onConfirm?: () => void;
   title: string;
-  items: string[];
+  items?: string[];
+  hideButtons?: boolean;
 }
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
@@ -14,44 +15,63 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   onClose,
   onConfirm,
   title,
-  items,
+  items = [],
+  hideButtons = false,
 }) => {
   return (
-    <Modal open={open} onClose={onClose}>
-      <Paper
-        sx={{
-          width: '400px',
-          padding: '20px',
-          margin: 'auto',
-          marginTop: '100px',
-          backgroundColor: '#1c1c1c',
-          color: '#fff',
-        }}
-      >
-        <Typography variant="h6" sx={{ marginBottom: '10px' }}>
-          {title}
-        </Typography>
+    <Dialog open={open}
+    onClose={onClose}
+    PaperProps={{
+        sx: {
+          borderRadius: 3,
+          backgroundColor: '#141414',
+          boxShadow: 'none',
+        },
+      }}>
+      <DialogTitle sx={{ color: '#fff', backgroundColor: '#141414', padding: '50px 60px 30px 60px' }}>{title}</DialogTitle>
+      <DialogContent sx={{ backgroundColor: '#141414', color: '#fff'}}>
 
         {items.length > 0 && (
-          <ul>
-            {items.map((item, index) => (
-              <li key={index}>
-                <Typography>{item}</Typography>
-              </li>
-            ))}
-          </ul>
+          <ul style={{ padding: '0', listStyle: 'none' }}>
+                      {items.map((item, index) => (
+                        <li
+                          key={index}
+                          style={{
+                            marginBottom: '10px',
+                            fontSize: '1rem',
+                            padding: '5px 0',
+                            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                            fontFamily: 'Roboto Condensed, Arial, sans-serif'
+                          }}
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
         )}
-
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
-          <Button onClick={onClose} sx={{ marginRight: '10px' }}>
-            Cancel
+      </DialogContent>
+      <DialogActions sx={{ backgroundColor: '#141414' }}>
+        {hideButtons ? (
+          <Button
+            onClick={onClose}
+            variant="contained"
+            color="success"
+            sx={{ color: '#fff' }}
+          >
+            OK
           </Button>
-          <Button variant="contained" color="primary" onClick={onConfirm}>
-            Confirm
-          </Button>
-        </Box>
-      </Paper>
-    </Modal>
+        ) : (
+          <>
+            <Button onClick={onClose} variant="outlined" sx={{ color: '#fff', borderColor: '#fff' }}>
+              Cancel
+            </Button>
+            <Button onClick={onConfirm} variant="contained" color="error">
+              Confirm
+            </Button>
+          </>
+        )}
+      </DialogActions>
+    </Dialog>
   );
 };
 

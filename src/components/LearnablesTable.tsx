@@ -15,13 +15,14 @@ import {
   DialogContent,
   DialogActions,
   TextField,
-  Box
+  Box,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Learnable } from '../types';
 import { useLearnables } from '../hooks/useLearnables';
 import { saveLearnable } from '../utils/saveLearnable';
 import { deleteLearnable } from '../utils/deleteLearnable';
+import ConfirmationModal from './ConfirmationModal';
 
 const CellBorderBottomColor = 'rgba(128, 128, 128, 0.5)';
 const newButtonColor = 'primary';
@@ -33,7 +34,7 @@ interface LearnablesTableProps {
 }
 
 const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
-  const { learnables, loading, error } = useLearnables(token);
+  const { learnables, loading, error, fetchLearnables } = useLearnables(token);
   const [selectedLearnable, setSelectedLearnable] = useState<Learnable | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -41,6 +42,9 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
   const [translation, setTranslation] = useState('');
   const [comment, setComment] = useState('');
   const [retention, setRetention] = useState<number>(0);
+  const [confirmationMessage, setConfirmationMessage] = useState<string>('');
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [learnableToDelete, setLearnableToDelete] = useState<Learnable | null>(null);
 
   const theme = useTheme();
 
@@ -70,12 +74,12 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
   };
 
   const handleSave = async () => {
-    const learnableData = { phrase, translation, comment, retention }; // Ensure it's structured correctly
+    const learnableData = { phrase, translation, comment, retention };
 
     try {
       await saveLearnable(learnableData, token, isEditing, selectedLearnable?.id);
-      alert(isEditing ? 'Learnable updated successfully' : 'Learnable created successfully');
-      window.location.reload(); // Reload the page to reflect changes
+      fetchLearnables();
+      setConfirmationMessage(isEditing ? 'Phrase updated successfully!' : 'Phrase created successfully!');
     } catch (error) {
       console.error('Error during save:', error);
     }
@@ -83,27 +87,29 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
     handleCloseModal();
   };
 
-  const handleDelete = async (id: number) => {
-    const confirmed = window.confirm('Are you sure you want to delete this learnable?');
-    if (confirmed) {
+  const handleDeleteRequest = (learnable: Learnable) => {
+    setLearnableToDelete(learnable);
+    setShowDeleteModal(true);
+  };
+
+  const confirmDelete = async () => {
+    if (learnableToDelete) {
       try {
-        await deleteLearnable(id, token);
-        alert('Learnable deleted successfully');
-        window.location.reload(); // Reload the page to reflect changes
+        await deleteLearnable(learnableToDelete.id, token);
+        fetchLearnables(); // Update table without reload
+        setConfirmationMessage(`Phrase "${learnableToDelete.phrase}" deleted successfully!`);
       } catch (error) {
-        console.error('Error deleting learnable:', error);
+        console.error('Error deleting phrase:', error);
+      } finally {
+        setShowDeleteModal(false);
+        setLearnableToDelete(null);
       }
     }
   };
 
   return (
     <div>
-      <Button
-        variant="contained"
-        color={newButtonColor}
-        onClick={handleAddNew}
-        sx={{ marginBottom: 2 }}
-      >
+      <Button variant="contained" color={newButtonColor} onClick={handleAddNew} sx={{ marginBottom: 2 }}>
         Add New
       </Button>
 
@@ -159,19 +165,10 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
                   <TableCell align="center" sx={{ color: '#fff', borderBottom: `2px solid ${CellBorderBottomColor}` }}>{learnable.retention}</TableCell>
                   <TableCell align="center" sx={{ borderBottom: `2px solid ${CellBorderBottomColor}` }}>
                     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                      <Button
-                        variant="contained"
-                        color={editButtonColor}
-                        onClick={() => handleEdit(learnable)}
-                        sx={{ marginRight: 1 }}
-                      >
+                      <Button variant="contained" color={editButtonColor} onClick={() => handleEdit(learnable)} sx={{ marginRight: 1 }}>
                         Edit
                       </Button>
-                      <Button
-                        variant="contained"
-                        color={deleteButtonColor}
-                        onClick={() => handleDelete(learnable.id)}
-                      >
+                      <Button variant="contained" color={deleteButtonColor} onClick={() => handleDeleteRequest(learnable)}>
                         Delete
                       </Button>
                     </Box>
@@ -186,7 +183,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
       {/* Modal for Adding/Editing Learnable */}
       <Dialog open={isModalOpen} onClose={handleCloseModal}>
         <DialogTitle sx={{ backgroundColor: isEditing ? theme.palette.success.main : theme.palette.primary.main, color: '#fff' }}>
-          {isEditing ? 'Edit Learnable' : 'Add New Phrase'}
+          {isEditing ? 'Edit Phrase' : 'Add New Phrase'}
         </DialogTitle>
         <DialogContent sx={{ backgroundColor: '#141414', color: '#fff' }}>
           <TextField
@@ -196,7 +193,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
             value={phrase}
             onChange={(e) => setPhrase(e.target.value)}
             InputLabelProps={{ style: { color: '#fff' } }}
-            sx={{ input: { color: '#fff' } }}
+            sx={{ input: { color: '#fff' }, marginTop: '50px' }}
           />
           <TextField
             label="Translation"
@@ -205,7 +202,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
             value={translation}
             onChange={(e) => setTranslation(e.target.value)}
             InputLabelProps={{ style: { color: '#fff' } }}
-            sx={{ input: { color: '#fff' } }}
+            sx={{ input: { color: '#fff' }, marginTop: '50px'  }}
           />
           <TextField
             label="Comment"
@@ -214,7 +211,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             InputLabelProps={{ style: { color: '#fff' } }}
-            sx={{ input: { color: '#fff' } }}
+            sx={{ input: { color: '#fff' }, marginTop: '50px'  }}
           />
           <TextField
             label="Retention"
@@ -224,7 +221,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
             value={retention}
             onChange={(e) => setRetention(parseInt(e.target.value, 10))}
             InputLabelProps={{ style: { color: '#fff' } }}
-            sx={{ input: { color: '#fff' } }}
+            sx={{ input: { color: '#fff' }, marginTop: '50px'  }}
           />
         </DialogContent>
         <DialogActions sx={{ backgroundColor: '#141414' }}>
@@ -234,6 +231,24 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      <ConfirmationModal
+        open={!!confirmationMessage}
+        onClose={() => setConfirmationMessage('')}
+        onConfirm={() => setConfirmationMessage('')}
+        title={confirmationMessage}
+        hideButtons
+      />
+
+      {learnableToDelete && (
+        <ConfirmationModal
+          open={showDeleteModal}
+          onClose={() => setShowDeleteModal(false)}
+          onConfirm={confirmDelete}
+          title={`Are you sure you want to delete "${learnableToDelete.phrase}"?`}
+          items={[]}
+        />
+      )}
     </div>
   );
 };

@@ -8,48 +8,34 @@ export const useLearnables = (token: string) => {
 
   const base_ec_main_app_URL = import.meta.env.VITE_EC_MAIN_APP_API_BASE_URL;
 
+  const fetchLearnables = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(`${base_ec_main_app_URL}/learnables`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch learnables');
+      }
+
+      const data = await response.json();
+      setLearnables(data);
+    } catch (error) {
+      setError('Error fetching learnables');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (token) {
-      const fetchLearnables = async () => {
-        setLoading(true);
-
-        const requestOptions: RequestInit = {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        };
-
-        try {
-          const response = await fetch(`${base_ec_main_app_URL}/learnables`, requestOptions);
-
-          if (response.ok) {
-            const text = await response.text();
-            if (text) {
-              const data: Learnable[] = JSON.parse(text);
-              console.log("Learnables data fetched successfully:", data);
-              setLearnables(data);
-            } else {
-              console.log("No learnables found for this user.");
-              setLearnables([]);
-            }
-          } else {
-            const errorText = await response.text().catch(() => 'Unknown error');
-            setError(`Failed to fetch learnables: ${response.status} - ${errorText}`);
-            console.error(`Error fetching learnables: ${response.status}`, errorText);
-          }
-        } catch (error) {
-          setError('An unexpected error occurred while fetching learnables.');
-          console.error('Unexpected error:', error);
-        } finally {
-          setLoading(false);
-        }
-      };
-
       fetchLearnables();
     }
   }, [token]);
 
-  return { learnables, loading, error };
+  return { learnables, loading, error, fetchLearnables };
 };

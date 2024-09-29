@@ -29,7 +29,7 @@ function Conversation({ token }: { token: string }) {
   const [clicked, setClicked] = useState<string[]>([]);
   const [discussionQuestions, setDiscussionQuestions] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const [saving, setSaving] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null); // To track message content
 
   useEffect(() => {
     const loadConversation = async () => {
@@ -62,24 +62,22 @@ function Conversation({ token }: { token: string }) {
   };
 
   const handleSave = () => {
-    // Open confirmation modal
-    setShowModal(true);
+    setShowModal(true); // Open confirmation modal
   };
 
   const confirmSave = async () => {
-    setSaving(true);
     try {
       for (const phrase of clicked) {
         const learnableData = { phrase };
         await saveLearnable(learnableData, token);
       }
-      alert('All phrases saved successfully!');
-      setClicked([]);
-      setSaving(false);
+      setStatusMessage('All phrases saved successfully!');
+      setClicked([]); // Reset clicked phrases
     } catch (error) {
       console.error('Error saving phrases:', error);
+      setStatusMessage('Failed to save phrases');
     } finally {
-      setShowModal(false);
+      setShowModal(false); // Close confirmation modal
     }
   };
 
@@ -232,13 +230,22 @@ function Conversation({ token }: { token: string }) {
         </Box>
       )}
 
+      {/* Status Modal */}
+      <ConfirmationModal
+        open={!!statusMessage} // Show modal if there's a message
+        onClose={() => setStatusMessage(null)}
+        title={statusMessage || ''}
+        showButtons={true} // Show "OK" button
+        isMessage={true}
+      />
+
+      {/* Confirmation Modal */}
       <ConfirmationModal
         open={showModal}
         onClose={() => setShowModal(false)}
         onConfirm={confirmSave}
         title="Are you sure you want to save the following phrases?"
         items={clicked}
-        disabled={saving}
       />
     </Box>
   );
