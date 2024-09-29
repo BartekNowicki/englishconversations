@@ -18,12 +18,15 @@ export const useLearnables = (token: string) => {
         },
       });
 
-      if (!response.ok) {
+      if (response.status === 204) {
+        // 204 No Content, set learnables to an empty array
+        setLearnables([]);
+      } else if (!response.ok) {
         throw new Error('Failed to fetch learnables');
+      } else {
+        const data = await response.json();
+        setLearnables(Array.isArray(data) ? data : []);
       }
-
-      const data = await response.json();
-      setLearnables(data);
     } catch (error) {
       setError('Error fetching learnables');
     } finally {
