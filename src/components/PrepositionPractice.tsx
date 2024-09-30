@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { PrepositionSelect } from './PrepositionSelect';
 
@@ -14,36 +14,36 @@ import { PrepositionSelect } from './PrepositionSelect';
 
 // Define correct prepositions for each sentence
 const originalPrepositions = [
-  ['at'],       // Sentence 1
-  ['at'],       // Sentence 2
-  ['on'],       // Sentence 3
-  ['on'],       // Sentence 4
-  ['in'],       // Sentence 5
-  ['on'],       // Sentence 6
-  ['to'],       // Sentence 7
-  ['to'],       // Sentence 8
-  ['at'],       // Sentence 9
-  ['of'],       // Sentence 10
-  ['the'],      // Sentence 11
-  ['for'],      // Sentence 12
-  ['to'],       // Sentence 13
-  ['to'],       // Sentence 14
-  ['to'],       // Sentence 15
-  ['at'],       // Sentence 16
-  ['home'],     // Sentence 17
-  ['me'],       // Sentence 18
-  ['on'],       // Sentence 19
-  ['a'],        // Sentence 20
-  ['to'],       // Sentence 21
-  ['with'],     // Sentence 22
-  ['of'],       // Sentence 23
-  ['in'],       // Sentence 24
-  ['in'],       // Sentence 25
-  ['with'],     // Sentence 26
-  ['to'],       // Sentence 27
-  ['in'],       // Sentence 28
-  ['in'],       // Sentence 29
-  ['on'],       // Sentence 30
+  'at',       // Sentence 1
+  'at',       // Sentence 2
+  'on',       // Sentence 3
+  'on',       // Sentence 4
+  'in',       // Sentence 5
+  'on',       // Sentence 6
+  'to',       // Sentence 7
+  'to',       // Sentence 8
+  'at',       // Sentence 9
+  'of',       // Sentence 10
+  'the',      // Sentence 11
+  'for',      // Sentence 12
+  'to',       // Sentence 13
+  'to',       // Sentence 14
+  'to',       // Sentence 15
+  'at',       // Sentence 16
+  'home',     // Sentence 17
+  'me',       // Sentence 18
+  'on',       // Sentence 19
+  'a',        // Sentence 20
+  'to',       // Sentence 21
+  'with',     // Sentence 22
+  'of',       // Sentence 23
+  'in',       // Sentence 24
+  'in',       // Sentence 25
+  'with',     // Sentence 26
+  'to',       // Sentence 27
+  'in',       // Sentence 28
+  'in',       // Sentence 29
+  'on'        // Sentence 30
 ];
 
 const sentences = [
