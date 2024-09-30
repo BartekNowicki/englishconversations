@@ -4,12 +4,12 @@ import NavigationPanel from './components/NavigationPanel';
 import ConversationPage from './pages/ConversationPage';
 import Login from './components/Login';
 import PhrasesPage from './pages/PhrasesPage';
-import PracticePage from './pages/PracticePage'; // New Practice page
+import PracticePage from './pages/PracticePage';
+import PrepositionPractice from './components/PrepositionPractice';
 import { useState, useEffect } from 'react';
 import { useLearnables } from './hooks/useLearnables';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-// Create MUI theme with custom font
 const theme = createTheme({
   typography: {
     fontFamily: 'Poppins, sans-serif',
@@ -113,25 +113,19 @@ function App() {
                 <Route
                   path="/conversation/:id"
                   element={
-                    isLoggedIn ? (
-                      <ConversationPage token={token || ''} />
-                    ) : (
-                      <Navigate to="/" />
-                    )
+                    isLoggedIn ? (<ConversationPage token={token || ''} />) : (<Navigate to="/" />)
                   }
                 />
 
                 {/* Practice Page */}
                 <Route
                   path="/practice"
-                  element={
-                    isLoggedIn ? (
-                      <PracticePage />
-                    ) : (
-                      <Navigate to="/" />
-                    )
+                  element={ isLoggedIn ? (<PracticePage />) : (<Navigate to="/" />)
                   }
                 />
+                <Route
+                path="/practice/1"
+                element={isLoggedIn ? <PrepositionPractice /> : <Navigate to="/" />} />
               </Routes>
             </Box>
           </Box>
