@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
-import './conversation.css';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import ConfirmationModal from './ConfirmationModal';
 import { saveLearnable } from '../utils/saveLearnable';
@@ -22,8 +20,7 @@ interface ConversationModule {
   discussionQuestions: string[];
 }
 
-function Conversation({ token }: { token: string }) {
-  const { id } = useParams();
+function Conversation({ token, id }: { token: string, id: string }) {
   const [title, setTitle] = useState<string>('');
   const [conversation, setConversation] = useState<any[]>([]);
   const [clickables, setClickables] = useState<string[]>([]);

@@ -1,13 +1,15 @@
 import { Box, CssBaseline } from '@mui/material';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import NavigationPanel from './components/NavigationPanel';
-import Conversation from './components/Conversation';
+import ConversationPage from './pages/ConversationPage';
 import Login from './components/Login';
 import PhrasesPage from './pages/PhrasesPage';
+import PracticePage from './pages/PracticePage'; // New Practice page
 import { useState, useEffect } from 'react';
 import { useLearnables } from './hooks/useLearnables';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+// Create MUI theme with custom font
 const theme = createTheme({
   typography: {
     fontFamily: 'Poppins, sans-serif',
@@ -47,6 +49,7 @@ function App() {
       <CssBaseline />
       <Router>
         <Box sx={{ display: 'flex', minHeight: '100vh', backgroundColor: '#000' }}>
+          {/* Navigation Panel visible when logged in */}
           {isLoggedIn && (
             <NavigationPanel
               onConversationSelect={(id: string) => console.log(`Selected: ${id}`)}
@@ -56,6 +59,7 @@ function App() {
             />
           )}
 
+          {/* Main Content */}
           <Box
             sx={{
               flexGrow: 1,
@@ -77,6 +81,7 @@ function App() {
               }}
             >
               <Routes>
+                {/* Default route to phrases if logged in, else login */}
                 <Route
                   path="/"
                   element={
@@ -91,6 +96,8 @@ function App() {
                     )
                   }
                 />
+
+                {/* Phrases Page */}
                 <Route
                   path="/phrases"
                   element={
@@ -101,9 +108,29 @@ function App() {
                     )
                   }
                 />
+
+                {/* Conversation Page with dynamic ID */}
                 <Route
-                  path="/:id"
-                  element={isLoggedIn ? <Conversation token={token || ''} /> : <Navigate to="/" />}
+                  path="/conversation/:id"
+                  element={
+                    isLoggedIn ? (
+                      <ConversationPage token={token || ''} />
+                    ) : (
+                      <Navigate to="/" />
+                    )
+                  }
+                />
+
+                {/* Practice Page */}
+                <Route
+                  path="/practice"
+                  element={
+                    isLoggedIn ? (
+                      <PracticePage />
+                    ) : (
+                      <Navigate to="/" />
+                    )
+                  }
                 />
               </Routes>
             </Box>

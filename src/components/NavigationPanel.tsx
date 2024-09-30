@@ -44,7 +44,7 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
   const handleConversationChange = (event: any) => {
     const conversationId = event.target.value;
     setSelectedConversation(conversationId);
-    navigate(`/${conversationId}`);
+    navigate(`/conversation/${conversationId}`);
     onConversationSelect(conversationId);
     setDrawerOpen(false);
   };
@@ -84,6 +84,11 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
               </ListItem>
               <ListItem sx={{ cursor: 'pointer' }} onClick={() => { navigate('/phrases'); toggleDrawer(); }}>
                 <ListItemText primary="My Phrases" />
+              </ListItem>
+
+              {/* Link to Practice Page */}
+              <ListItem sx={{ cursor: 'pointer' }} onClick={() => { navigate('/practice'); toggleDrawer(); }}>
+                <ListItemText primary="Practice" />
               </ListItem>
 
               {/* Conversation Header with Consistent Style */}
