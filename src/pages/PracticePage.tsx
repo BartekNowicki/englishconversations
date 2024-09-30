@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import ClickableBox from '../components/ClickableBox';
+import prepositionsImage from '../assets/images/prepositions.jpg'; // Import the image
 
 const PracticePage = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const PracticePage = () => {
       }}
     >
       <ClickableBox
-        imageSrc="/src/assets/images/prepositions.jpg"
+        imageSrc={prepositionsImage}
         title="Prepositions"
         onClick={handlePrepositionsClick}
       />
