@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Box, Typography, Button, FormControl, Select, MenuItem } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
+import { PrepositionSelect } from './PrepositionSelect';
 
-// const prepositions = [
+// KEEP FOR REFERENCE
+// const allPrepositions = [
 //   'about', 'above', 'across', 'after', 'against', 'along', 'among', 'around', 'at',
 //   'before', 'behind', 'below', 'beneath', 'beside', 'between', 'beyond', 'by',
 //   'concerning', 'despite', 'down', 'during', 'except', 'for', 'from', 'in', 'inside',
@@ -10,20 +12,97 @@ import { Box, Typography, Button, FormControl, Select, MenuItem } from '@mui/mat
 //   'until', 'up', 'upon', 'with', 'within', 'without', 'as', 'via'
 // ];
 
-// Define specific preposition sets for each sentence
-const prepositionsSet1 = ['in', 'on', 'at', 'by'];
-const prepositionsSet2 = ['in', 'on', 'during', 'for'];
-const prepositionsSet3 = ['with', 'without', 'over', 'by'];
+// Define correct prepositions for each sentence
+const originalPrepositions = [
+  ['at'],       // Sentence 1
+  ['at'],       // Sentence 2
+  ['on'],       // Sentence 3
+  ['on'],       // Sentence 4
+  ['in'],       // Sentence 5
+  ['on'],       // Sentence 6
+  ['to'],       // Sentence 7
+  ['to'],       // Sentence 8
+  ['at'],       // Sentence 9
+  ['of'],       // Sentence 10
+  ['the'],      // Sentence 11
+  ['for'],      // Sentence 12
+  ['to'],       // Sentence 13
+  ['to'],       // Sentence 14
+  ['to'],       // Sentence 15
+  ['at'],       // Sentence 16
+  ['home'],     // Sentence 17
+  ['me'],       // Sentence 18
+  ['on'],       // Sentence 19
+  ['a'],        // Sentence 20
+  ['to'],       // Sentence 21
+  ['with'],     // Sentence 22
+  ['of'],       // Sentence 23
+  ['in'],       // Sentence 24
+  ['in'],       // Sentence 25
+  ['with'],     // Sentence 26
+  ['to'],       // Sentence 27
+  ['in'],       // Sentence 28
+  ['in'],       // Sentence 29
+  ['on'],       // Sentence 30
+];
 
-// Define correct answers for comparison
-const originalPrepositions = ['in', 'on', 'with'];
+const sentences = [
+  "I'm waiting", "She arrived", "I'll meet you", "He depends", "She is interested", "I was born", "We’re going",
+  "Can you explain this", "I’m good", "She’s afraid", "Let’s discuss", "I’m responsible", "He’s married",
+  "I’m looking forward", "She listens", "They arrived", "I'm going", "Please write", "I live", "This book is",
+  "She apologized for being late", "He’s angry", "They are proud", "The train leaves", "She will return",
+  "I agree", "He is addicted", "I’m going to the gym", "She works", "They congratulated me"
+];
+
+const sentenceEndings = [
+  " the bus stop.", " the airport early.", " Monday.", " his parents.", " learning English.",
+  " May 5th.", " a party tonight.", " me?", " math.", " spiders.", " project tomorrow.",
+  " cleaning the room.", " her sister.", " the weekend.", " music all the time.",
+  " Warsaw yesterday.", " now.", " an email.", " the first floor.", " love story.",
+  " the meeting.", " her.", " their achievements.", " the afternoon.", " two weeks.",
+  " your suggestion.", " video games.", " the evening.", " a bank.", " my success."
+];
+
+const wrongPrepositionsSet = [
+  ['on', 'in', 'by'],  // sentence 1
+  ['in', 'to', 'by'],  // sentence 2
+  ['in', 'at', 'by'],  // sentence 3
+  ['from', 'by', 'at'],  // sentence 4
+  ['of', 'at', 'on'],  // sentence 5
+  ['at', 'in', 'to'],  // sentence 6
+  ['on', 'in', 'for'],  // sentence 7
+  ['with', 'in', 'by'],  // sentence 8
+  ['of', 'in', 'on'],  // sentence 9
+  ['from', 'with', 'in'],  // sentence 10
+  ['about the', 'in the', 'by the'],  // sentence 11
+  ['about', 'by', 'to'],  // sentence 12
+  ['with', 'in', 'by'],  // sentence 13
+  ['for', 'toward', 'towards'],  // sentence 14
+  ['on', 'the', 'by'],  // sentence 15
+  ['to', 'on', 'by'],  // sentence 16
+  ['to home', 'for home', 'at'],  // sentence 17
+  ['towards me', 'for me', 'at me'],  // sentence 18
+  ['in', 'at', 'by'],  // sentence 19
+  ['on a', 'in a', 'by a'],  // sentence 20
+  ['by', 'over', 'on'],  // sentence 21
+  ['on', 'by', 'in'],  // sentence 22
+  ['about', 'in', 'by'],  // sentence 23
+  ['from', 'on', 'at'],  // sentence 24
+  ['to', 'for', 'on'],  // sentence 25
+  ['by', 'on', 'for'],  // sentence 26
+  ['on', 'of', 'from'],  // sentence 27
+  ['on', 'from', 'by'],  // sentence 28
+  ['via', 'from', 'by'],  // sentence 29
+  ['in', 'with', 'by']  // sentence 30
+];
+
 
 const PrepositionPractice = () => {
-  const [selectedPrepositions, setSelectedPrepositions] = useState<string[]>(Array(3).fill(''));
+  const [selectedPrepositions, setSelectedPrepositions] = useState<string[]>(Array(30).fill(''));
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState<number | null>(null);
-  const [incorrectPrepositions, setIncorrectPrepositions] = useState<number[]>([]); // Track incorrect indices
-  const [correctPrepositions, setCorrectPrepositions] = useState<number[]>([]); // Track correct indices
+  const [incorrectPrepositions, setIncorrectPrepositions] = useState<number[]>([]);
+  const [correctPrepositions, setCorrectPrepositions] = useState<number[]>([]);
 
   const handlePrepositionChange = (index: number, value: string) => {
     const updatedSelections = [...selectedPrepositions];
@@ -46,15 +125,15 @@ const PrepositionPractice = () => {
     });
 
     setScore(correct);
-    setIncorrectPrepositions(incorrectIndices); // Store incorrect indices
-    setCorrectPrepositions(correctIndices); // Store correct indices
+    setIncorrectPrepositions(incorrectIndices);
+    setCorrectPrepositions(correctIndices);
     setShowResult(true);
   };
 
   return (
     <Box
       sx={{
-        padding: '40px', // Increased padding for the container
+        padding: '40px',
         backgroundColor: '#141414',
         color: 'white',
         borderRadius: '10px',
@@ -62,13 +141,12 @@ const PrepositionPractice = () => {
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
       }}
     >
-      {/* Updated title with larger font size */}
       <Typography
         variant="h5"
         sx={{
-          fontSize: '2rem', // Increased font size for title
+          fontSize: '1.5rem',
           fontWeight: 'bold',
-          marginBottom: '20px',
+          marginBottom: '40px',
         }}
       >
         Select the correct prepositions to complete the sentences:
@@ -83,158 +161,28 @@ const PrepositionPractice = () => {
           marginBottom: '20px',
         }}
       >
-        <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center' }}>
-          1. The meeting will take place{' '}
-          <FormControl
-            sx={{
-              minWidth: 80,
-              marginLeft: '10px',
-              marginRight: '10px',
-              borderColor: incorrectPrepositions.includes(0)
-                ? 'red'
-                : correctPrepositions.includes(0)
-                ? 'green'
-                : 'transparent',
-              borderWidth: incorrectPrepositions.includes(0) || correctPrepositions.includes(0) ? '2px' : '0px',
-              borderStyle: 'solid',
-              borderRadius: '5px',
-            }}
-          >
-            <Select
-              value={selectedPrepositions[0]}
-              onChange={(e) => handlePrepositionChange(0, e.target.value as string)}
+        {sentences.map((sentence, index) => (
+          <Box key={index} sx={{ marginBottom: '15px', display: 'block' }}>
+            <Typography
               sx={{
-                color: 'white',
-                backgroundColor: 'black',
-                '& .MuiSelect-icon': { color: 'white' },
-                fontSize: 'inherit',
+                display: 'inline-flex',
+                alignItems: 'center',
+                marginBottom: '5px',
               }}
             >
-              {prepositionsSet1.map((prep, index) => (
-                <MenuItem
-                  key={index}
-                  value={prep}
-                  sx={{
-                    color: 'white',
-                    backgroundColor: 'black',
-                    '&.Mui-selected': {
-                      color: 'white',
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    },
-                    '&.Mui-selected:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0)',
-                    },
-                  }}
-                >
-                  {prep}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>{' '}
-          the conference room.
-        </Box>
-        <br />
-        <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center' }}>
-          2. He will be arriving{' '}
-          <FormControl
-            sx={{
-              minWidth: 80,
-              marginLeft: '10px',
-              marginRight: '10px',
-              borderColor: incorrectPrepositions.includes(1)
-                ? 'red'
-                : correctPrepositions.includes(1)
-                ? 'green'
-                : 'transparent',
-              borderWidth: incorrectPrepositions.includes(1) || correctPrepositions.includes(1) ? '2px' : '0px',
-              borderStyle: 'solid',
-              borderRadius: '5px',
-            }}
-          >
-            <Select
-              value={selectedPrepositions[1]}
-              onChange={(e) => handlePrepositionChange(1, e.target.value as string)}
-              sx={{
-                color: 'white',
-                backgroundColor: 'black',
-                '& .MuiSelect-icon': { color: 'white' },
-                fontSize: 'inherit',
-              }}
-            >
-              {prepositionsSet2.map((prep, index) => (
-                <MenuItem
-                  key={index}
-                  value={prep}
-                  sx={{
-                    color: 'white',
-                    backgroundColor: 'black',
-                    '&.Mui-selected': {
-                      color: 'white',
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    },
-                    '&.Mui-selected:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0)',
-                    },
-                  }}
-                >
-                  {prep}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>{' '}
-          the morning.
-        </Box>
-        <br />
-        <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center' }}>
-          3. She completed the task{' '}
-          <FormControl
-            sx={{
-              minWidth: 80,
-              marginLeft: '10px',
-              marginRight: '10px',
-              borderColor: incorrectPrepositions.includes(2)
-                ? 'red'
-                : correctPrepositions.includes(2)
-                ? 'green'
-                : 'transparent',
-              borderWidth: incorrectPrepositions.includes(2) || correctPrepositions.includes(2) ? '2px' : '0px',
-              borderStyle: 'solid',
-              borderRadius: '5px',
-            }}
-          >
-            <Select
-              value={selectedPrepositions[2]}
-              onChange={(e) => handlePrepositionChange(2, e.target.value as string)}
-              sx={{
-                color: 'white',
-                backgroundColor: 'black',
-                '& .MuiSelect-icon': { color: 'white' },
-                fontSize: 'inherit',
-              }}
-            >
-              {prepositionsSet3.map((prep, index) => (
-                <MenuItem
-                  key={index}
-                  value={prep}
-                  sx={{
-                    color: 'white',
-                    backgroundColor: 'black',
-                    '&.Mui-selected': {
-                      color: 'white',
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    },
-                    '&.Mui-selected:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0)',
-                    },
-                  }}
-                >
-                  {prep}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>{' '}
-          with ease.
-        </Box>
+              {index + 1}. {sentence}{' '}
+              <PrepositionSelect
+                value={selectedPrepositions[index]}
+                onChange={(e) => handlePrepositionChange(index, e.target.value as string)}
+                wrongPrepositions={wrongPrepositionsSet[index]}
+                correctPreposition={originalPrepositions[index]}
+                isCorrect={correctPrepositions.includes(index)}
+                isIncorrect={incorrectPrepositions.includes(index)}
+              />
+              {sentenceEndings[index]}
+            </Typography>
+          </Box>
+        ))}
       </Typography>
 
       <Button

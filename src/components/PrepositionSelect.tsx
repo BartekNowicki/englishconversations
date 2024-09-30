@@ -1,38 +1,70 @@
 import { Select, MenuItem, FormControl } from '@mui/material';
 
-const prepositions = [
-  "in", "on", "at", "by", "for", "with", "about", "into", "through", "between", "against",
-  "during", "without", "within", "among", "to", "from", "over", "under", "around", "behind", "above", "below"
-];
-
 interface PrepositionSelectProps {
   value: string;
   onChange: (event: any) => void;
+  wrongPrepositions: string[];
+  correctPreposition: string;
+  isCorrect?: boolean;
+  isIncorrect?: boolean;
 }
 
-export const PrepositionSelect: React.FC<PrepositionSelectProps> = ({ value, onChange }) => {
+export const PrepositionSelect: React.FC<PrepositionSelectProps> = ({
+  value,
+  onChange,
+  wrongPrepositions,
+  correctPreposition,
+  isCorrect,
+  isIncorrect
+}) => {
+  const prepositionsToShow = [...wrongPrepositions, correctPreposition].sort();
+
   return (
-    <FormControl sx={{ minWidth: 120 }}>
+    <FormControl
+      sx={{
+        minWidth: 80,
+        borderColor: isIncorrect ? 'red' : isCorrect ? 'green' : 'transparent',
+        borderWidth: isIncorrect || isCorrect ? '2px' : '0px',
+        borderStyle: 'solid',
+        borderRadius: '5px',
+        marginLeft: '10px',
+        marginRight: '10px',
+      }}
+    >
       <Select
         value={value}
         onChange={onChange}
         sx={{
-          color: 'white', // Text color for the select field itself
+          color: 'white',
+          backgroundColor: 'black',
           '& .MuiSelect-icon': {
-            color: 'white', // Icon color for the dropdown arrow
+            color: 'white',
           },
           '& .MuiMenuItem-root': {
-            color: 'white', // Ensure all MenuItems start with white text
+            color: 'white',
           },
           '& .Mui-selected': {
-            color: 'white', // Ensure selected text is white
+            color: 'white',
+            border: '1px solid white',
+            backgroundColor: 'black',
           },
           '& .MuiMenu-paper': {
-            backgroundColor: 'black', // Ensure dropdown background is black
+            backgroundColor: 'black',
           },
         }}
-      >
-        {prepositions.map((prep, index) => (
+    MenuProps={{
+        PaperProps: {
+          sx: {
+            backgroundColor: 'black',
+            '& .MuiList-root': {
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+          },
+        },
+      }}
+    >
+        {prepositionsToShow.map((prep, index) => (
           <MenuItem
             key={index}
             value={prep}
@@ -44,13 +76,13 @@ export const PrepositionSelect: React.FC<PrepositionSelectProps> = ({ value, onC
                 backgroundColor: 'black',
               },
               '&.Mui-selected': {
-                color: 'white', // Ensure text stays white when selected
-                backgroundColor: 'rgba(255, 255, 255, 0.1)', // Background when selected
+                color: 'white',
+                backgroundColor: 'black',
               },
               '&.Mui-selected:hover': {
-                color: 'white', // Keep text white on hover when selected
+                color: 'white',
                 border: '1px solid white',
-                backgroundColor: 'rgba(255, 255, 255, 0)', // Transparent background when hovered and selected
+                backgroundColor: 'rgba(255, 255, 255, 0)',
               },
             }}
           >
