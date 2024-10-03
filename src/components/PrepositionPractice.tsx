@@ -43,7 +43,8 @@ const originalPrepositions = [
   'to',       // Sentence 27
   'in',       // Sentence 28
   'in',       // Sentence 29
-  'on'        // Sentence 30
+  'on',       // Sentence 30
+  'at'        // Sentence 31
 ];
 
 const sentences = [
@@ -51,7 +52,7 @@ const sentences = [
   "Can you explain this", "I’m good", "She’s afraid", "Let’s discuss", "I’m responsible", "He’s married",
   "I’m looking forward", "She listens", "They arrived", "I'm going", "Please write", "I live", "This book is",
   "She apologized for being late", "He’s angry", "They are proud", "The train leaves", "She will return",
-  "I agree", "He is addicted", "I’m going to the gym", "She works", "They congratulated me"
+  "I agree", "He is addicted", "I’m going to the gym", "She works", "They congratulated me", "I am"
 ];
 
 const sentenceEndings = [
@@ -60,7 +61,7 @@ const sentenceEndings = [
   " cleaning the room.", " her sister.", " the weekend.", " music all the time.",
   " Warsaw yesterday.", " now.", " an email.", " the first floor.", " love story.",
   " the meeting.", " her.", " their achievements.", " the afternoon.", " two weeks.",
-  " your suggestion.", " video games.", " the evening.", " a bank.", " my success."
+  " your suggestion.", " video games.", " the evening.", " a bank.", " my success."," a meeting"
 ];
 
 const wrongPrepositionsSet = [
@@ -93,7 +94,8 @@ const wrongPrepositionsSet = [
   ['on', 'of', 'from'],  // sentence 27
   ['on', 'from', 'by'],  // sentence 28
   ['via', 'from', 'by'],  // sentence 29
-  ['in', 'with', 'by']  // sentence 30
+  ['in', 'with', 'by'],  // sentence 30
+  ['on', 'with', 'to']  // sentence 31
 ];
 
 
