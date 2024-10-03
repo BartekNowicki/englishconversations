@@ -1,5 +1,5 @@
 import { Box, CssBaseline } from '@mui/material';
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import NavigationPanel from './components/NavigationPanel';
 import ConversationPage from './pages/ConversationPage';
 import Login from './components/Login';
@@ -23,12 +23,13 @@ function App() {
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
-    if (storedToken) {
-      setIsLoggedIn(true);
-      setToken(storedToken);
-    }
-  }, []);
+      const storedToken = localStorage.getItem('token');
+      if (storedToken) {
+        setIsLoggedIn(true);
+        setToken(storedToken);
+      }
+    }, [isLoggedIn, token]);
+
 
   const handleLogin = () => {
     const storedToken = localStorage.getItem('token');

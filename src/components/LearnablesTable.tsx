@@ -147,7 +147,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
             ) : learnables.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={5} align="center" sx={{ color: '#fff' }}>
-                  <Typography>No learnables found.</Typography>
+                  <Typography>No phrases found.</Typography>
                 </TableCell>
               </TableRow>
             ) : (
