@@ -44,7 +44,7 @@ function App() {
     setToken(null);
   };
 
-  const { learnables, loading, error } = useLearnables(token || '');
+  const { learnables, loading, error, fetchLearnables } = useLearnables(token || '');
 
   return (
     <ThemeProvider theme={theme}>
@@ -115,7 +115,7 @@ function App() {
                 <Route
                   path="/conversation/:id"
                   element={
-                    isLoggedIn ? (<ConversationPage token={token || ''} />) : (<Navigate to="/" />)
+                    isLoggedIn ? (<ConversationPage token={token || ''} fetchLearnables={fetchLearnables}/>) : (<Navigate to="/" />)
                   }
                 />
 
@@ -126,7 +126,7 @@ function App() {
                   }
                 />
                 <Route path="/practice/1" element={isLoggedIn ? <PrepositionPractice /> : <Navigate to="/" />} />
-                <Route path="/practice/flashcards" element={<FlashCardPractice learnables={learnables} loading={loading} error={error}/>} />
+                <Route path="/practice/flashcards" element={<FlashCardPractice learnables={learnables} loading={loading} error={error} fetchLearnables={fetchLearnables}/>} />
               </Routes>
             </Box>
           </Box>

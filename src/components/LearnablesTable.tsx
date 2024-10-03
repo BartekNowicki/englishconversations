@@ -96,8 +96,8 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
     if (learnableToDelete) {
       try {
         await deleteLearnable(learnableToDelete.id, token);
-        fetchLearnables(); // Update table without reload
         setConfirmationMessage(`Phrase "${learnableToDelete.phrase}" deleted successfully!`);
+        fetchLearnables();
       } catch (error) {
         console.error('Error deleting phrase:', error);
       } finally {

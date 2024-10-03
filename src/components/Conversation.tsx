@@ -22,7 +22,13 @@ interface ConversationModule {
   discussionQuestions: string[];
 }
 
-function Conversation({ token, id }: { token: string, id: string }) {
+interface ConversationProps {
+  token: string;
+  id: string;
+  fetchLearnables: () => void; // Accept fetchLearnables as a prop
+}
+
+function Conversation({ token, id, fetchLearnables }: ConversationProps) {
   const [title, setTitle] = useState<string>('');
   const [conversation, setConversation] = useState<any[]>([]);
   const [clickables, setClickables] = useState<string[]>([]);
@@ -76,6 +82,7 @@ function Conversation({ token, id }: { token: string, id: string }) {
       }
       setStatusMessage('All phrases saved successfully!');
       setClicked([]);
+      fetchLearnables();
     } catch (error) {
       console.error('Error saving phrases:', error);
       setStatusMessage('Failed to save phrases');

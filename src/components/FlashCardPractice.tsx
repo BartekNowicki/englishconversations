@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Typography, Button, Card, CardContent } from '@mui/material';
 import { Learnable } from '../types';
 
@@ -6,11 +6,16 @@ interface FlashCardPracticeProps {
   learnables: Learnable[];
   loading: boolean;
   error: string | null;
+  fetchLearnables: () => void;
 }
 
-const FlashCardPractice: React.FC<FlashCardPracticeProps> = ({ learnables, loading, error }) => {
+const FlashCardPractice: React.FC<FlashCardPracticeProps> = ({ learnables, loading, error, fetchLearnables }) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showTranslation, setShowTranslation] = useState(false);
+
+  useEffect(() => {
+      fetchLearnables();
+    }, []);
 
   if (loading) {
     return (
@@ -51,6 +56,7 @@ const FlashCardPractice: React.FC<FlashCardPracticeProps> = ({ learnables, loadi
   };
 
   const currentCard = learnables[currentCardIndex];
+
 
   return (
     <Box
