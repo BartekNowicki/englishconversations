@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import ConfirmationModal from './ConfirmationModal';
 import { saveLearnable } from '../utils/saveLearnable';
+import './conversation.css';
+
 
 const CellBorderBottomColor = 'rgba(128, 128, 128, 0.1)';
 const clickableBackground = 'rgba(255, 255, 255, 0.2)';
@@ -24,11 +26,11 @@ function Conversation({ token, id }: { token: string, id: string }) {
   const [title, setTitle] = useState<string>('');
   const [conversation, setConversation] = useState<any[]>([]);
   const [clickables, setClickables] = useState<string[]>([]);
-  const [clickablesPl, setClickablesPl] = useState<string[]>([]); // Store the Polish version of clickables
+  const [clickablesPl, setClickablesPl] = useState<string[]>([]);
   const [clicked, setClicked] = useState<string[]>([]);
   const [discussionQuestions, setDiscussionQuestions] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const [statusMessage, setStatusMessage] = useState<string | null>(null); // To track message content
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const loadConversation = async () => {
@@ -62,7 +64,7 @@ function Conversation({ token, id }: { token: string, id: string }) {
   };
 
   const handleSave = () => {
-    setShowModal(true); // Open confirmation modal
+    setShowModal(true);
   };
 
   const confirmSave = async () => {
@@ -73,12 +75,12 @@ function Conversation({ token, id }: { token: string, id: string }) {
         await saveLearnable(learnableData, token);
       }
       setStatusMessage('All phrases saved successfully!');
-      setClicked([]); // Reset clicked phrases
+      setClicked([]);
     } catch (error) {
       console.error('Error saving phrases:', error);
       setStatusMessage('Failed to save phrases');
     } finally {
-      setShowModal(false); // Close confirmation modal
+      setShowModal(false);
     }
   };
 
@@ -133,7 +135,8 @@ function Conversation({ token, id }: { token: string, id: string }) {
           position: 'fixed',
           top: 0,
           left: 0,
-          width: '100%',
+          width: '50%',
+          transform: 'translateX(50%)', // center it
           backgroundColor: '#000',
           color: '#fff',
           display: 'flex',

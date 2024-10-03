@@ -1,9 +1,7 @@
-// import { Typography } from '@mui/material';
-
 import Phrases from '../components/Phrases';
 
 interface PhrasesPageProps {
-  learnables: any[];
+  learnables: Learnable[];
   loading: boolean;
   error: string | null;
 }

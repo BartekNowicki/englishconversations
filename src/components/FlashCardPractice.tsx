@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Box, Typography, Button, Card, CardContent } from '@mui/material';
 
-interface Flashcard {
-  phrase: string;
-  translation: string;
-}
-
 interface FlashCardPracticeProps {
-  learnables: Flashcard[];
+  learnables: Learnable[];
   loading: boolean;
   error: string | null;
 }
