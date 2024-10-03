@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Box, Typography, Button, Card, CardContent } from '@mui/material';
+import { Learnable } from '../types';
 
 interface FlashCardPracticeProps {
   learnables: Learnable[];

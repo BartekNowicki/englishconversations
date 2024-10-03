@@ -1,4 +1,5 @@
 import Phrases from '../components/Phrases';
+import { Learnable } from '../types';
 
 interface PhrasesPageProps {
   learnables: Learnable[];
