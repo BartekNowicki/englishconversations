@@ -25,7 +25,7 @@ interface ConversationModule {
 interface ConversationProps {
   token: string;
   id: string;
-  fetchLearnables: () => void; // Accept fetchLearnables as a prop
+  fetchLearnables: () => void;
 }
 
 function Conversation({ token, id, fetchLearnables }: ConversationProps) {
@@ -40,12 +40,23 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
 
   useEffect(() => {
     const loadConversation = async () => {
-      const filePath = `../assets/conversations/${id}_passing_of_time.ts`;
+      // Check if the ID is provided
+      if (!id) return;
 
-      if (conversationModules[filePath]) {
+      // Find the file whose name includes the selected conversation ID
+      const matchedFilePath = Object.keys(conversationModules).find((filePath) =>
+        filePath.includes(id)
+      );
+
+      // Log the matched file for debugging
+      console.log(`Matched file for ID ${id}: `, matchedFilePath);
+
+      if (matchedFilePath) {
         try {
-          const module = (await conversationModules[filePath]()) as ConversationModule;
-          setConversation(module[`conversation${id}`]);
+          const module = (await conversationModules[matchedFilePath]()) as ConversationModule;
+
+          // Directly access the 'conversation' key now
+          setConversation(module.conversation);
           setClickables(module.clickables);
           setClickablesPl(module.clickablesPl);
           setTitle(module.title);
@@ -55,12 +66,13 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
         }
       } else {
         console.error(`No conversation found for this ID: ${id}`);
+        setConversation([]); // Clear conversation if not found
+        setTitle('No conversation found');
+        setStatusMessage(`No conversation found for this ID: ${id}`);
       }
     };
 
-    if (id) {
-      loadConversation();
-    }
+    loadConversation();
   }, [id]);
 
   const handleClick = (phrase: string) => {
@@ -181,7 +193,7 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
       </Typography>
 
       {/* Conversation Section */}
-      {conversation.length > 0 ? (
+      {conversation && conversation.length > 0 ? (
         conversation.map((dialog, index) => (
           <Typography
             key={index}

@@ -1,5 +1,5 @@
 import { Box, CssBaseline } from '@mui/material';
-import { HashRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import NavigationPanel from './components/NavigationPanel';
 import ConversationPage from './pages/ConversationPage';
 import Login from './components/Login';

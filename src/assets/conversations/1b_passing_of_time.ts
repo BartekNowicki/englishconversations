@@ -1,6 +1,6 @@
 export const title = "The Passing of Time";
 
-export const conversation1b = [
+export const conversation = [
   {
     speaker: "Lily",
     text: "It’s astonishing how time slips through our fingers, isn't it? It feels like summer just wrapped up, and now winter is creeping in again.",
