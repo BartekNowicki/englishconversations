@@ -123,7 +123,7 @@ function App() {
                 <Route path="/practice/flashcards" element={<FlashCardPractice learnables={learnables} loading={loading} error={error} fetchLearnables={fetchLearnables}/>} />
 
                 {/* Unscramble Practice Routes */}
-                <Route path="/practice/unscramble" element={<UnscramblePractice />} />
+                <Route path="/practice/unscramble/" element={<UnscramblePractice />} />
                 <Route path="/practice/unscramble/:id" element={<UnscramblePractice />} />
               </Routes>
             </Box>

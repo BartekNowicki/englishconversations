@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 interface UnscramblePracticeSessionProps {
   conversation: {
@@ -14,6 +15,7 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
   const [message, setMessage] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setScrambledWords(shuffle(conversation.clickables[currentIndex].split(' ')));
@@ -175,7 +177,10 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
 
         <Button
           variant="contained"
-          onClick={() => window.location.reload()}
+          onClick={() => {
+              navigate('/practice/unscramble/');
+              window.location.reload();  // Force page reload after navigation; needed for gh pages only
+            }}
           sx={{ backgroundColor: '#ff4d4d', color: '#fff', marginTop: '10px' }}
         >
           End Session
