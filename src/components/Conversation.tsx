@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import ConfirmationModal from './ConfirmationModal';
 import { saveLearnable } from '../utils/saveLearnable';
+import { loadConversationById } from '../utils/loadConversation';
 import './conversation.css';
-
 
 const CellBorderBottomColor = 'rgba(128, 128, 128, 0.1)';
 const clickableBackground = 'rgba(255, 255, 255, 0.2)';
@@ -11,16 +11,6 @@ const clickableBorderColor = 'rgba(118, 255, 3, 0.6)';
 const textColor = '#fff';
 const speakerColor = 'rgba(118, 255, 3, 0.6)';
 const conversationFontSize = '1.2rem';
-
-const conversationModules = import.meta.glob('../assets/conversations/*.ts');
-
-interface ConversationModule {
-  [key: string]: any;
-  clickables: string[];
-  clickablesPl: string[];
-  title: string;
-  discussionQuestions: string[];
-}
 
 interface ConversationProps {
   token: string;
@@ -40,33 +30,19 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
 
   useEffect(() => {
     const loadConversation = async () => {
-      // Check if the ID is provided
       if (!id) return;
 
-      // Find the file whose name includes the selected conversation ID
-      const matchedFilePath = Object.keys(conversationModules).find((filePath) =>
-        filePath.includes(id)
-      );
+      try {
+        const { conversation, clickables, clickablesPl, title, discussionQuestions } = await loadConversationById(id);
 
-      // Log the matched file for debugging
-      console.log(`Matched file for ID ${id}: `, matchedFilePath);
-
-      if (matchedFilePath) {
-        try {
-          const module = (await conversationModules[matchedFilePath]()) as ConversationModule;
-
-          // Directly access the 'conversation' key now
-          setConversation(module.conversation);
-          setClickables(module.clickables);
-          setClickablesPl(module.clickablesPl);
-          setTitle(module.title);
-          setDiscussionQuestions(module.discussionQuestions || []);
-        } catch (error) {
-          console.error('Error loading conversation:', error);
-        }
-      } else {
-        console.error(`No conversation found for this ID: ${id}`);
-        setConversation([]); // Clear conversation if not found
+        setConversation(conversation);
+        setClickables(clickables);
+        setClickablesPl(clickablesPl);
+        setTitle(title);
+        setDiscussionQuestions(discussionQuestions);
+      } catch (error) {
+        console.error(error);
+        setConversation([]);
         setTitle('No conversation found');
         setStatusMessage(`No conversation found for this ID: ${id}`);
       }
@@ -148,14 +124,13 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
         position: 'relative',
       }}
     >
-      {/* Fixed Black Overlay Bar */}
       <Box
         sx={{
           position: 'fixed',
           top: 0,
           left: 0,
           width: '50%',
-          transform: 'translateX(50%)', // center it
+          transform: 'translateX(50%)',
           backgroundColor: '#000',
           color: '#fff',
           display: 'flex',
@@ -192,7 +167,6 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
         {title}
       </Typography>
 
-      {/* Conversation Section */}
       {conversation && conversation.length > 0 ? (
         conversation.map((dialog, index) => (
           <Typography
@@ -214,66 +188,6 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
       ) : (
         <Typography sx={{ color: textColor }}>Loading conversation...</Typography>
       )}
-
-      {/* Discussion Section */}
-      {discussionQuestions.length > 0 && (
-        <Box sx={{ marginTop: '70px', marginBottom: '70px' }}>
-          <Typography
-            variant="h4"
-            sx={{
-              textAlign: 'center',
-              marginBottom: '10px',
-              color: textColor,
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-            }}
-          >
-            Discussion Topics
-          </Typography>
-          <Typography
-            sx={{
-              textAlign: 'center',
-              marginBottom: '20px',
-              color: '#aaa',
-              fontSize: conversationFontSize,
-            }}
-          >
-            Use the phrases from the dialog to discuss the following questions:
-          </Typography>
-          <ul>
-            {discussionQuestions.map((question, index) => (
-              <li key={index}>
-                <Typography
-                  sx={{
-                    color: textColor,
-                    fontSize: conversationFontSize,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {question}
-                </Typography>
-              </li>
-            ))}
-          </ul>
-        </Box>
-      )}
-
-      {/* Status Modal */}
-      <ConfirmationModal
-        open={!!statusMessage} // Show modal if there's a message
-        onClose={() => setStatusMessage(null)}
-        title={statusMessage || ''}
-        isMessage={true}
-      />
-
-      {/* Confirmation Modal */}
-      <ConfirmationModal
-        open={showModal}
-        onClose={() => setShowModal(false)}
-        onConfirm={confirmSave}
-        title="Are you sure you want to save the following phrases?"
-        items={clicked}
-      />
     </Box>
   );
 }

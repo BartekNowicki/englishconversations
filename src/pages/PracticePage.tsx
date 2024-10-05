@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ClickableBox from '../components/ClickableBox';
 import prepositionsImage from '../assets/images/prepositions.jpg';
 import flashcardsImage from '../assets/images/flashcards.jpg';
+import scramblesImage from '../assets/images/scrambles.jpg';
 
 const PracticePage = () => {
   const navigate = useNavigate();
@@ -13,6 +14,10 @@ const PracticePage = () => {
 
   const handleFlashcardsClick = () => {
     navigate('/practice/flashcards');
+  };
+
+  const handleUnscrambleClick = () => {
+    navigate('/practice/unscramble');
   };
 
   return (
@@ -36,6 +41,11 @@ const PracticePage = () => {
         imageSrc={flashcardsImage}
         title="Flashcards"
         onClick={handleFlashcardsClick}
+      />
+      <ClickableBox
+        imageSrc={scramblesImage}
+        title="Scrambles"
+        onClick={handleUnscrambleClick}
       />
     </Box>
   );

@@ -7,6 +7,7 @@ import PhrasesPage from './pages/PhrasesPage';
 import PracticePage from './pages/PracticePage';
 import PrepositionPractice from './components/PrepositionPractice';
 import FlashCardPractice from './components/FlashCardPractice';
+import UnscramblePractice from './components/UnscramblePractice';
 import { useState, useEffect } from 'react';
 import { useLearnables } from './hooks/useLearnables';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -127,6 +128,7 @@ function App() {
                 />
                 <Route path="/practice/1" element={isLoggedIn ? <PrepositionPractice /> : <Navigate to="/" />} />
                 <Route path="/practice/flashcards" element={<FlashCardPractice learnables={learnables} loading={loading} error={error} fetchLearnables={fetchLearnables}/>} />
+                <Route path="/practice/unscramble" element={<UnscramblePractice />} />
               </Routes>
             </Box>
           </Box>
