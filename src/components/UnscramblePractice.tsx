@@ -63,7 +63,7 @@ const UnscramblePractice = () => {
       }}
     >
       <Typography variant="h4" sx={{ color: '#fff', marginBottom: '20px' }}>
-        Select the Source of Phrases to Practice
+        Select the source of phrases to practice
       </Typography>
 
       <FormControl fullWidth sx={{ maxWidth: 400, marginBottom: '20px' }}>
