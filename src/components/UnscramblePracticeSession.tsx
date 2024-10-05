@@ -164,7 +164,7 @@ const UnscramblePracticeSession = () => {
           <Box
             key={"positioningBox"}
             sx={{
-              display: 'inline-block', // Ensures it's inlined
+              display: 'inline-block',
               color: 'green',
               backgroundColor: 'transparent',
               padding: '6px 16px',
@@ -187,7 +187,7 @@ const UnscramblePracticeSession = () => {
             ))}
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', marginBottom: '40px' }}>
             <Button
               variant="contained"
               onClick={handleCheckAnswer}

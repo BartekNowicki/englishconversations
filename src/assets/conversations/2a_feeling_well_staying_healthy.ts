@@ -111,6 +111,22 @@ export const clickablesPl = [
   "wrócić na właściwy tor"
 ];
 
+export const definitions = [
+  "feeling slightly unwell",
+  "starting to get sick",
+  "getting adequate sleep",
+  "staying up late to work",
+  "having too much on your mind",
+  "relaxing before going to bed",
+  "disrupting your sleep",
+  "your health is the most important thing",
+  "missing meals",
+  "maintaining your energy levels",
+  "preparing simple meals in advance",
+  "I will remember that",
+  "getting back to a good routine"
+];
+
 export const discussionQuestions = [
   "Do you often feel tired or unwell because of your lifestyle? What could you change?",
   "How do you balance work or school with staying healthy?",

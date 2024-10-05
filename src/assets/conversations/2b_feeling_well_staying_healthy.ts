@@ -119,7 +119,7 @@ export const clickablesPl = [
   "wyciszanie się",
   "pozostać czujnym",
   "przepis na katastrofę",
-  "pomijanie posiłków",
+  "pomijać posiłki",
   "nie przynosi mi żadnych korzyści",
   "na pewno cię czeka",
   "wszędzie rozproszony",
@@ -131,6 +131,22 @@ export const clickablesPl = [
   "ustanowić te nawyki",
   "złamać stare nawyki",
   "jestem tutaj, żeby cię zmotywować"
+];
+
+export const definitions = [
+  "feeling slightly unwell or off-balance",
+  "starting to feel like you’re getting sick",
+  "sleeping enough to stay healthy",
+  "working late at night instead of sleeping",
+  "having many things on your mind, causing stress",
+  "calming down before bed to sleep better",
+  "disrupt or negatively affect your sleep",
+  "your health is the most important thing",
+  "not eating meals, which can cause health problems",
+  "maintaining your energy by eating regularly",
+  "making simple meals ahead of time to save time",
+  "I’ll remember and consider what you said",
+  "returning to your usual healthy habits"
 ];
 
 export const discussionQuestions = [

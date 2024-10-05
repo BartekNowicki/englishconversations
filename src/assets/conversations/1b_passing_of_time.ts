@@ -155,6 +155,41 @@ export const clickablesPl = [
   "znaleźć czas na",
 ];
 
+export const definitions = [
+  "passes unnoticed or slips away from us",
+  "has recently finished or ended",
+  "is slowly approaching or coming closer",
+  "seems to move faster as we age",
+  "become too engrossed in our routines",
+  "we barely pay attention to the seasons changing",
+  "the days merge together indistinctly",
+  "several months have passed quickly",
+  "suddenly approaches unexpectedly",
+  "we used to anticipate holidays when younger",
+  "appear suddenly and unexpectedly",
+  "we become overwhelmed by too many responsibilities",
+  "to recognize and appreciate small moments",
+  "life pulls us in multiple directions simultaneously",
+  "time has passed unnoticed",
+  "it's much harder to do than to say",
+  "as the year comes to an end",
+  "it feels painful when reflecting on past missed goals",
+  "marking items off a list as completed",
+  "time works against plans despite best efforts",
+  "being more adaptable and less rigid",
+  "to take our time and not rush",
+  "feel like we're racing against time limits",
+  "think deeply about what truly matters",
+  "accept the slower pace that certain seasons bring",
+  "prepare for the future calmly and thoughtfully",
+  "being constantly busy and in a rush",
+  "feel like you're not progressing as expected",
+  "slowing down is perceived as a negative thing",
+  "relaxing and taking it easy",
+  "leaving space for rest and breaks",
+  "setting aside time for important things"
+];
+
 export const discussionQuestions = [
   "Do you think the passage of time feels faster as we age? Why might that be?",
   "How do you balance long-term goals with living in the present? Is it possible to do both effectively?",
