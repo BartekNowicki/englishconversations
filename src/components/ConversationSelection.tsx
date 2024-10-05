@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Box, Typography, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import { conversationModules } from '../utils/loadConversation';
 
 interface ConversationSelectionProps {

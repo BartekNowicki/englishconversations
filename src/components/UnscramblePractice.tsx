@@ -6,13 +6,12 @@ import UnscramblePracticeSession from './UnscramblePracticeSession';
 import ConversationSelection from './ConversationSelection';
 
 const UnscramblePractice = () => {
-  const { id } = useParams<{ id: string }>(); // Get conversation ID from the URL
+  const { id } = useParams<{ id: string }>();
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  // If conversation ID exists, load the conversation
   useEffect(() => {
     const fetchConversation = async () => {
       if (id) {
@@ -31,7 +30,7 @@ const UnscramblePractice = () => {
   }, [id]);
 
   const handleStartPractice = (selectedId: string) => {
-    navigate(`/practice/unscramble/${selectedId}`); // Use only the ID (e.g., /1a)
+    navigate(`/practice/unscramble/${selectedId}`);
   };
 
   return (
