@@ -1,55 +1,38 @@
 import { useEffect, useState } from 'react';
-import { Box, Typography, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
-import { loadConversationById, conversationModules } from '../utils/loadConversation';
+import { Box } from '@mui/material';
+import { useParams, useNavigate } from 'react-router-dom';
+import { loadConversationById } from '../utils/loadConversation';
+import UnscramblePracticeSession from './UnscramblePracticeSession';
+import ConversationSelection from './ConversationSelection';
 
 const UnscramblePractice = () => {
-  const [selectedConversationId, setSelectedConversationId] = useState<string>('');
-  const [availableConversations, setAvailableConversations] = useState<{ id: string, title: string }[]>([]);
+  const { id } = useParams<{ id: string }>(); // Get conversation ID from the URL
+  const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
+  // If conversation ID exists, load the conversation
   useEffect(() => {
-    const loadConversations = async () => {
-      try {
-        setLoading(true);
-        const conversations = Object.keys(conversationModules).map((filePath) => {
-          const id = filePath.split('/').pop()?.replace('.ts', '') || '';
-          return { id, title: id.replace(/_/g, ' ') };
-        });
-        setAvailableConversations(conversations);
-        setLoading(false);
-      } catch (error) {
-        setError('Failed to load conversations');
-        setLoading(false);
+    const fetchConversation = async () => {
+      if (id) {
+        try {
+          setLoading(true);
+          const conversationData = await loadConversationById(id);
+          setSelectedConversation(conversationData);
+        } catch (error) {
+          setError('Failed to load conversation');
+        } finally {
+          setLoading(false);
+        }
       }
     };
+    fetchConversation();
+  }, [id]);
 
-    loadConversations();
-  }, []);
-
-  const handleConversationSelect = (event: any) => {
-    setSelectedConversationId(event.target.value);
+  const handleStartPractice = (selectedId: string) => {
+    navigate(`/practice/unscramble/${selectedId}`); // Use only the ID (e.g., /1a)
   };
-
-  const handleStartPractice = async () => {
-    if (selectedConversationId) {
-      try {
-        const conversationData = await loadConversationById(selectedConversationId);
-        console.log('Selected conversation data:', conversationData);
-      } catch (error) {
-        console.error('Failed to load conversation:', error);
-        setError('Failed to load selected conversation.');
-      }
-    }
-  };
-
-  if (loading) {
-    return <Typography sx={{ color: '#fff' }}>Loading conversations...</Typography>;
-  }
-
-  if (error) {
-    return <Typography sx={{ color: 'red' }}>{error}</Typography>;
-  }
 
   return (
     <Box
@@ -60,35 +43,17 @@ const UnscramblePractice = () => {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#141414',
+        width: '100%',
       }}
     >
-      <Typography variant="h4" sx={{ color: '#fff', marginBottom: '20px' }}>
-        Select the source of phrases to practice
-      </Typography>
+      {!id && <ConversationSelection onStartPractice={handleStartPractice} />}
 
-      <FormControl fullWidth sx={{ maxWidth: 400, marginBottom: '20px' }}>
-        <InputLabel sx={{ color: '#fff' }}>Source</InputLabel>
-        <Select
-          value={selectedConversationId}
-          onChange={handleConversationSelect}
-          sx={{ color: '#fff', borderBottom: '1px solid white' }}
-        >
-          {availableConversations.map((conversation) => (
-            <MenuItem key={conversation.id} value={conversation.id}>
-              {conversation.title}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+      {loading && <div>Loading...</div>}
+      {error && <div>{error}</div>}
 
-      <Button
-        variant="contained"
-        onClick={handleStartPractice}
-        disabled={!selectedConversationId}
-        sx={{ backgroundColor: '#fff', color: '#000' }}
-      >
-        Start Practice
-      </Button>
+      {selectedConversation && (
+        <UnscramblePracticeSession conversation={selectedConversation} />
+      )}
     </Box>
   );
 };

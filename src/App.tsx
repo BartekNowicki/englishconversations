@@ -24,13 +24,12 @@ function App() {
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-      const storedToken = localStorage.getItem('token');
-      if (storedToken) {
-        setIsLoggedIn(true);
-        setToken(storedToken);
-      }
-    }, [isLoggedIn, token]);
-
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      setIsLoggedIn(true);
+      setToken(storedToken);
+    }
+  }, [isLoggedIn, token]);
 
   const handleLogin = () => {
     const storedToken = localStorage.getItem('token');
@@ -52,7 +51,6 @@ function App() {
       <CssBaseline />
       <Router>
         <Box sx={{ display: 'flex', minHeight: '100vh', backgroundColor: '#000' }}>
-          {/* Navigation Panel visible when logged in */}
           {isLoggedIn && (
             <NavigationPanel
               onConversationSelect={(id: string) => console.log(`Selected: ${id}`)}
@@ -62,7 +60,6 @@ function App() {
             />
           )}
 
-          {/* Main Content */}
           <Box
             sx={{
               flexGrow: 1,
@@ -84,7 +81,6 @@ function App() {
               }}
             >
               <Routes>
-                {/* Default route to phrases if logged in, else login */}
                 <Route
                   path="/"
                   element={
@@ -100,7 +96,6 @@ function App() {
                   }
                 />
 
-                {/* Phrases Page */}
                 <Route
                   path="/phrases"
                   element={
@@ -112,7 +107,6 @@ function App() {
                   }
                 />
 
-                {/* Conversation Page with dynamic ID */}
                 <Route
                   path="/conversation/:id"
                   element={
@@ -120,7 +114,6 @@ function App() {
                   }
                 />
 
-                {/* Practice Page */}
                 <Route
                   path="/practice"
                   element={ isLoggedIn ? (<PracticePage />) : (<Navigate to="/" />)
@@ -128,7 +121,10 @@ function App() {
                 />
                 <Route path="/practice/1" element={isLoggedIn ? <PrepositionPractice /> : <Navigate to="/" />} />
                 <Route path="/practice/flashcards" element={<FlashCardPractice learnables={learnables} loading={loading} error={error} fetchLearnables={fetchLearnables}/>} />
+
+                {/* Unscramble Practice Routes */}
                 <Route path="/practice/unscramble" element={<UnscramblePractice />} />
+                <Route path="/practice/unscramble/:id" element={<UnscramblePractice />} />
               </Routes>
             </Box>
           </Box>
