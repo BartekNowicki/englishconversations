@@ -129,6 +129,29 @@ export const clickablesPl = [
   "żyć chwilą",
 ];
 
+export const definitions = [
+  "Time passes very quickly.",
+  "It has disappeared or ended.",
+  "I planned many things but didn't complete most of them.",
+  "Same situation for me.",
+  "Life becomes too busy with many responsibilities.",
+  "I stopped doing it before finishing.",
+  "To stay on top of all tasks and responsibilities.",
+  "Time seems to go by more quickly as we age.",
+  "To pass quickly.",
+  "Time passed before we realized it.",
+  "We question how time passed so fast.",
+  "We're always in a hurry and don't slow down.",
+  "To appreciate small, simple moments in life.",
+  "Spending time with friends in a relaxed way.",
+  "Taking time to rest and enjoy leisure activities.",
+  "To find or make time for important moments.",
+  "To feel guilty for not doing work or other tasks.",
+  "It's acceptable to take time and slow your pace.",
+  "To treat something as a main goal or priority.",
+  "To focus on living in the present and enjoying now."
+];
+
 export const discussionQuestions = [
   "Do you find it hard to stick to your plans throughout the year? Why or why not?",
   "How can you find more time to enjoy the little things in life?",

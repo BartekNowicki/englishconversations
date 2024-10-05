@@ -7,6 +7,7 @@ export interface ConversationModule {
   title: string;
   discussionQuestions: string[];
   conversation: any[];
+  definitions: string[];
 }
 
 /**
@@ -31,6 +32,7 @@ export const loadConversationById = async (id: string) => {
       clickablesPl: module.clickablesPl,
       title: module.title,
       discussionQuestions: module.discussionQuestions || [],
+      definitions: module.definitions || [],
     };
   } catch (error) {
     console.error(`Error loading conversation for ID ${id}:`, error);
