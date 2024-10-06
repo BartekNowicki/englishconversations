@@ -53,6 +53,12 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
     setDrawerOpen(!drawerOpen);
   };
 
+  const handleLogoutClick = () => {
+      onLogout(); // Call the logout function from App to update state
+      navigate('/'); // Navigate after logging out
+      console.log("logged out at the nav panel");
+    };
+
   return (
     <Box>
       {isLoggedIn && (
@@ -79,7 +85,7 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
         <List>
           {isLoggedIn ? (
             <>
-              <ListItem sx={{ cursor: 'pointer' }} onClick={() => { onLogout(); toggleDrawer(); }}>
+              <ListItem sx={{ cursor: 'pointer' }} onClick={() => { handleLogoutClick(); toggleDrawer(); }}>
                 <ListItemText primary="Logout" />
               </ListItem>
               <ListItem sx={{ cursor: 'pointer' }} onClick={() => { navigate('/phrases'); toggleDrawer(); }}>
