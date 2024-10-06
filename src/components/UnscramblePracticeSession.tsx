@@ -75,6 +75,7 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
         alignItems: 'center',
         backgroundColor: '#141414',
         padding: '20px',
+        position: 'relative', // Make position relative to place the phrase number at the bottom
       }}
     >
       <Box sx={{ height: boxHeight, marginBottom: '20px', display: 'flex', alignItems: 'center' }}>
@@ -178,13 +179,25 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
         <Button
           variant="contained"
           onClick={() => {
-              navigate('/practice/unscramble/');
-              window.location.reload();  // Force page reload after navigation; needed for gh pages only
-            }}
+            navigate('/practice/unscramble/');
+            window.location.reload();  // Force page reload after navigation; needed for gh pages only
+          }}
           sx={{ backgroundColor: '#ff4d4d', color: '#fff', marginTop: '10px' }}
         >
           End Session
         </Button>
+      </Box>
+
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '20px',
+          textAlign: 'center',
+        }}
+      >
+        <Typography variant="h6" sx={{ color: 'gray' }}>
+          {currentIndex + 1} / {conversation.clickables.length}
+        </Typography>
       </Box>
 
       <Box sx={{ height: boxHeight, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
