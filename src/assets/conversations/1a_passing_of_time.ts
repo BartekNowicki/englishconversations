@@ -85,15 +85,10 @@ export const conversation = [
 
 export const clickables = [
   "Time really flies",
-  "it's gone",
-  "I haven’t done most of them",
   "Same here",
   "life gets busy",
   "didn’t stick with it",
   "keep up with everything",
-  "moves faster as we get older",
-  "fly by",
-  "before we know it",
   "wonder where the time went",
   "we’re always rushing",
   "enjoy the little things",
@@ -108,15 +103,10 @@ export const clickables = [
 
 export const clickablesPl = [
   "Czas naprawdę leci",
-  "to minęło",
-  "Nie zrobiłem większości z nich",
   "Tak samo tutaj",
   "życie robi się zajęte",
   "nie wytrwałem w tym",
   "nadążać za wszystkim",
-  "porusza się szybciej, gdy się starzejemy",
-  "przelatuje",
-  "zanim się obejrzymy",
   "zastanawiam się, gdzie się podział czas",
   "zawsze się spieszymy",
   "cieszyć się drobnymi rzeczami",
@@ -131,15 +121,10 @@ export const clickablesPl = [
 
 export const definitions = [
   "time passes very quickly",
-  "it has disappeared or ended",
-  "I planned many things but didn't complete most of them",
   "same situation for me",
   "life becomes too busy with many responsibilities",
   "stopped doing it before finishing",
   "to stay on top of all tasks and responsibilities",
-  "seems to go by more quickly as we age",
-  "to pass quickly",
-  "time passes before we realize it",
   "we question how time passed so fast",
   "we're always in a hurry and don't slow down",
   "to appreciate small, simple moments in life",

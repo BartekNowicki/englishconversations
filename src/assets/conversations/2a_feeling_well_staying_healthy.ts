@@ -76,7 +76,11 @@ export const conversation = [
   {
     speaker: "Tom",
     text: "Will do! I’ll try to rest and get back on track."
-  }
+  },
+  {
+      speaker: "Sara",
+      text: "That’s the spirit!"
+    }
 ];
 
 export const clickables = [
@@ -88,11 +92,13 @@ export const clickables = [
   "relaxing before bed",
   "mess with your sleep",
   "Your health comes first",
+  "to take better care of",
   "skipping meals",
   "keep your energy up",
   "preparing some easy meals",
   "I’ll keep that in mind.",
-  "get back on track"
+  "get back on track",
+  "That’s the spirit"
 ];
 
 export const clickablesPl = [
@@ -104,11 +110,13 @@ export const clickablesPl = [
   "zrelaksować się przed snem",
   "wpływać na twój sen",
   "twoje zdrowie jest najważniejsze",
+  "lepiej o siebie dbać",
   "pomijać posiłki",
   "utrzymywać swoją energię",
   "przygotować proste posiłki",
   "Zapamiętam to.",
-  "wrócić na właściwy tor"
+  "wrócić na właściwy tor",
+  "podoba mi się twoje nastawienie"
 ];
 
 export const definitions = [
@@ -120,11 +128,13 @@ export const definitions = [
   "relaxing before going to bed",
   "disrupting your sleep",
   "your health is the most important thing",
+  "prioritizing your well-being",
   "missing meals",
   "maintaining your energy levels",
   "preparing simple meals in advance",
   "I will remember that",
-  "getting back to a good routine"
+  "getting back to a good routine",
+  "that's the right attitude"
 ];
 
 export const discussionQuestions = [

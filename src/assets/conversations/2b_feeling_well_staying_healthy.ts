@@ -85,14 +85,12 @@ export const conversation = [
 
 export const clickables = [
   "feeling a bit out of sorts",
-  "burning the candle at both ends",
   "catch up with me",
   "a slippery slope",
   "wreak havoc on",
   "my mind is constantly racing",
   "all the deadlines looming",
   "winding down",
-  "to stay alert",
   "recipe for disaster",
   "skipping meals",
   "isn’t doing me any favors",
@@ -110,14 +108,12 @@ export const clickables = [
 
 export const clickablesPl = [
   "czuję się trochę nieswojo",
-  "wypalam się z każdej strony",
   "dogania mnie",
   "śliska ścieżka",
   "siać spustoszenie",
   "moja głowa ciągle pracuje",
   "wszystkie zbliżające się terminy",
   "wyciszanie się",
-  "pozostać czujnym",
   "przepis na katastrofę",
   "pomijać posiłki",
   "nie przynosi mi żadnych korzyści",
@@ -134,19 +130,26 @@ export const clickablesPl = [
 ];
 
 export const definitions = [
-  "feeling slightly unwell or off-balance",
-  "starting to feel like you’re getting sick",
-  "sleeping enough to stay healthy",
-  "working late at night instead of sleeping",
-  "having many things on your mind, causing stress",
-  "calming down before bed to sleep better",
-  "disrupt or negatively affect your sleep",
-  "your health is the most important thing",
-  "not eating meals, which can cause health problems",
-  "maintaining your energy by eating regularly",
-  "making simple meals ahead of time to save time",
-  "I’ll remember and consider what you said",
-  "returning to your usual healthy habits"
+  "feeling slightly unwell or not quite right",
+  "start to impact me negatively",
+  "a situation that can easily get worse",
+  "to cause serious damage or disruption to",
+  "my mind is constantly active and I can't stop thinking",
+  "all the approaching deadlines are causing stress",
+  "relaxing and calming down after a busy time",
+  "a situation likely to lead to problems or failure",
+  "not eating meals",
+  "not benefiting me or helping the situation",
+  "it's inevitable or very likely to happen",
+  "feeling disorganized or scattered",
+  "choose a healthier food option",
+  "making health more important than work",
+  "very close to becoming completely exhausted",
+  "should never feel like something unimportant",
+  "things will naturally work out or resolve",
+  "create new healthy habits",
+  "stop continuing bad or unhealthy habits",
+  "I'm here to gently push you in the right direction"
 ];
 
 export const discussionQuestions = [
