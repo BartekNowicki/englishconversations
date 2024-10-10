@@ -138,7 +138,9 @@ export const definitions = [
 ];
 
 export const discussionQuestions = [
-  "Do you often feel tired or unwell because of your lifestyle? What could you change?",
-  "How do you balance work or school with staying healthy?",
-  "What are some habits that help you feel your best, both physically and mentally?"
+  "1. Do you often feel tired or unwell because of your lifestyle?",
+  "2. What can you do to balance work or school with staying healthy?",
+  "3. How important is rest for maintaining good health?",
+  "4. What simple habits help you stay physically and mentally fit?",
+  "5. How do you prioritize your health when life gets busy?"
 ];

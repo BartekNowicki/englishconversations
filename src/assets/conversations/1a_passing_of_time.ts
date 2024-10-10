@@ -130,7 +130,7 @@ export const definitions = [
   "to appreciate small, simple moments in life",
   "spending time with friends in a relaxed way",
   "taking time to rest and enjoy leisure activities",
-  "to find or make time for important moments",
+  "to find the time for important moments",
   "to feel guilty for not doing work or other tasks",
   "it's acceptable to take time and slow your pace",
   "to treat something as a main goal or priority",
@@ -138,7 +138,9 @@ export const definitions = [
 ];
 
 export const discussionQuestions = [
-  "Do you find it hard to stick to your plans throughout the year? Why or why not?",
-  "How can you find more time to enjoy the little things in life?",
-  "What’s one goal you didn’t achieve this year that you’d like to focus on next year?"
+  "1. How do you feel when time seems to pass by quickly?",
+  "2. What small moments do you think are important to appreciate more?",
+  "3. How do you balance work with time for relaxation and fun?",
+  "4. Do you believe it's possible to slow down in today’s fast-paced world?",
+  "5. What changes could you make to enjoy life more in the present?"
 ];

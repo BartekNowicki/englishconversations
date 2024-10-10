@@ -153,7 +153,9 @@ export const definitions = [
 ];
 
 export const discussionQuestions = [
-  "Do you think the passage of time feels faster as we age? Why might that be?",
-  "How do you balance long-term goals with living in the present? Is it possible to do both effectively?",
-  "What strategies can you adopt to make sure you're not always 'racing against the clock' in your daily life?"
+  "1. Does time seem to pass more quickly as we get older?",
+  "2. Is it possible to balance long-term goals with enjoying the present?",
+  "3. How can you stop feeling like you're constantly racing against time?",
+  "4. Why is it important to embrace slower moments and not feel guilty?",
+  "5. What can you change to manage time more effectively?"
 ];

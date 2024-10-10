@@ -153,7 +153,9 @@ export const definitions = [
 ];
 
 export const discussionQuestions = [
-  "What are the risks of neglecting your health in favor of work or other responsibilities?",
-  "How do you deal with stress when you feel overwhelmed by deadlines or obligations?",
-  "What are some small, practical changes you can make to improve your daily health and well-being?"
+  "1. What are the risks of neglecting your health in favor of work or other responsibilities?",
+  "2. How do you manage stress when you're overwhelmed by deadlines or obligations?",
+  "3. What small changes could you make to improve your daily health and well-being?",
+  "4. Why is it important to prioritize rest and relaxation in your routine?",
+  "5. How can breaking old habits contribute to a healthier lifestyle?"
 ];
