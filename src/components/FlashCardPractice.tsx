@@ -5,13 +5,10 @@ import { increaseRetention } from '../utils/increaseRetention';
 
 interface FlashCardPracticeProps {
   learnables: Learnable[];
-  loading: boolean;
-  error: string | null;
-  fetchLearnables: () => void;
   token: string;
 }
 
-const FlashCardPractice: React.FC<FlashCardPracticeProps> = ({ learnables, loading, error, fetchLearnables, token }) => {
+const FlashCardPractice: React.FC<FlashCardPracticeProps> = ({ learnables, token }) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showTranslation, setShowTranslation] = useState(false);
 

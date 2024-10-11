@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { increaseRetention } from '../utils/increaseRetention';
+import { Learnable } from '../types';
 
 interface UnscramblePracticeSessionProps {
   conversation: {

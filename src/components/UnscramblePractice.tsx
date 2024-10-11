@@ -4,8 +4,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { loadConversationById } from '../utils/loadConversation';
 import UnscramblePracticeSession from './UnscramblePracticeSession';
 import ConversationSelection from './ConversationSelection';
+import { Learnable } from '../types';
 
-const UnscramblePractice = ({ token, learnables }) => {
+interface UnscramblePracticeProps {
+  learnables: Learnable[];
+  token: string;
+}
+
+const UnscramblePractice: React.FC<UnscramblePracticeProps> = ({ token, learnables }) => {
   const { id } = useParams<{ id: string }>();
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [loading, setLoading] = useState(false);
