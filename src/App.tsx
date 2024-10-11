@@ -120,11 +120,11 @@ function App() {
                   }
                 />
                 <Route path="/practice/1" element={isLoggedIn ? <PrepositionPractice /> : <Navigate to="/" />} />
-                <Route path="/practice/flashcards" element={<FlashCardPractice learnables={learnables} loading={loading} error={error} fetchLearnables={fetchLearnables}/>} />
+                <Route path="/practice/flashcards" element={<FlashCardPractice learnables={learnables} loading={loading} error={error} fetchLearnables={fetchLearnables} token={token || ''}/>} />
 
                 {/* Unscramble Practice Routes */}
-                <Route path="/practice/unscramble/" element={<UnscramblePractice />} />
-                <Route path="/practice/unscramble/:id" element={<UnscramblePractice />} />
+                <Route path="/practice/unscramble/" element={<UnscramblePractice token={token || ''} learnables={learnables}/>} />
+                <Route path="/practice/unscramble/:id" element={<UnscramblePractice token={token || ''} learnables={learnables}/>} />
               </Routes>
             </Box>
           </Box>

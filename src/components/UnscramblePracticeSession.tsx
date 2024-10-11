@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { increaseRetention } from '../utils/increaseRetention';
 
 interface UnscramblePracticeSessionProps {
   conversation: {
     clickables: string[];
     definitions: string[];
   };
+  token: string;
+  learnables: Learnable[];
 }
 
-const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ conversation }) => {
+const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ conversation, token, learnables }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [scrambledWords, setScrambledWords] = useState<string[]>([]);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
@@ -39,14 +42,29 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
     setMessage(null);
   };
 
-  const handleCheckAnswer = () => {
+  const handleCheckAnswer = async () => {
     const userAnswer = selectedWords.join(' ');
-    if (userAnswer === conversation.clickables[currentIndex]) {
+    const correctAnswer = conversation.clickables[currentIndex];
+
+    if (userAnswer === correctAnswer) {
       setMessage('Correct! You unscrambled the phrase.');
       setIsCorrect(true);
+
+      try {
+        const foundLearnable = learnables?.find(l => l.phrase === correctAnswer);
+
+        if (foundLearnable && foundLearnable.id) {
+          // If the correct phrase is found in `learnables`, make the API call
+          await increaseRetention(foundLearnable.id, token);
+          console.log("Retention increased for learnable with ID:", foundLearnable.id);
+        } else {
+          console.log("Learnable not found in the fetched learnables. Skipping retention increase.");
+        }
+      } catch (error) {
+        console.error("Error increasing retention:", error);
+      }
     } else {
-      setMessage('');
-      setIsCorrect(false);
+      setIsCorrect(false); // Border will turn red
     }
   };
 
@@ -75,7 +93,7 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
         alignItems: 'center',
         backgroundColor: '#141414',
         padding: '20px',
-        position: 'relative', // Make position relative to place the phrase number at the bottom
+        position: 'relative',
       }}
     >
       <Box sx={{ height: boxHeight, marginBottom: '20px', display: 'flex', alignItems: 'center' }}>
@@ -161,8 +179,12 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
             backgroundColor: selectedWords.length === conversation.clickables[currentIndex].split(' ').length ? 'white' : 'gray',
             color: selectedWords.length === conversation.clickables[currentIndex].split(' ').length ? 'black' : 'white',
             margin: '20px 0',
+                '&.Mui-disabled': {
+                  backgroundColor: '#141414',
+                  color: '#141414',
+                },
           }}
-          disabled={selectedWords.length !== conversation.clickables[currentIndex].split(' ').length}
+          disabled={selectedWords.length !== conversation.clickables[currentIndex].split(' ').length || isCorrect === true}
         >
           Check Your Answer
         </Button>

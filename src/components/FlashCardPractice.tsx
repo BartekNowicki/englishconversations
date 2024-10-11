@@ -1,51 +1,30 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Box, Typography, Button, Card, CardContent } from '@mui/material';
 import { Learnable } from '../types';
+import { increaseRetention } from '../utils/increaseRetention';
 
 interface FlashCardPracticeProps {
   learnables: Learnable[];
   loading: boolean;
   error: string | null;
   fetchLearnables: () => void;
+  token: string;
 }
 
-const FlashCardPractice: React.FC<FlashCardPracticeProps> = ({ learnables, loading, error, fetchLearnables }) => {
+const FlashCardPractice: React.FC<FlashCardPracticeProps> = ({ learnables, loading, error, fetchLearnables, token }) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showTranslation, setShowTranslation] = useState(false);
 
-  useEffect(() => {
-      fetchLearnables();
-    }, []);
+  const handleNext = async () => {
+    // Increase retention for the current card when the user clicks next
+    try {
+      await increaseRetention(learnables[currentCardIndex].id, token);
+      console.log("Retention increased for viewed flashcard");
+    } catch (error) {
+      console.error("Error increasing retention:", error);
+    }
 
-  if (loading) {
-    return (
-      <Box textAlign="center" mt={2}>
-        <Typography>Loading...</Typography>
-      </Box>
-    );
-  }
-
-  if (error) {
-    return (
-      <Typography variant="h6" color="error" align="center">
-        {error}
-      </Typography>
-    );
-  }
-
-  if (learnables.length === 0) {
-    return (
-      <Typography variant="h6" align="center" sx={{ color: '#fff' }}>
-        No flashcards found.
-      </Typography>
-    );
-  }
-
-  const handleToggleSide = () => {
-    setShowTranslation((prev) => !prev);
-  };
-
-  const handleNext = () => {
+    // Update to the next card
     setCurrentCardIndex((prev) => (prev + 1) % learnables.length);
     setShowTranslation(false);
   };
@@ -55,8 +34,11 @@ const FlashCardPractice: React.FC<FlashCardPracticeProps> = ({ learnables, loadi
     setShowTranslation(false);
   };
 
-  const currentCard = learnables[currentCardIndex];
+  const handleToggleSide = () => {
+    setShowTranslation((prev) => !prev);
+  };
 
+  const currentCard = learnables[currentCardIndex];
 
   return (
     <Box

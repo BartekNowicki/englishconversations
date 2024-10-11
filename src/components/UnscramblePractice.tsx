@@ -5,7 +5,7 @@ import { loadConversationById } from '../utils/loadConversation';
 import UnscramblePracticeSession from './UnscramblePracticeSession';
 import ConversationSelection from './ConversationSelection';
 
-const UnscramblePractice = () => {
+const UnscramblePractice = ({ token, learnables }) => {
   const { id } = useParams<{ id: string }>();
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [loading, setLoading] = useState(false);
@@ -51,7 +51,7 @@ const UnscramblePractice = () => {
       {error && <div>{error}</div>}
 
       {selectedConversation && (
-        <UnscramblePracticeSession conversation={selectedConversation} />
+        <UnscramblePracticeSession conversation={selectedConversation} token={token} learnables={learnables}/>
       )}
     </Box>
   );
