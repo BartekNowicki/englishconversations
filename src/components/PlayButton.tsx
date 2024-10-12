@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
@@ -12,6 +12,7 @@ interface PlayButtonProps {
 const PlayButton: React.FC<PlayButtonProps> = ({ index, filePrefix, token, speaker }) => {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
+  // Function to fetch the signed URL from the backend
   const fetchSignedUrl = async () => {
     try {
       const response = await fetch(
@@ -35,19 +36,33 @@ const PlayButton: React.FC<PlayButtonProps> = ({ index, filePrefix, token, speak
     }
   };
 
+  // Handle audio playback
   const handlePlayAudio = async () => {
-    if (audio) {
-      audio.play();
-    } else {
-      const signedUrl = await fetchSignedUrl();
-      if (signedUrl) {
-        const newAudio = new Audio(signedUrl);
-        setAudio(newAudio);
-        newAudio.play();
+    const signedUrl = await fetchSignedUrl();
+    if (signedUrl) {
+      // Stop any previous audio if it exists
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
       }
+
+      const newAudio = new Audio(signedUrl); // Create a new audio object with the signed URL
+      setAudio(newAudio);
+      newAudio.play(); // Play the audio
     }
+
     console.log(`Playing audio for line ${index + 1}, file prefix: ${filePrefix}`);
   };
+
+  // Cleanup effect to stop the audio when the component is unmounted or conversation changes
+  useEffect(() => {
+    return () => {
+      if (audio) {
+        audio.pause(); // Pause the audio
+        audio.currentTime = 0; // Reset to start
+      }
+    };
+  }, [audio, filePrefix, index]); // Reset audio if filePrefix or index changes
 
   return (
     <Box
