@@ -3,7 +3,7 @@ import { Box, Typography, Button, Grid } from '@mui/material';
 import ConfirmationModal from './ConfirmationModal';
 import { saveLearnable } from '../utils/saveLearnable';
 import './conversation.css';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PlayButton from './PlayButton';
 
 const CellBorderBottomColor = 'rgba(128, 128, 128, 0.1)';
 const clickableBackground = 'rgba(255, 255, 255, 0.2)';
@@ -13,42 +13,6 @@ const speakerColor = 'rgba(118, 255, 3, 0.6)';
 const conversationFontSize = '1.2rem';
 
 const conversationModules = import.meta.glob('../assets/conversations/*.ts');
-
-const PlayButton = ({ index, filePrefix }: { index: number; filePrefix: string }) => {
-  const handlePlayAudio = () => {
-    console.log(`Playing audio for line ${index + 1}, file prefix: ${filePrefix}`);
-  };
-
-  return (
-    <Box
-      sx={{
-        width: '50px',
-        height: '50px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        background: 'rgba(128, 255, 128, 0.1)', // Light, semi-transparent green
-        borderRadius: '50%',
-        boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)', // Softer shadow
-        cursor: 'pointer',
-        opacity: 0.5,
-        '&:hover': {
-          opacity: 0.8,
-        },
-        transition: 'opacity 0.3s',
-      }}
-      onClick={handlePlayAudio}
-    >
-      <PlayArrowIcon
-        sx={{
-          fontSize: '2rem', // Size of the play icon
-          color: '#fff',
-          filter: 'drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.6))', // 3D effect
-        }}
-      />
-    </Box>
-  );
-};
 
 interface ConversationModule {
   [key: string]: any;
@@ -232,7 +196,7 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
           >
             {/* Audio Icon Column */}
             <Grid item xs={1}>
-              <PlayButton index={index} filePrefix={id} />
+              <PlayButton index={index} filePrefix={id} token={token} speaker={dialog.speaker} />
             </Grid>
 
             {/* Text Column */}
