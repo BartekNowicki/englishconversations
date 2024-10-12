@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, Grid } from '@mui/material';
 import ConfirmationModal from './ConfirmationModal';
 import { saveLearnable } from '../utils/saveLearnable';
 import './conversation.css';
-
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 const CellBorderBottomColor = 'rgba(128, 128, 128, 0.1)';
 const clickableBackground = 'rgba(255, 255, 255, 0.2)';
@@ -13,6 +13,42 @@ const speakerColor = 'rgba(118, 255, 3, 0.6)';
 const conversationFontSize = '1.2rem';
 
 const conversationModules = import.meta.glob('../assets/conversations/*.ts');
+
+const PlayButton = ({ index, filePrefix }: { index: number; filePrefix: string }) => {
+  const handlePlayAudio = () => {
+    console.log(`Playing audio for line ${index + 1}, file prefix: ${filePrefix}`);
+  };
+
+  return (
+    <Box
+      sx={{
+        width: '50px',
+        height: '50px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        background: 'rgba(128, 255, 128, 0.1)', // Light, semi-transparent green
+        borderRadius: '50%',
+        boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)', // Softer shadow
+        cursor: 'pointer',
+        opacity: 0.5,
+        '&:hover': {
+          opacity: 0.8,
+        },
+        transition: 'opacity 0.3s',
+      }}
+      onClick={handlePlayAudio}
+    >
+      <PlayArrowIcon
+        sx={{
+          fontSize: '2rem', // Size of the play icon
+          color: '#fff',
+          filter: 'drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.6))', // 3D effect
+        }}
+      />
+    </Box>
+  );
+};
 
 interface ConversationModule {
   [key: string]: any;
@@ -40,22 +76,15 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
 
   useEffect(() => {
     const loadConversation = async () => {
-      // Check if the ID is provided
       if (!id) return;
 
-      // Find the file whose name includes the selected conversation ID
       const matchedFilePath = Object.keys(conversationModules).find((filePath) =>
         filePath.includes(id)
       );
 
-      // Log the matched file for debugging
-      console.log(`Matched file for ID ${id}: `, matchedFilePath);
-
       if (matchedFilePath) {
         try {
           const module = (await conversationModules[matchedFilePath]()) as ConversationModule;
-
-          // Directly access the 'conversation' key now
           setConversation(module.conversation);
           setClickables(module.clickables);
           setClickablesPl(module.clickablesPl);
@@ -66,7 +95,7 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
         }
       } else {
         console.error(`No conversation found for this ID: ${id}`);
-        setConversation([]); // Clear conversation if not found
+        setConversation([]);
         setTitle('No conversation found');
         setStatusMessage(`No conversation found for this ID: ${id}`);
       }
@@ -148,14 +177,13 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
         position: 'relative',
       }}
     >
-      {/* Fixed Black Overlay Bar */}
       <Box
         sx={{
           position: 'fixed',
           top: 0,
           left: 0,
           width: '50%',
-          transform: 'translateX(50%)', // center it
+          transform: 'translateX(50%)',
           backgroundColor: '#000',
           color: '#fff',
           display: 'flex',
@@ -167,11 +195,7 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
         }}
       >
         {clicked.length > 0 && (
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleSave}
-          >
+          <Button variant="contained" color="primary" onClick={handleSave}>
             Save Marked Phrases
           </Button>
         )}
@@ -195,21 +219,32 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
       {/* Conversation Section */}
       {conversation && conversation.length > 0 ? (
         conversation.map((dialog, index) => (
-          <Typography
+          <Grid
+            container
             key={index}
             sx={{
-              lineHeight: 2,
               borderBottom: `2px solid ${CellBorderBottomColor}`,
               paddingBottom: '10px',
               marginBottom: '10px',
               fontSize: conversationFontSize,
+              alignItems: 'center',
             }}
           >
-            <span style={{ fontWeight: 'bold', color: speakerColor }}>
-              {index + 1}. {dialog.speaker}:
-            </span>{' '}
-            {renderTextWithClickables(dialog.text)}
-          </Typography>
+            {/* Audio Icon Column */}
+            <Grid item xs={1}>
+              <PlayButton index={index} filePrefix={id} />
+            </Grid>
+
+            {/* Text Column */}
+            <Grid item xs={11}>
+              <Typography>
+                <span style={{ fontWeight: 'bold', color: speakerColor }}>
+                  {index + 1}. {dialog.speaker}:
+                </span>{' '}
+                {renderTextWithClickables(dialog.text)}
+              </Typography>
+            </Grid>
+          </Grid>
         ))
       ) : (
         <Typography sx={{ color: textColor }}>Loading conversation...</Typography>
@@ -243,13 +278,7 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
           <ul>
             {discussionQuestions.map((question, index) => (
               <li key={index}>
-                <Typography
-                  sx={{
-                    color: textColor,
-                    fontSize: conversationFontSize,
-                    lineHeight: 1.6,
-                  }}
-                >
+                <Typography sx={{ color: textColor, fontSize: conversationFontSize, lineHeight: 1.6 }}>
                   {question}
                 </Typography>
               </li>
@@ -260,7 +289,7 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
 
       {/* Status Modal */}
       <ConfirmationModal
-        open={!!statusMessage} // Show modal if there's a message
+        open={!!statusMessage}
         onClose={() => setStatusMessage(null)}
         title={statusMessage || ''}
         isMessage={true}
