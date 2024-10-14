@@ -159,9 +159,23 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
         }}
       >
         {clicked.length > 0 && (
-          <Button variant="contained" color="primary" onClick={handleSave}>
-            Save Marked Phrases
-          </Button>
+          <>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={handleSave}
+              sx={{ marginRight: '20px' }}
+            >
+              Save Marked Phrases
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => setClicked([])}
+            >
+              Cancel
+            </Button>
+          </>
         )}
       </Box>
 

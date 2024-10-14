@@ -225,7 +225,9 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
           />
         </DialogContent>
         <DialogActions sx={{ backgroundColor: '#141414' }}>
-          <Button onClick={handleCloseModal} sx={{ color: '#fff' }}>Cancel</Button>
+          <Button onClick={handleCloseModal} variant="contained" color="secondary">
+            Cancel
+          </Button>
           <Button onClick={handleSave} variant="contained" color={editButtonColor}>
             {isEditing ? 'Save Changes' : 'Create'}
           </Button>

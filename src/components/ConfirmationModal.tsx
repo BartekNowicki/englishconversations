@@ -68,10 +68,10 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         ) : (
           // Otherwise, show Confirm and Cancel buttons
           <>
-            <Button onClick={onClose} variant="outlined" sx={{ color: '#fff', borderColor: '#fff' }}>
+            <Button onClick={onClose} variant="contained" color="secondary">
               Cancel
             </Button>
-            <Button onClick={onConfirm} variant="contained" color="error">
+            <Button onClick={onConfirm} variant="contained" color="success">
               Confirm
             </Button>
           </>
