@@ -2,57 +2,20 @@ import { useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { PrepositionSelect } from './PrepositionSelect';
 
-// KEEP FOR REFERENCE
-// const allPrepositions = [
-//   'about', 'above', 'across', 'after', 'against', 'along', 'among', 'around', 'at',
-//   'before', 'behind', 'below', 'beneath', 'beside', 'between', 'beyond', 'by',
-//   'concerning', 'despite', 'down', 'during', 'except', 'for', 'from', 'in', 'inside',
-//   'into', 'like', 'near', 'of', 'off', 'on', 'onto', 'out', 'outside', 'over', 'past',
-//   'regarding', 'since', 'through', 'throughout', 'to', 'toward', 'under', 'underneath',
-//   'until', 'up', 'upon', 'with', 'within', 'without', 'as', 'via'
-// ];
-
-// Define correct prepositions for each sentence
 const originalPrepositions = [
-  'at',       // Sentence 1
-  'at',       // Sentence 2
-  'on',       // Sentence 3
-  'on',       // Sentence 4
-  'in',       // Sentence 5
-  'on',       // Sentence 6
-  'to',       // Sentence 7
-  'to',       // Sentence 8
-  'at',       // Sentence 9
-  'of',       // Sentence 10
-  'the',      // Sentence 11
-  'for',      // Sentence 12
-  'to',       // Sentence 13
-  'to',       // Sentence 14
-  'to',       // Sentence 15
-  'at',       // Sentence 16
-  'home',     // Sentence 17
-  'me',       // Sentence 18
-  'on',       // Sentence 19
-  'a',        // Sentence 20
-  'to',       // Sentence 21
-  'with',     // Sentence 22
-  'of',       // Sentence 23
-  'in',       // Sentence 24
-  'in',       // Sentence 25
-  'with',     // Sentence 26
-  'to',       // Sentence 27
-  'in',       // Sentence 28
-  'in',       // Sentence 29
-  'on',       // Sentence 30
-  'at'        // Sentence 31
+  'at', 'at', 'on', 'on', 'in', 'on', 'to', 'to', 'at', 'of', 'the', 'for', 'to',
+  'to', 'to', 'at', 'home', 'me', 'on', 'a', 'to', 'with', 'of', 'in', 'in',
+  'with', 'to', 'in', 'in', 'on', 'at'
 ];
 
 const sentences = [
-  "I'm waiting", "She arrived", "I'll meet you", "He depends", "She is interested", "I was born", "We’re going",
-  "Can you explain this", "I’m good", "She’s afraid", "Let’s discuss", "I’m responsible", "He’s married",
-  "I’m looking forward", "She listens", "They arrived", "I'm going", "Please write", "I live", "This book is",
-  "She apologized for being late", "He’s angry", "They are proud", "The train leaves", "She will return",
-  "I agree", "He is addicted", "I’m going to the gym", "She works", "They congratulated me", "I am"
+  "I'm waiting", "She arrived", "I'll meet you", "He depends", "She is interested",
+  "I was born", "We’re going", "Can you explain this", "I’m good", "She’s afraid",
+  "Let’s discuss", "I’m responsible", "He’s married", "I’m looking forward",
+  "She listens", "They arrived", "I'm going", "Please write", "I live", "This book is",
+  "She apologized for being late", "He’s angry", "They are proud", "The train leaves",
+  "She will return", "I agree", "He is addicted", "I’m going to the gym",
+  "She works", "They congratulated me", "I am"
 ];
 
 const sentenceEndings = [
@@ -61,46 +24,23 @@ const sentenceEndings = [
   " cleaning the room.", " her sister.", " the weekend.", " music all the time.",
   " Warsaw yesterday.", " now.", " an email.", " the first floor.", " love story.",
   " the meeting.", " her.", " their achievements.", " the afternoon.", " two weeks.",
-  " your suggestion.", " video games.", " the evening.", " a bank.", " my success."," a meeting"
+  " your suggestion.", " video games.", " the evening.", " a bank.", " my success.", " a meeting"
 ];
 
 const wrongPrepositionsSet = [
-  ['on', 'in', 'by'],  // sentence 1
-  ['in', 'to', 'by'],  // sentence 2
-  ['in', 'at', 'by'],  // sentence 3
-  ['from', 'by', 'at'],  // sentence 4
-  ['of', 'at', 'on'],  // sentence 5
-  ['at', 'in', 'to'],  // sentence 6
-  ['on', 'in', 'for'],  // sentence 7
-  ['with', 'in', 'by'],  // sentence 8
-  ['of', 'in', 'on'],  // sentence 9
-  ['from', 'with', 'in'],  // sentence 10
-  ['about the', 'in the', 'by the'],  // sentence 11
-  ['about', 'by', 'to'],  // sentence 12
-  ['with', 'in', 'by'],  // sentence 13
-  ['for', 'toward', 'towards'],  // sentence 14
-  ['on', 'the', 'by'],  // sentence 15
-  ['to', 'on', 'by'],  // sentence 16
-  ['to home', 'for home', 'at'],  // sentence 17
-  ['towards me', 'for me', 'at me'],  // sentence 18
-  ['in', 'at', 'by'],  // sentence 19
-  ['on a', 'in a', 'by a'],  // sentence 20
-  ['by', 'over', 'on'],  // sentence 21
-  ['on', 'by', 'in'],  // sentence 22
-  ['about', 'in', 'by'],  // sentence 23
-  ['from', 'on', 'at'],  // sentence 24
-  ['to', 'for', 'on'],  // sentence 25
-  ['by', 'on', 'for'],  // sentence 26
-  ['on', 'of', 'from'],  // sentence 27
-  ['on', 'from', 'by'],  // sentence 28
-  ['via', 'from', 'by'],  // sentence 29
-  ['in', 'with', 'by'],  // sentence 30
-  ['on', 'with', 'to']  // sentence 31
+  ['on', 'in', 'by'], ['in', 'to', 'by'], ['in', 'at', 'by'], ['from', 'by', 'at'],
+  ['of', 'at', 'on'], ['at', 'in', 'to'], ['on', 'in', 'for'], ['with', 'in', 'by'],
+  ['of', 'in', 'on'], ['from', 'with', 'in'], ['about the', 'in the', 'by the'],
+  ['about', 'by', 'to'], ['with', 'in', 'by'], ['for', 'toward', 'towards'],
+  ['on', 'the', 'by'], ['to', 'on', 'by'], ['to home', 'for home', 'at'],
+  ['towards me', 'for me', 'at me'], ['in', 'at', 'by'], ['on a', 'in a', 'by a'],
+  ['by', 'over', 'on'], ['on', 'by', 'in'], ['about', 'in', 'by'], ['from', 'on', 'at'],
+  ['to', 'for', 'on'], ['by', 'on', 'for'], ['on', 'of', 'from'], ['on', 'from', 'by'],
+  ['via', 'from', 'by'], ['in', 'with', 'by'], ['on', 'with', 'to']
 ];
 
-
 const PrepositionPractice = () => {
-  const [selectedPrepositions, setSelectedPrepositions] = useState<string[]>(Array(30).fill(''));
+  const [selectedPrepositions, setSelectedPrepositions] = useState<string[]>(Array(31).fill(''));
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState<number | null>(null);
   const [incorrectPrepositions, setIncorrectPrepositions] = useState<number[]>([]);
@@ -170,6 +110,7 @@ const PrepositionPractice = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 marginBottom: '5px',
+                position: 'relative',
               }}
             >
               {index + 1}. {sentence}{' '}
@@ -182,6 +123,28 @@ const PrepositionPractice = () => {
                 isIncorrect={incorrectPrepositions.includes(index)}
               />
               {sentenceEndings[index]}
+
+              {/* Show correct answer in green circle if wrong */}
+              {showResult && incorrectPrepositions.includes(index) && (
+                <Box
+                  sx={{
+                    display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginLeft: '10px',
+                        padding: '15px',
+                        backgroundColor: 'green',
+                        borderRadius: '50%',
+                        color: 'white',
+                        fontWeight: 'bold',
+                        fontSize: '14px',
+                        minWidth: '30px',
+                        height: '30px',
+                  }}
+                >
+                  {originalPrepositions[index].toUpperCase()}
+                </Box>
+              )}
             </Typography>
           </Box>
         ))}
