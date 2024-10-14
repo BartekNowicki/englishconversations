@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Drawer, List, ListItem, ListItemText, Select, MenuItem, IconButton, Box } from '@mui/material';
+import { Drawer, List, ListItem, ListItemText, Select, MenuItem, IconButton, Box, ListItemIcon } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import HomeIcon from '@mui/icons-material/Home';
 
 interface NavigationPanelProps {
   onConversationSelect: (id: string) => void;
@@ -17,19 +18,18 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedConversation, setSelectedConversation] = useState('');
-  const [availableConversations, setAvailableConversations] = useState<{ id: string; title: string }[]>([]); // Fixed type for conversation array
+  const [availableConversations, setAvailableConversations] = useState<{ id: string; title: string }[]>([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
     const loadConversations = () => {
       const filenames = Object.keys(conversationModules);
 
-      // Parse filenames into titles like "1a Passing of Time" and "1b Passing of Time"
       const conversations = filenames.map((filePath) => {
         const filename = filePath.split('/').pop()?.replace('.ts', '');
         if (filename) {
           const [number, ...titleParts] = filename.split('_');
-          const title = titleParts.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); // Capitalize title
+          const title = titleParts.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
           return { id: number, title: `${number} ${title}` };
         }
         return null;
@@ -54,10 +54,25 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
   };
 
   const handleLogoutClick = () => {
-      onLogout(); // Call the logout function from App to update state
-      navigate('/'); // Navigate after logging out
-      console.log("logged out at the nav panel");
-    };
+    onLogout();
+    navigate('/');
+  };
+
+  // Shared button style
+  const buttonStyle = {
+    cursor: 'pointer',
+    color: 'white',
+    padding: '15px 20px',
+    backgroundColor: '#282828',
+    border: '1px solid #444',
+    borderRadius: '8px',
+    transition: 'background-color 0.3s ease, transform 0.2s ease',
+    '&:hover': {
+      backgroundColor: '#333',
+      transform: 'scale(1.02)',
+      borderColor: '#555',
+    },
+  };
 
   return (
     <Box>
@@ -76,40 +91,70 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
         sx={{
           '& .MuiDrawer-paper': {
             width: 240,
-            backgroundColor: '#000',
+            backgroundColor: '#1e1e1e',
             color: 'white',
             paddingTop: '75px',
+            paddingBottom: '20px',
           },
         }}
       >
         <List>
-          {isLoggedIn ? (
+          {isLoggedIn && (
             <>
-              <ListItem sx={{ cursor: 'pointer' }} onClick={() => { handleLogoutClick(); toggleDrawer(); }}>
+              {/* Home button with Home Icon */}
+              <ListItem
+                component="button"
+                onClick={() => { navigate('/'); toggleDrawer(); }}
+                sx={buttonStyle}
+              >
+                <ListItemIcon>
+                  <HomeIcon sx={{ color: 'white' }} />
+                </ListItemIcon>
+                <ListItemText primary="Home" />
+              </ListItem>
+
+              {/* Logout button */}
+              <ListItem
+                component="button"
+                onClick={() => { handleLogoutClick(); toggleDrawer(); }}
+                sx={buttonStyle}
+              >
                 <ListItemText primary="Logout" />
               </ListItem>
-              <ListItem sx={{ cursor: 'pointer' }} onClick={() => { navigate('/phrases'); toggleDrawer(); }}>
+
+              {/* My Phrases button */}
+              <ListItem
+                component="button"
+                onClick={() => { navigate('/phrases'); toggleDrawer(); }}
+                sx={buttonStyle}
+              >
                 <ListItemText primary="My Phrases" />
               </ListItem>
 
-              {/* Link to Practice Page */}
-              <ListItem sx={{ cursor: 'pointer' }} onClick={() => { navigate('/practice'); toggleDrawer(); }}>
+              {/* Practice button */}
+              <ListItem
+                component="button"
+                onClick={() => { navigate('/practice'); toggleDrawer(); }}
+                sx={buttonStyle}
+              >
                 <ListItemText primary="Practice" />
               </ListItem>
 
-              {/* Conversation Header with Consistent Style */}
-              <ListItem>
-                <ListItemText primary="Conversations" />
-              </ListItem>
-
-              <ListItem>
+              {/* Conversation selector in button style */}
+              <ListItem sx={{
+                            width: '100%',
+                            padding: '30px 0px',
+                          }}>
                 <Select
                   value={selectedConversation}
                   onChange={handleConversationChange}
                   displayEmpty
                   fullWidth
                   sx={{
+                    ...buttonStyle,  // Applying button styles to the Select
                     color: 'white',
+                    backgroundColor: '#282828',
+                    borderRadius: '8px',
                     '& .MuiSelect-icon': { color: 'white' },
                   }}
                 >
@@ -124,12 +169,17 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
                 </Select>
               </ListItem>
             </>
-          ) : (
-            location.pathname !== '/' && (
-              <ListItem sx={{ cursor: 'pointer' }} onClick={() => { navigate('/'); toggleDrawer(); }}>
-                <ListItemText primary="Login" />
-              </ListItem>
-            )
+          )}
+
+          {/* Login button if not logged in */}
+          {!isLoggedIn && location.pathname !== '/' && (
+            <ListItem
+              component="button"
+              onClick={() => { navigate('/'); toggleDrawer(); }}
+              sx={buttonStyle}
+            >
+              <ListItemText primary="Login" />
+            </ListItem>
           )}
         </List>
       </Drawer>
