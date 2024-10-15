@@ -41,6 +41,45 @@
   font-weight: bold;
 }
 
+@keyframes expand {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: auto;
+    opacity: 1;
+  }
+}
+
+@keyframes collapse {
+  from {
+    height: auto;
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+.line {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  display: block; /* Make sure it's block to animate */
+}
+
+.line.show {
+  animation: expand 0.5s ease-in-out forwards;
+  animation-delay: 0.2s; /* This adds a delay before the animation starts */
+}
+
+.line.hide {
+  animation: collapse 0.5s ease-in-out forwards;
+  animation-delay: 0.2s; /* Add delay for collapse animation as well */
+}
+
 /*p, span, div, table, td, th, h1, h2, h3, h4, h5, h6, li, ul, ol, a, button, input, textarea, select, label, section, article, aside, nav, footer, header {
   caret-color: transparent !important;
   user-select: text;

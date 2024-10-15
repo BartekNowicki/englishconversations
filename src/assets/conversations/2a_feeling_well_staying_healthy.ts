@@ -96,7 +96,7 @@ export const clickables = [
   "skipping meals",
   "keep your energy up",
   "preparing some easy meals",
-  "I’ll keep that in mind.",
+  "I’ll keep that in mind",
   "get back on track",
   "That’s the spirit"
 ];

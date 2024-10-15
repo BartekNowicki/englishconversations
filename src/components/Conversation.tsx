@@ -38,15 +38,16 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
   const [showModal, setShowModal] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
+  // State for visible lines
+  const [visibleLinesCount, setVisibleLinesCount] = useState<number>(0);
+
   useEffect(() => {
     const loadConversation = async () => {
       if (!id) return;
 
       const matchedFilePath = Object.keys(conversationModules).find((filePath) => {
-        // Extract filename without extension
         const filename = filePath.split('/').pop()?.replace('.ts', '');
 
-        // Check if filename exactly matches the id
         return filename?.startsWith(id);
       });
 
@@ -133,6 +134,25 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
     );
   };
 
+  // Show the next line
+  const showNextLine = () => {
+    if (visibleLinesCount < conversation.length) {
+      setVisibleLinesCount(visibleLinesCount + 1);
+    }
+  };
+
+  // Show all lines
+  const showAllLines = () => {
+    setVisibleLinesCount(conversation.length);
+  };
+
+  // Hide the last visible line
+  const hideLastLine = () => {
+    if (visibleLinesCount > 0) {
+      setVisibleLinesCount(visibleLinesCount - 1);
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -143,46 +163,13 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
         border: `2px solid ${CellBorderBottomColor}`,
         borderRadius: '10px',
         position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start', // Align the box at the top
+        minHeight: '100vh',
       }}
     >
-      <Box
-        sx={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '50%',
-          transform: 'translateX(50%)',
-          backgroundColor: '#000',
-          color: '#fff',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: '10px 0',
-          zIndex: 10000,
-          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.6)',
-        }}
-      >
-        {clicked.length > 0 && (
-          <>
-            <Button
-              variant="contained"
-              color="success"
-              onClick={handleSave}
-              sx={{ marginRight: '20px' }}
-            >
-              Save Marked Phrases
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => setClicked([])}
-            >
-              Cancel
-            </Button>
-          </>
-        )}
-      </Box>
-
+      {/* Title is always visible */}
       <Typography
         variant="h2"
         sx={{
@@ -192,7 +179,6 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
           marginBottom: '40px',
           padding: '20px',
           color: textColor,
-          marginTop: '60px',
         }}
       >
         {title}
@@ -200,10 +186,11 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
 
       {/* Conversation Section */}
       {conversation && conversation.length > 0 ? (
-        conversation.map((dialog, index) => (
+        conversation.slice(0, visibleLinesCount).map((dialog, index) => (
           <Grid
             container
             key={index}
+            className={`line ${index < visibleLinesCount ? 'show' : 'hide'}`}
             sx={{
               borderBottom: `2px solid ${CellBorderBottomColor}`,
               paddingBottom: '10px',
@@ -268,6 +255,66 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
           </ul>
         </Box>
       )}
+
+      {/* Save and Cancel Phrases Buttons (Fixed at the Top) */}
+      {clicked.length > 0 && (
+        <Box
+          sx={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            backgroundColor: '#000',
+            color: '#fff',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '10px 0',
+            zIndex: 10000,
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.6)',
+          }}
+        >
+          <Button
+            variant="contained"
+            color="success"
+            onClick={handleSave}
+            sx={{ marginRight: '20px' }}
+          >
+            Save Marked Phrases
+          </Button>
+          <Button variant="contained" color="secondary" onClick={() => setClicked([])}>
+            Cancel
+          </Button>
+        </Box>
+      )}
+
+      {/* Fixed Line Control Buttons (Fixed at the Bottom) */}
+      <Box
+        sx={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          backgroundColor: '#000',
+          color: '#fff',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '10px 0',
+          zIndex: 10000,
+          boxShadow: '0 -2px 4px rgba(0, 0, 0, 0.6)',
+        }}
+      >
+        <Button variant="contained" color="primary" onClick={showNextLine} sx={{ marginRight: '20px' }}>
+          Show Next Line
+        </Button>
+        <Button variant="contained" color="secondary" onClick={showAllLines} sx={{ marginRight: '20px' }}>
+          Show All Lines
+        </Button>
+        <Button variant="contained" color="error" onClick={hideLastLine}>
+          Hide Last Line
+        </Button>
+      </Box>
 
       {/* Status Modal */}
       <ConfirmationModal
