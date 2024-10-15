@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Box, Typography, Button, Grid } from '@mui/material';
 import ConfirmationModal from './ConfirmationModal';
 import { saveLearnable } from '../utils/saveLearnable';
 import './conversation.css';
 import PlayButton from './PlayButton';
+import discussionImage from '../assets/images/discussion.jpg';
+
 
 const CellBorderBottomColor = 'rgba(128, 128, 128, 0.1)';
 const clickableBackground = 'rgba(255, 255, 255, 0.2)';
@@ -40,6 +42,9 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
 
   // State for visible lines
   const [visibleLinesCount, setVisibleLinesCount] = useState<number>(0);
+
+  // Refs for smooth animation
+  const lineRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   useEffect(() => {
     const loadConversation = async () => {
@@ -138,17 +143,33 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
   const showNextLine = () => {
     if (visibleLinesCount < conversation.length) {
       setVisibleLinesCount(visibleLinesCount + 1);
+      const currentLine = lineRefs.current[visibleLinesCount];
+      if (currentLine) {
+        currentLine.style.maxHeight = '500px'; // Trigger the expand animation
+        currentLine.style.opacity = '1';
+      }
     }
   };
 
   // Show all lines
   const showAllLines = () => {
     setVisibleLinesCount(conversation.length);
+    lineRefs.current.forEach((line, index) => {
+      if (line && index < conversation.length) {
+        line.style.maxHeight = '500px'; // Trigger the expand animation
+        line.style.opacity = '1';
+      }
+    });
   };
 
   // Hide the last visible line
   const hideLastLine = () => {
     if (visibleLinesCount > 0) {
+      const currentLine = lineRefs.current[visibleLinesCount - 1];
+      if (currentLine) {
+        currentLine.style.maxHeight = '0'; // Trigger the collapse animation
+        currentLine.style.opacity = '0';
+      }
       setVisibleLinesCount(visibleLinesCount - 1);
     }
   };
@@ -169,6 +190,38 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
         minHeight: '100vh',
       }}
     >
+      {/* Save and Cancel Phrases Buttons (Fixed at the Top) */}
+      {clicked.length > 0 && (
+        <Box
+          sx={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            backgroundColor: '#000',
+            color: '#fff',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '10px 0',
+            zIndex: 10000,
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.6)',
+          }}
+        >
+          <Button
+            variant="contained"
+            color="success"
+            onClick={handleSave}
+            sx={{ marginRight: '20px' }}
+          >
+            Save Marked Phrases
+          </Button>
+          <Button variant="contained" color="secondary" onClick={() => setClicked([])}>
+            Cancel
+          </Button>
+        </Box>
+      )}
+
       {/* Title is always visible */}
       <Typography
         variant="h2"
@@ -186,17 +239,19 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
 
       {/* Conversation Section */}
       {conversation && conversation.length > 0 ? (
-        conversation.slice(0, visibleLinesCount).map((dialog, index) => (
+        conversation.map((dialog, index) => (
           <Grid
             container
             key={index}
-            className={`line ${index < visibleLinesCount ? 'show' : 'hide'}`}
+            ref={(el) => (lineRefs.current[index] = el)} // Store the reference to the line
+            className="line" // Add class for CSS animation
             sx={{
               borderBottom: `2px solid ${CellBorderBottomColor}`,
               paddingBottom: '10px',
               marginBottom: '10px',
               fontSize: conversationFontSize,
               alignItems: 'center',
+              overflow: 'hidden', // Make sure overflow is hidden for animations
             }}
           >
             {/* Audio Icon Column */}
@@ -220,8 +275,24 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
       )}
 
       {/* Discussion Section */}
+     <Box sx={{ marginTop: '70px', marginBottom: '20px', textAlign: 'center' }}>
+       <img
+         src={discussionImage}
+         alt="Discussion"
+         style={{
+           maxWidth: '100%',
+           borderRadius: '10px',
+           boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+           objectFit: 'cover', // Ensures the image covers the area
+           objectPosition: 'bottom', // Shows the middle part of the image
+           height: '900px', // Adjust the height to control visible area
+           width: '100%',
+         }}
+       />
+     </Box>
+
       {discussionQuestions.length > 0 && (
-        <Box sx={{ marginTop: '70px', marginBottom: '70px' }}>
+        <Box sx={{ marginTop: '50px', marginBottom: '60px' }}>
           <Typography
             variant="h4"
             sx={{
@@ -253,38 +324,6 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
               </li>
             ))}
           </ul>
-        </Box>
-      )}
-
-      {/* Save and Cancel Phrases Buttons (Fixed at the Top) */}
-      {clicked.length > 0 && (
-        <Box
-          sx={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            backgroundColor: '#000',
-            color: '#fff',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: '10px 0',
-            zIndex: 10000,
-            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.6)',
-          }}
-        >
-          <Button
-            variant="contained"
-            color="success"
-            onClick={handleSave}
-            sx={{ marginRight: '20px' }}
-          >
-            Save Marked Phrases
-          </Button>
-          <Button variant="contained" color="secondary" onClick={() => setClicked([])}>
-            Cancel
-          </Button>
         </Box>
       )}
 
