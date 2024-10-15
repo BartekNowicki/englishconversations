@@ -42,9 +42,13 @@ function Conversation({ token, id, fetchLearnables }: ConversationProps) {
     const loadConversation = async () => {
       if (!id) return;
 
-      const matchedFilePath = Object.keys(conversationModules).find((filePath) =>
-        filePath.includes(id)
-      );
+      const matchedFilePath = Object.keys(conversationModules).find((filePath) => {
+        // Extract filename without extension
+        const filename = filePath.split('/').pop()?.replace('.ts', '');
+
+        // Check if filename exactly matches the id
+        return filename?.startsWith(id);
+      });
 
       if (matchedFilePath) {
         try {
