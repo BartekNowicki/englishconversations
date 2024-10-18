@@ -151,15 +151,6 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
                 <ListItemText primary="Home" />
               </ListItem>
 
-              {/* Logout button */}
-              <ListItem
-                component="button"
-                onClick={() => { handleLogoutClick(); toggleDrawer(); }}
-                sx={buttonStyle}
-              >
-                <ListItemText primary="Logout" />
-              </ListItem>
-
               {/* My Phrases button */}
               <ListItem
                 component="button"
@@ -177,6 +168,15 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
               >
                 <ListItemText primary="Practice" />
               </ListItem>
+
+              {/* Logout button */}
+                <ListItem
+                  component="button"
+                  onClick={() => { handleLogoutClick(); toggleDrawer(); }}
+                  sx={buttonStyle}
+                >
+                  <ListItemText primary="Logout" />
+                </ListItem>
 
               {/* Conversation selector in button style */}
               <ListItem sx={{
@@ -197,7 +197,7 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
                   }}
                 >
                   <MenuItem value="" disabled>
-                    Select a Conversation
+                    Conversation
                   </MenuItem>
                   {availableConversations.map(({ id, title }) => (
                     <MenuItem key={id} value={id}>
