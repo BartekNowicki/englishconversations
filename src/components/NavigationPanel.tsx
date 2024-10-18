@@ -4,6 +4,9 @@ import { Drawer, List, ListItem, ListItemText, Select, MenuItem, IconButton, Box
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import HomeIcon from '@mui/icons-material/Home';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import { getUsername } from '../utils/getUsername';
+
 
 interface NavigationPanelProps {
   onConversationSelect: (id: string) => void;
@@ -20,6 +23,17 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
   const [selectedConversation, setSelectedConversation] = useState('');
   const [availableConversations, setAvailableConversations] = useState<{ id: string; title: string }[]>([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [username, setUsername] = useState<string | null>(null);
+
+  useEffect(() => {
+      if (isLoggedIn) {
+        const token = localStorage.getItem('token');
+        if (token) {
+          const extractedUsername = getUsername(token);
+          setUsername(extractedUsername);
+        }
+      }
+    }, [isLoggedIn]);
 
   useEffect(() => {
     const loadConversations = () => {
@@ -74,6 +88,16 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
     },
   };
 
+  const welcomeStyle = {
+      backgroundColor: '#2c2c2c',
+      color: 'green',
+      padding: '10px 20px',
+      borderRadius: '8px',
+      display: 'flex',
+      alignItems: 'center',
+      marginBottom: '20px',
+    };
+
   return (
     <Box>
       {isLoggedIn && (
@@ -101,6 +125,14 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
         <List>
           {isLoggedIn && (
             <>
+            {username && (
+                <ListItem>
+                  <Box sx={welcomeStyle}>
+                    <EmojiEmotionsIcon sx={{ color: 'green', marginRight: '10px' }} />
+                    <span>Welcome, {username}</span>
+                  </Box>
+                </ListItem>
+              )}
               {/* Home button with Home Icon */}
               <ListItem
                 component="button"
@@ -151,7 +183,7 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
                   displayEmpty
                   fullWidth
                   sx={{
-                    ...buttonStyle,  // Applying button styles to the Select
+                    ...buttonStyle,
                     color: 'white',
                     backgroundColor: '#282828',
                     borderRadius: '8px',
