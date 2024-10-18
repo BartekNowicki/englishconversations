@@ -98,6 +98,12 @@ function NavigationPanel({ onConversationSelect, isLoggedIn, onLogout }: Navigat
       marginBottom: '20px',
     };
 
+  useEffect(() => {
+    return () => {
+      setSelectedConversation(''); // Reset when the component is unmounted
+    };
+  }, [location.pathname]);  // Effect will run whenever the route changes
+
   return (
     <Box>
       {isLoggedIn && (
