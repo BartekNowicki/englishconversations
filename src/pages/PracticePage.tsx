@@ -4,6 +4,7 @@ import ClickableBox from '../components/ClickableBox';
 import prepositionsImage from '../assets/images/prepositions.jpg';
 import flashcardsImage from '../assets/images/flashcards.jpg';
 import scramblesImage from '../assets/images/scrambles.jpg';
+import phrasequestImage from '../assets/images/phrasequest.jpg';
 
 const PracticePage = () => {
   const navigate = useNavigate();
@@ -19,6 +20,10 @@ const PracticePage = () => {
   const handleUnscrambleClick = () => {
     navigate('/practice/unscramble');
   };
+
+  const handlePhraseQuestClick = () => {
+      navigate('/practice/phrasequest');
+    };
 
   return (
     <Box
@@ -47,6 +52,11 @@ const PracticePage = () => {
         title="Scrambles"
         onClick={handleUnscrambleClick}
       />
+      <ClickableBox
+        imageSrc={phrasequestImage}
+        title="Phrase Quest"
+        onClick={handlePhraseQuestClick}
+       />
     </Box>
   );
 };

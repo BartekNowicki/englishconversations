@@ -8,6 +8,7 @@ import PracticePage from './pages/PracticePage';
 import PrepositionPractice from './components/PrepositionPractice';
 import FlashCardPractice from './components/FlashCardPractice';
 import UnscramblePractice from './components/UnscramblePractice';
+import PhraseQuestPractice from './components/PhraseQuestPractice';
 import { useState, useEffect } from 'react';
 import { useLearnables } from './hooks/useLearnables';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -125,7 +126,11 @@ function App() {
                 {/* Unscramble Practice Routes */}
                 <Route path="/practice/unscramble/" element={<UnscramblePractice token={token || ''} learnables={learnables}/>} />
                 <Route path="/practice/unscramble/:id" element={<UnscramblePractice token={token || ''} learnables={learnables}/>} />
-              </Routes>
+
+                {/* Phrase Quest Routes */}
+                <Route path="/practice/phrasequest" element={<PhraseQuestPractice />} />
+
+            </Routes>
             </Box>
           </Box>
         </Box>
