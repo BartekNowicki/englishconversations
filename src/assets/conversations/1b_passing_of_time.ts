@@ -159,3 +159,167 @@ export const discussionQuestions = [
   "4. Why is it important to embrace slower moments and not feel guilty?",
   "5. What can you change to manage time more effectively?"
 ];
+
+export const clickablesDistractors = [
+  {
+    phrase: "just wrapped up",
+    distractors: [
+      "just wrapped in",
+      "just trapped up",
+      "just wrapped on",
+    ],
+  },
+  {
+    phrase: "get so caught up in",
+    distractors: [
+      "get so caught up on",
+      "get so brought up in",
+      "get so caught up to",
+    ],
+  },
+  {
+    phrase: "sneaks up on me",
+    distractors: [
+      "sneaks up in me",
+      "sneaks up one me",
+      "snacks up on me",
+    ],
+  },
+  {
+    phrase: "pop up out of nowhere",
+    distractors: [
+      "pop up in nowhere",
+      "hop up out of nowhere",
+      "pop down out of nowhere",
+    ],
+  },
+  {
+    phrase: "bogged down with",
+    distractors: [
+      "bogged down in",
+      "logged down with",
+      "bogged down at",
+    ],
+  },
+  {
+    phrase: "pull us in so many directions",
+    distractors: [
+      "pull us on so many directions",
+      "full us in so many directions",
+      "pull us in so many selections",
+    ],
+  },
+  {
+    phrase: "winding down",
+    distractors: [
+      "winding in",
+      "finding down",
+      "winding on",
+    ],
+  },
+  {
+    phrase: "It hits hard",
+    distractors: [
+      "It hits in",
+      "It fits hard",
+      "It hits hat",
+    ],
+  },
+  {
+    phrase: "check off the list",
+    distractors: [
+      "check off on list",
+      "check of the list",
+      "check out the list",
+    ],
+  },
+  {
+    phrase: "has a way of undermining",
+    distractors: [
+      "has a way to undermining",
+      "has a say of undermining",
+      "has a way of underlining",
+    ],
+  },
+  {
+    phrase: "be more flexible with",
+    distractors: [
+      "be more flexible on",
+      "be more hexible with",
+      "be more flexible at",
+    ],
+  },
+  {
+    phrase: "pace ourselves",
+    distractors: [
+      "pace on ourselves",
+      "race ourselves",
+      "pace themself",
+    ],
+  },
+  {
+    phrase: "racing against the clock",
+    distractors: [
+      "racing against the lock",
+      "facing against the clock",
+      "racing for the clock",
+    ],
+  },
+  {
+    phrase: "embrace the slower pace",
+    distractors: [
+      "embrace at slower pace",
+      "embrace the blower pace",
+      "embrace the slower race",
+    ],
+  },
+  {
+    phrase: "prepare for what’s ahead",
+    distractors: [
+      "prepare in what’s ahead",
+      "repair for what’s ahead",
+      "prepare for what’s a head",
+    ],
+  },
+  {
+    phrase: "running on high speed",
+    distractors: [
+      "running at high speed",
+      "running on high feed",
+      "running in high speed",
+    ],
+  },
+  {
+    phrase: "you're falling behind",
+    distractors: [
+      "you're falling at behind",
+      "you're balling behind",
+      "you're falling ahead",
+    ],
+  },
+  {
+    phrase: "is a bad thing",
+    distractors: [
+      "is at bad thing",
+      "is a mad thing",
+      "is the bad thing",
+    ],
+  },
+  {
+    phrase: "leave space for",
+    distractors: [
+      "leave space on",
+      "leave face for",
+      "leave space to",
+    ],
+  },
+  {
+    phrase: "making time to",
+    distractors: [
+      "making time on",
+      "baking time to",
+      "making time in",
+    ],
+  },
+];
+

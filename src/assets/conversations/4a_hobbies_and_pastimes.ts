@@ -144,3 +144,126 @@ export const discussionQuestions = [
   "4. Why is it important to make time for hobbies in our daily lives?",
   "5. What are some hobbies that help you relax and feel good?"
 ];
+
+export const clickablesDistractors = [
+  {
+    phrase: "barely play them",
+    distractors: [
+      "barely plays them",
+      "rarely play them",
+      "barely play at them",
+    ],
+  },
+  {
+    phrase: "I’m more into",
+    distractors: [
+      "I’m more onto",
+      "I’m bore into",
+      "I’m more in to",
+    ],
+  },
+  {
+    phrase: "our interests shift",
+    distractors: [
+      "your interests shift",
+      "our interests lifts",
+      "our interests shifts",
+    ],
+  },
+  {
+    phrase: "stick with us",
+    distractors: [
+      "stick on us",
+      "stack with us",
+      "stick in us",
+    ],
+  },
+  {
+    phrase: "I picked up baking",
+    distractors: [
+      "I picked on baking",
+      "I ticked up baking",
+      "I picked up backing",
+    ],
+  },
+  {
+    phrase: "turned their hobby into a full-time job",
+    distractors: [
+      "turned their hobby at a full-time job",
+      "turned their lobby into a full-time job",
+      "burned their hobby into a full-time job",
+    ],
+  },
+  {
+    phrase: "an ideal way to recharge",
+    distractors: [
+      "an ideal way on recharge",
+      "an ideal way to retake",
+      "an ideal way in recharge",
+    ],
+  },
+  {
+    phrase: "to make new friends",
+    distractors: [
+      "to make new friend",
+      "to bake new friends",
+      "to make on new friends",
+    ],
+  },
+  {
+    phrase: "connecting with others",
+    distractors: [
+      "connecting at others",
+      "collecting with others",
+      "connecting with bothers",
+    ],
+  },
+  {
+    phrase: "bring people together",
+    distractors: [
+      "bring people on together",
+      "bring peoples together",
+      "bring people apart",
+    ],
+  },
+  {
+    phrase: "create these little communities",
+    distractors: [
+      "create these little commodities",
+      "create those little communities",
+      "create these little communists",
+    ],
+  },
+  {
+    phrase: "enjoy outside of work",
+    distractors: [
+      "enjoy outside at work",
+      "enjoy outside of walk",
+      "enjoy inside of work",
+    ],
+  },
+  {
+    phrase: "set aside time for",
+    distractors: [
+      "set aside time on",
+      "set a side time for",
+      "sat aside time for",
+    ],
+  },
+  {
+    phrase: "ease the tension",
+    distractors: [
+      "ease on the tension",
+      "please the tension",
+      "ease the detention",
+    ],
+  },
+  {
+    phrase: "I couldn’t agree more",
+    distractors: [
+      "I wouldn’t agree more",
+      "I couldn’t agree on more",
+      "I couldn’t agree bore",
+    ],
+  },
+];

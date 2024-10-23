@@ -144,3 +144,128 @@ export const discussionQuestions = [
   "4. Do you believe it's possible to slow down in today’s fast-paced world?",
   "5. What changes could you make to enjoy life more in the present?"
 ];
+
+export const clickablesDistractors = [
+  {
+    phrase: "Time really flies",
+    distractors: [
+      "Time really cries",
+      "Time really fries",
+      "Time really lies",
+    ],
+  },
+  {
+    phrase: "Same here",
+    distractors: [
+      "Same near",
+      "Same deer",
+      "Same cheer",
+    ],
+  },
+  {
+    phrase: "life gets busy",
+    distractors: [
+      "life bets busy",
+      "life sets busy",
+      "life lets dizzy",
+    ],
+  },
+  {
+    phrase: "didn’t stick with it",
+    distractors: [
+      "didn’t stick on it",
+      "didn’t click with it",
+      "didn’t trick with it",
+    ],
+  },
+  {
+    phrase: "keep up with everything",
+    distractors: [
+      "keep up on everything",
+      "keep hop with everything",
+      "keep up with something",
+    ],
+  },
+  {
+    phrase: "wonder where the time went",
+    distractors: [
+      "wonder where the time sent",
+      "wonder where the time bent",
+      "wonder when the time went",
+    ],
+  },
+  {
+    phrase: "we’re always rushing",
+    distractors: [
+      "we’re always brushing",
+      "we’re always crushing",
+      "we’re always bushing",
+    ],
+  },
+  {
+    phrase: "enjoy the little things",
+    distractors: [
+      "enjoy in little things",
+      "enjoy the brittle things",
+      "enjoy the little rings",
+    ],
+  },
+  {
+    phrase: "hanging out with friends",
+    distractors: [
+      "hanging out on friends",
+      "hanging about with friends",
+      "hanging out with trends",
+    ],
+  },
+  {
+    phrase: "enjoying a day off",
+    distractors: [
+      "enjoying a day of",
+      "deploying a day off",
+      "enjoying a bay off",
+    ],
+  },
+  {
+    phrase: "make time",
+    distractors: [
+      "take time",
+      "fake time",
+      "make lime",
+    ],
+  },
+  {
+    phrase: "feel bad for",
+    distractors: [
+      "feel bad on",
+      "peel bad for",
+      "feel glad for",
+    ],
+  },
+  {
+    phrase: "it’s okay to slow down",
+    distractors: [
+      "it’s okay to slow in",
+      "it’s okay to blow down",
+      "it’s okay to throw down",
+    ],
+  },
+  {
+    phrase: "make it a priority to",
+    distractors: [
+      "make it a priority on",
+      "take it a priority to",
+      "make it a majority to",
+    ],
+  },
+  {
+    phrase: "live in the moment",
+    distractors: [
+      "live on the moment",
+      "give in the moment",
+      "live at the monument",
+    ],
+  },
+];
+
+

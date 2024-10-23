@@ -151,3 +151,166 @@ export const definitions = [
   "finding time to dedicate at least 30 minutes to an activity, usually exercise",
   "starting small and gradually increasing efforts or progress based on previous success",
 ];
+
+export const clickablesDistractors = [
+  {
+    phrase: "set my alarm early",
+    distractors: [
+      "set my alarm nearly",
+      "set my alarm at early",
+      "bet my alarm early",
+    ],
+  },
+  {
+    phrase: "hit snooze",
+    distractors: [
+      "hit loose",
+      "hit snooze on",
+      "fit snooze",
+    ],
+  },
+  {
+    phrase: "rushing out the door",
+    distractors: [
+      "rushing in the door",
+      "rushing out on door",
+      "crushing out the door",
+    ],
+  },
+  {
+    phrase: "alarm goes off",
+    distractors: [
+      "alarm goes on",
+      "alarm blows off",
+      "alarm goes at",
+    ],
+  },
+  {
+    phrase: "saves me a lot of stress",
+    distractors: [
+      "saves me a lot for stress",
+      "shaves me a lot of stress",
+      "saves me lots at stress",
+    ],
+  },
+  {
+    phrase: "After my commute",
+    distractors: [
+      "After by commute",
+      "After my compute",
+      "After my commute in",
+    ],
+  },
+  {
+    phrase: "back-to-back meetings",
+    distractors: [
+      "back-for-back meetings",
+      "pack-to-back meetings",
+      "back-to-back seatings",
+    ],
+  },
+  {
+    phrase: "stay focused when there are so many distractions",
+    distractors: [
+      "stay focused where there are so many distractions",
+      "stay focused when there are too many attractions",
+      "stay focused when there are so many destructions",
+    ],
+  },
+  {
+    phrase: "By the time I get off work",
+    distractors: [
+      "By the time I set off work",
+      "By the time I get of work",
+      "By the time I get off work in",
+    ],
+  },
+  {
+    phrase: "I’m completely wiped out",
+    distractors: [
+      "I’m completely wiped in",
+      "I’m completely hyped out",
+      "I’m completely piped out",
+    ],
+  },
+  {
+    phrase: "meal prepping on Sundays",
+    distractors: [
+      "meal prepping in Sundays",
+      "meal prepping on Monday",
+      "meal stepping on Sundays",
+    ],
+  },
+  {
+    phrase: "It’s a lifesaver",
+    distractors: [
+      "It’s a lifesever",
+      "It’s in lifesaver",
+      "It’s a livesaver",
+    ],
+  },
+  {
+    phrase: "How do you unwind",
+    distractors: [
+      "How do you unfind",
+      "How you do unwind",
+      "How do you wind on",
+    ],
+  },
+  {
+    phrase: "glued to my phone",
+    distractors: [
+      "glued at my phone",
+      "glued to my bone",
+      "flued to my phone",
+    ],
+  },
+  {
+    phrase: "cutting down on screen time",
+    distractors: [
+      "cutting down in screen time",
+      "cutting crown on screen time",
+      "cutting down on scream time",
+    ],
+  },
+  {
+    phrase: "You should give it a shot",
+    distractors: [
+      "You should give at a shot",
+      "You should give it a slot",
+      "You would give it a shot",
+    ],
+  },
+  {
+    phrase: "Another issue I have",
+    distractors: [
+      "Another issue at have",
+      "Another tissue I have",
+      "Another issue I halve",
+    ],
+  },
+  {
+    phrase: "keep me going",
+    distractors: [
+      "keep me glowing",
+      "keep me gone",
+      "keep me groaning",
+    ],
+  },
+  {
+    phrase: "fit in at least 30 minutes",
+    distractors: [
+      "fit on at least 30 minutes",
+      "sit in at least 30 minutes",
+      "fit in the least 30 minutes",
+    ],
+  },
+  {
+    phrase: "build from there",
+    distractors: [
+      "build on there",
+      "build from here",
+      "guild from there",
+    ],
+  },
+];

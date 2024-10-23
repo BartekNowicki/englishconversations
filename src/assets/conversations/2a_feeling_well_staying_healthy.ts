@@ -144,3 +144,126 @@ export const discussionQuestions = [
   "4. What simple habits help you stay physically and mentally fit?",
   "5. How do you prioritize your health when life gets busy?"
 ];
+
+export const clickablesDistractors = [
+  {
+    phrase: "feeling a bit off",
+    distractors: [
+      "feeling a bit on",
+      "feeling a bit out",
+      "feeling a bit at",
+    ],
+  },
+  {
+    phrase: "coming down with something",
+    distractors: [
+      "coming down on something",
+      "coming down in something",
+      "coming down by something",
+    ],
+  },
+  {
+    phrase: "getting enough rest",
+    distractors: [
+      "setting enough rest",
+      "betting enough rest",
+      "getting enough best",
+    ],
+  },
+  {
+    phrase: "staying up late working",
+    distractors: [
+      "staying up late walking",
+      "staying up late lurking",
+      "staying up late jerking",
+    ],
+  },
+  {
+    phrase: "so much on my mind",
+    distractors: [
+      "so much at my mind",
+      "so much of my mind",
+      "so much in my mind",
+    ],
+  },
+  {
+    phrase: "relaxing before bed",
+    distractors: [
+      "relaxing before head",
+      "relaxing before shed",
+      "relaxing before thread",
+    ],
+  },
+  {
+    phrase: "mess with your sleep",
+    distractors: [
+      "mess at your sleep",
+      "mess with your leap",
+      "mess through your sleep",
+    ],
+  },
+  {
+    phrase: "Your health comes first",
+    distractors: [
+      "Your health comes thirst",
+      "Your health comes worst",
+      "Your health comes burst",
+    ],
+  },
+  {
+    phrase: "to take better care of",
+    distractors: [
+      "to take better care in",
+      "to take better care on",
+      "to take better care by",
+    ],
+  },
+  {
+    phrase: "skipping meals",
+    distractors: [
+      "skipping deals",
+      "skipping seals",
+      "skipping heals",
+    ],
+  },
+  {
+    phrase: "keep your energy up",
+    distractors: [
+      "keep your energy on",
+      "keep your energy down",
+      "keep your energy by",
+    ],
+  },
+  {
+    phrase: "preparing some easy meals",
+    distractors: [
+      "preparing some easy seals",
+      "preparing some easy deals",
+      "preparing some easy heels",
+    ],
+  },
+  {
+    phrase: "I’ll keep that in mind",
+    distractors: [
+      "I’ll keep that on mind",
+      "I’ll keep that in bind",
+      "I’ll keep that in kind",
+    ],
+  },
+  {
+    phrase: "get back on track",
+    distractors: [
+      "get back in track",
+      "get back by track",
+      "get back at track",
+    ],
+  },
+  {
+    phrase: "That’s the spirit",
+    distractors: [
+      "That’s the sprint",
+      "That’s the spurt",
+      "That’s the spur",
+    ],
+  },
+];

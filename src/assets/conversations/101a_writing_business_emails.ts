@@ -145,3 +145,126 @@ export const discussionQuestions = [
   "4. How can you ensure your team is aligned on important tasks?",
   "5. Why is it important to double-check details in business communication?",
 ];
+
+export const clickablesDistractors = [
+  {
+    phrase: "confirm if you received",
+    distractors: [
+      "confirm if you deceived",
+      "confirm at you received",
+      "conform if you received",
+    ],
+  },
+  {
+    phrase: "regarding the changes",
+    distractors: [
+      "regarding the ranges",
+      "regarding at the changes",
+      "regarding on changes",
+    ],
+  },
+  {
+    phrase: "the new regulations come into effect",
+    distractors: [
+      "the new regulations come onto effect",
+      "the new regulations come in effect",
+      "the new regulations come out of effect",
+    ],
+  },
+  {
+    phrase: "Due to",
+    distractors: [
+      "Due on",
+      "Dew to",
+      "Due at",
+    ],
+  },
+  {
+    phrase: "new requirements we need to address",
+    distractors: [
+      "new requirements we need at address",
+      "new requirements we knead to address",
+      "new requirements we need to undress",
+    ],
+  },
+  {
+    phrase: "adjust our proposal",
+    distractors: [
+      "adjust on proposal",
+      "adjust their proposal",
+      "adjust our proposel",
+    ],
+  },
+  {
+    phrase: "follow-up meeting",
+    distractors: [
+      "follow-up on meeting",
+      "follow-up seating",
+      "hollow-up meeting",
+    ],
+  },
+  {
+    phrase: "finalize everything",
+    distractors: [
+      "finalize anything",
+      "finalize everything at",
+      "minimize everything",
+    ],
+  },
+  {
+    phrase: "send over a calendar invite",
+    distractors: [
+      "send under a calendar invite",
+      "send over at calendar invite",
+      "send over a calendar incite",
+    ],
+  },
+  {
+    phrase: "based on the updated guidelines",
+    distractors: [
+      "based in the updated guidelines",
+      "based up the updated guidelines",
+      "basted on the updated guidelines",
+    ],
+  },
+  {
+    phrase: "heads-up",
+    distractors: [
+      "heads-in",
+      "heads-down",
+      "leads-up",
+    ],
+  },
+  {
+    phrase: "drafted and sent over for review",
+    distractors: [
+      "crafted and sent over for review",
+      "drafted and sent in for review",
+      "drafted and sent over for preview",
+    ],
+  },
+  {
+    phrase: "we’re aligned",
+    distractors: [
+      "we’re aligned in",
+      "we’re aligned at",
+      "we’re aligned with",
+    ],
+  },
+  {
+    phrase: "feel free to reach out",
+    distractors: [
+      "feel free to teach out",
+      "feel free to reach in",
+      "feel fee to reach out",
+    ],
+  },
+  {
+    phrase: "double-check",
+    distractors: [
+      "double-track",
+      "double-check at",
+      "double-stack",
+    ],
+  },
+];

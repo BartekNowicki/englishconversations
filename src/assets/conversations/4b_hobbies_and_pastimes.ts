@@ -159,3 +159,166 @@ export const discussionQuestions = [
   "4. Why is it important to set aside time for your personal interests?",
   "5. How does balancing work and hobbies contribute to a fulfilling life?"
 ];
+
+export const clickablesDistractors = [
+  {
+    phrase: "be really into video games",
+    distractors: [
+      "be really onto video games",
+      "be really into video flames",
+      "be really in video games",
+    ],
+  },
+  {
+    phrase: "I barely play them anymore",
+    distractors: [
+      "I rarely play them anymore",
+      "I barely stay them anymore",
+      "I barely play them any more",
+    ],
+  },
+  {
+    phrase: "our interests change",
+    distractors: [
+      "our interests range",
+      "your interests change",
+      "our interests chain",
+    ],
+  },
+  {
+    phrase: "stick with us",
+    distractors: [
+      "stick on us",
+      "stack with us",
+      "stick by us",
+    ],
+  },
+  {
+    phrase: "die out",
+    distractors: [
+      "lie out",
+      "die on",
+      "die about",
+    ],
+  },
+  {
+    phrase: "picked up photography",
+    distractors: [
+      "picked in photography",
+      "picked off photography",
+      "kicked up photography",
+    ],
+  },
+  {
+    phrase: "to soothe the nerves",
+    distractors: [
+      "to soothe on nerves",
+      "to smooth the nerves",
+      "to soothe at nerves",
+    ],
+  },
+  {
+    phrase: "to make new friends",
+    distractors: [
+      "to make new friend",
+      "to bake new friends",
+      "to make on new friends",
+    ],
+  },
+  {
+    phrase: "bring people together",
+    distractors: [
+      "bring people apart",
+      "bring peoples together",
+      "bring people on together",
+    ],
+  },
+  {
+    phrase: "create strong connections",
+    distractors: [
+      "create strong corrections",
+      "create long connections",
+      "create strong connection",
+    ],
+  },
+  {
+    phrase: "something meaningful outside of work",
+    distractors: [
+      "something meaningful outside at work",
+      "something meaningless outside of work",
+      "something meaningful out of work",
+    ],
+  },
+  {
+    phrase: "set aside time for",
+    distractors: [
+      "set aside time in",
+      "set beside time for",
+      "sit aside time for",
+    ],
+  },
+  {
+    phrase: "stay mentally and emotionally healthy",
+    distractors: [
+      "stay mentally and emotionally wealthy",
+      "stay mentally and emotionally stealthy",
+      "stay mentally on emotionally healthy",
+    ],
+  },
+  {
+    phrase: "diminish stress",
+    distractors: [
+      "diminish success",
+      "finish stress",
+      "diminish in stress",
+    ],
+  },
+  {
+    phrase: "give us a break",
+    distractors: [
+      "give us a brake",
+      "give on a break",
+      "give them a break",
+    ],
+  },
+  {
+    phrase: "my go-to activity",
+    distractors: [
+      "my go-to captivity",
+      "my go-to activity on",
+      "my go-two activity",
+    ],
+  },
+  {
+    phrase: "helps you recharge",
+    distractors: [
+      "helps you retard",
+      "helps you rechart",
+      "helps you recharge in",
+    ],
+  },
+  {
+    phrase: "sense of purpose",
+    distractors: [
+      "sense in purpose",
+      "sense of porpoise",
+      "sense of propose",
+    ],
+  },
+  {
+    phrase: "to take time for ourselves",
+    distractors: [
+      "to take time in ourselves",
+      "to make time for ourselves",
+      "to take time by ourselves",
+    ],
+  },
+  {
+    phrase: "find balance",
+    distractors: [
+      "find ballance",
+      "find balance on",
+      "find glance",
+    ],
+  },
+];

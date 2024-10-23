@@ -144,3 +144,126 @@ export const discussionQuestions = [
   "4. How do you balance your screen time and still get enough rest?",
   "5. What small changes have you made to improve your daily energy levels?"
 ];
+
+export const clickablesDistractors = [
+  {
+    phrase: "I just can’t help",
+    distractors: [
+      "I just can’t hold",
+      "I just can’t kelp",
+      "I just can’t help in",
+    ],
+  },
+  {
+    phrase: "rushing out the door",
+    distractors: [
+      "rushing in the door",
+      "rushing out on door",
+      "crushing out the door",
+    ],
+  },
+  {
+    phrase: "saves me time",
+    distractors: [
+      "shaves me time",
+      "saves on time",
+      "saves me dime",
+    ],
+  },
+  {
+    phrase: "Once I get to work",
+    distractors: [
+      "Once I set to work",
+      "Once I bet to work",
+      "Once I get on work",
+    ],
+  },
+  {
+    phrase: "I find it hard to stay focused",
+    distractors: [
+      "I find it hard in stay focused",
+      "I bind it hard to stay focused",
+      "I find it hard on stay focused",
+    ],
+  },
+  {
+    phrase: "completely drained",
+    distractors: [
+      "completely trained",
+      "completely rained",
+      "completely drained at",
+    ],
+  },
+  {
+    phrase: "by lunchtime",
+    distractors: [
+      "by munch time",
+      "by lunchtime in",
+      "by lunchtime at",
+    ],
+  },
+  {
+    phrase: "to wind down",
+    distractors: [
+      "to wind in",
+      "to wind on",
+      "to bind down",
+    ],
+  },
+  {
+    phrase: "scroll through my phone",
+    distractors: [
+      "scroll on my phone",
+      "scroll threw my phone",
+      "scroll in my phone",
+    ],
+  },
+  {
+    phrase: "cutting down on",
+    distractors: [
+      "cutting down at",
+      "cutting down in",
+      "cutting down by",
+    ],
+  },
+  {
+    phrase: "get better sleep",
+    distractors: [
+      "get better steep",
+      "bet better sleep",
+      "get better sleep in",
+    ],
+  },
+  {
+    phrase: "give it a shot",
+    distractors: [
+      "give it a slot",
+      "give it a dot",
+      "give on a shot",
+    ],
+  },
+  {
+    phrase: "on my commute",
+    distractors: [
+      "on my compute",
+      "on by commute",
+      "on my commute in",
+    ],
+  },
+  {
+    phrase: "over time",
+    distractors: [
+      "under time",
+      "over in time",
+      "over dime",
+    ],
+  },
+  {
+    phrase: "things get easier",
+    distractors: [
+      "things set easier",
+      "things get queasier",
+      "things get easy on",
+    ],
+  },
+];

@@ -159,3 +159,167 @@ export const discussionQuestions = [
   "4. Why is it important to prioritize rest and relaxation in your routine?",
   "5. How can breaking old habits contribute to a healthier lifestyle?"
 ];
+
+export const clickablesDistractors = [
+  {
+    phrase: "feeling a bit out of sorts",
+    distractors: [
+      "feeling a bit out at sorts",
+      "feeling a bit out in sorts",
+      "feeling a bit out for sorts",
+    ],
+  },
+  {
+    phrase: "catch up with me",
+    distractors: [
+      "catch up on me",
+      "catch down with me",
+      "catch off with me",
+    ],
+  },
+  {
+    phrase: "a slippery slope",
+    distractors: [
+      "a slippery hope",
+      "a slippery soap",
+      "a slipper slope",
+    ],
+  },
+  {
+    phrase: "wreak havoc on",
+    distractors: [
+      "wreak havoc in",
+      "wreak havoc at",
+      "wreak havoc by",
+    ],
+  },
+  {
+    phrase: "my mind is constantly racing",
+    distractors: [
+      "my mind is constantly lacing",
+      "my mind is constantly tracing",
+      "my mind is constantly bracing",
+    ],
+  },
+  {
+    phrase: "all the deadlines looming",
+    distractors: [
+      "all the deadlines zooming",
+      "all the deadlines booming",
+      "all the deadlines blooming",
+    ],
+  },
+  {
+    phrase: "winding down",
+    distractors: [
+      "winding in",
+      "winding on",
+      "winding up",
+    ],
+  },
+  {
+    phrase: "recipe for disaster",
+    distractors: [
+      "recipe of disaster",
+      "recipe from disaster",
+      "recipe in disaster",
+    ],
+  },
+  {
+    phrase: "skipping meals",
+    distractors: [
+      "skimming meals",
+      "skipping deals",
+      "skipping seals",
+    ],
+  },
+  {
+    phrase: "isn’t doing me any favors",
+    distractors: [
+      "isn’t doing at any favors",
+      "isn’t going me any favors",
+      "isn’t doing me any flavors",
+    ],
+  },
+  {
+    phrase: "you’re bound to",
+    distractors: [
+      "you’re found to",
+      "you’re bound at",
+      "you’re wound to",
+    ],
+  },
+  {
+    phrase: "all over the place",
+    distractors: [
+      "all in the place",
+      "fall over the place",
+      "all over the face",
+    ],
+  },
+  {
+    phrase: "grab something healthy",
+    distractors: [
+      "grab something wealthy",
+      "grab nothing healthy",
+      "grab something stealthy",
+    ],
+  },
+  {
+    phrase: "prioritizing my health over work",
+    distractors: [
+      "prioritizing my health on work",
+      "prioritizing my health in work",
+      "prioritizing my wealth over work",
+    ],
+  },
+  {
+    phrase: "on the edge of burning out",
+    distractors: [
+      "on the edge for burning out",
+      "on the hedge of burning out",
+      "on the edge of turning out",
+    ],
+  },
+  {
+    phrase: "should never feel like an afterthought",
+    distractors: [
+      "should never feel on an afterthought",
+      "should never feel at an afterthought",
+      "should never feel like an afterfight",
+    ],
+  },
+  {
+    phrase: "fall into place",
+    distractors: [
+      "fall onto place",
+      "fall into pace",
+      "call into place",
+    ],
+  },
+  {
+    phrase: "establish those habits",
+    distractors: [
+      "establish those hobbits",
+      "establish those habitats",
+      "establish those habits in",
+    ],
+  },
+  {
+    phrase: "break old habits",
+    distractors: [
+      "break old hobbits",
+      "brake old habits",
+      "break bold habits",
+    ],
+  },
+  {
+    phrase: "I’m here to nudge you",
+    distractors: [
+      "I’m here to judge you",
+      "I’m here to fudge you",
+      "I’m there to nudge you",
+    ],
+  },
+];
+

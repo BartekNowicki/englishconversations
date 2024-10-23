@@ -160,3 +160,166 @@ export const discussionQuestions = [
   "4. Why is it essential to liaise with other departments in business communication?",
   "5. How can cross-checking ensure compliance in business agreements?",
 ];
+
+export const clickablesDistractors = [
+  {
+    phrase: "follow up and ensure",
+    distractors: [
+      "follow in and ensure",
+      "fallow up and ensure",
+      "follow up and insure",
+    ],
+  },
+  {
+    phrase: "received my previous email",
+    distractors: [
+      "received my previous meal",
+      "received on previous email",
+      "received my previous emails",
+    ],
+  },
+  {
+    phrase: "regarding the modifications",
+    distractors: [
+      "regarding in modifications",
+      "regarding the mortifications",
+      "regarding the modulations",
+    ],
+  },
+  {
+    phrase: "revert with my feedback",
+    distractors: [
+      "revert at my feedback",
+      "revert with my feedblack",
+      "revert on my feedback",
+    ],
+  },
+  {
+    phrase: "set to be enforced",
+    distractors: [
+      "set on be enforced",
+      "bet to be enforced",
+      "set to be enforced in",
+    ],
+  },
+  {
+    phrase: "in light of",
+    distractors: [
+      "in bright of",
+      "in light on",
+      "in flight of",
+    ],
+  },
+  {
+    phrase: "key adjustments",
+    distractors: [
+      "key readjustments",
+      "key adjustments at",
+      "key adjustments on",
+    ],
+  },
+  {
+    phrase: "reflect the updated requirements",
+    distractors: [
+      "reflect on the updated requirements",
+      "reflect the updated requisites",
+      "reflect in the updated requirements",
+    ],
+  },
+  {
+    phrase: "arrange a follow-up meeting",
+    distractors: [
+      "arrange in follow-up meeting",
+      "arrange a follow-up seating",
+      "arrange a follow-up meeting at",
+    ],
+  },
+  {
+    phrase: "finalize everything",
+    distractors: [
+      "finalize anything",
+      "finalize at everything",
+      "minimize everything",
+    ],
+  },
+  {
+    phrase: "schedule a meeting for",
+    distractors: [
+      "schedule a meeting on",
+      "schedule a greeting for",
+      "schedule a seating for",
+    ],
+  },
+  {
+    phrase: "in line with",
+    distractors: [
+      "in line on",
+      "in line for",
+      "in lane with",
+    ],
+  },
+  {
+    phrase: "comply with the new guidelines",
+    distractors: [
+      "comply on the new guidelines",
+      "complain with the new guidelines",
+      "comply at the new guidelines",
+    ],
+  },
+  {
+    phrase: "redrafted and circulated for review",
+    distractors: [
+      "redrafted and circulated on review",
+      "redrafted and recirculated for review",
+      "redrafted and circulated at review",
+    ],
+  },
+  {
+    phrase: "liaise with our internal team",
+    distractors: [
+      "liaise at our internal team",
+      "liaise with your internal team",
+      "liaise with our infernal team",
+    ],
+  },
+  {
+    phrase: "any further developments",
+    distractors: [
+      "any further developings",
+      "any farther developments",
+      "any further developments at",
+    ],
+  },
+  {
+    phrase: "keep you updated",
+    distractors: [
+      "keep on updated",
+      "keep your updated",
+      "keep you inflated",
+    ],
+  },
+  {
+    phrase: "in place for the final approval",
+    distractors: [
+      "in place at the final approval",
+      "in place on the final approval",
+      "in place for the final removal",
+    ],
+  },
+  {
+    phrase: "include our legal department",
+    distractors: [
+      "include on legal department",
+      "exclude our legal department",
+      "include our regal department",
+    ],
+  },
+  {
+    phrase: "cross-check everything",
+    distractors: [
+      "cross-check anything",
+      "cross-check at everything",
+      "cross-wreck everything",
+    ],
+  },
+];
