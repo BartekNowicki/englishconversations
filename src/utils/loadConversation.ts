@@ -33,6 +33,7 @@ export const loadConversationById = async (id: string) => {
       title: module.title,
       discussionQuestions: module.discussionQuestions || [],
       definitions: module.definitions || [],
+      clickablesDistractors: module.clickablesDistractors || [],
     };
   } catch (error) {
     console.error(`Error loading conversation for ID ${id}:`, error);

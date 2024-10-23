@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { Box } from '@mui/material';
 
-const PhraseQuestPracticeSession: React.FC = ({ learnables }) => {
+const PhraseQuestPracticeSession: React.FC = ({ learnables, learnableDistractors }) => {
 
   return (
     <Box
