@@ -3,11 +3,12 @@ import { Box, Typography, FormControl, InputLabel, Select, MenuItem, Button } fr
 import { conversationModules } from '../utils/loadConversation';
 
 interface ConversationSelectionProps {
-  onStartPractice: (selectedId: string) => void;
+  onStartPractice: (selectedIds: string[]) => void;
+  multipleSelection?: boolean;
 }
 
-const ConversationSelection: React.FC<ConversationSelectionProps> = ({ onStartPractice }) => {
-  const [selectedConversationId, setSelectedConversationId] = useState<string>('');
+const ConversationSelection: React.FC<ConversationSelectionProps> = ({ onStartPractice, multipleSelection = false }) => {
+  const [selectedConversationIds, setSelectedConversationIds] = useState<string[]>(multipleSelection ? [] : '');
   const [availableConversations, setAvailableConversations] = useState<{ id: string, title: string }[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,12 +34,17 @@ const ConversationSelection: React.FC<ConversationSelectionProps> = ({ onStartPr
   }, []);
 
   const handleConversationSelect = (event: any) => {
-    setSelectedConversationId(event.target.value);
+    const value = event.target.value;
+    if (multipleSelection) {
+      setSelectedConversationIds(value);
+    } else {
+      setSelectedConversationIds([value]);
+    }
   };
 
   const handleStartPractice = () => {
-    if (selectedConversationId) {
-      onStartPractice(selectedConversationId);
+    if (selectedConversationIds.length > 0) {
+      onStartPractice(selectedConversationIds);
     }
   };
 
@@ -68,8 +74,9 @@ const ConversationSelection: React.FC<ConversationSelectionProps> = ({ onStartPr
       <FormControl fullWidth sx={{ maxWidth: 400, marginBottom: '20px' }}>
         <InputLabel sx={{ color: '#fff' }}>Source</InputLabel>
         <Select
-          value={selectedConversationId}
+          value={selectedConversationIds}
           onChange={handleConversationSelect}
+          multiple={multipleSelection}  // Enable multiple selection if prop is true
           sx={{ color: '#fff', borderBottom: '1px solid white' }}
         >
           {availableConversations.map((conversation) => (
@@ -83,7 +90,7 @@ const ConversationSelection: React.FC<ConversationSelectionProps> = ({ onStartPr
       <Button
         variant="contained"
         onClick={handleStartPractice}
-        disabled={!selectedConversationId}
+        disabled={selectedConversationIds.length === 0}
         sx={{ backgroundColor: '#fff', color: '#000' }}
       >
         Start Practice

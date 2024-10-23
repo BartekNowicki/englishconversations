@@ -128,7 +128,7 @@ function App() {
                 <Route path="/practice/unscramble/:id" element={<UnscramblePractice token={token || ''} learnables={learnables}/>} />
 
                 {/* Phrase Quest Routes */}
-                <Route path="/practice/phrasequest" element={<PhraseQuestPractice />} />
+                <Route path="/practice/phrasequest" element={<PhraseQuestPractice token={token || ''}/>} />
 
             </Routes>
             </Box>
