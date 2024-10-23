@@ -1,4 +1,3 @@
-// PhraseQuestPractice.tsx
 
 import React, { useState } from 'react';
 import { Box, Button } from '@mui/material';
@@ -8,17 +7,17 @@ import PhraseQuestPracticeSession from './PhraseQuestPracticeSession';
 
 const PhraseQuestPractice: React.FC = () => {
   const [selectedConversations, setSelectedConversations] = useState<string[]>([]);
-  const [clickables, setClickables] = useState<string[]>([]);
+  const [learnables, setLearnables] = useState<string[]>([]);
 
   const handleStartPractice = async (selectedIds: string[]) => {
     setSelectedConversations(selectedIds);
-    let allClickables: string[] = [];
+    let allLearnables: string[] = [];
 
     if (selectedIds.length === 1) {
       try {
         const conversation = await loadConversationById(selectedIds[0]);
         if (conversation) {
-          allClickables = conversation.clickables;
+          allLearnables = conversation.clickables;
         }
       } catch (error) {
         console.error(`Error loading conversation for ID ${selectedIds[0]}:`, error);
@@ -38,18 +37,18 @@ const PhraseQuestPractice: React.FC = () => {
 
       loadedConversations.forEach(conversation => {
         if (conversation && conversation.clickables) {
-          allClickables = [...allClickables, ...conversation.clickables];
+          allLearnables = [...allLearnables, ...conversation.clickables];
         }
       });
     }
 
-    setClickables(allClickables);
+    setLearnables(allLearnables);
   };
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#141414', width: '100%' }}>
-      {!clickables.length && <ConversationSelection onStartPractice={handleStartPractice} multipleSelection={true} />}
-      {!!clickables.length && <PhraseQuestPracticeSession learnables={clickables} />}
+      {!learnables.length && <ConversationSelection onStartPractice={handleStartPractice} multipleSelection={true} />}
+      {!!learnables.length && <PhraseQuestPracticeSession learnables={learnables} />}
     </Box>
   );
 };
