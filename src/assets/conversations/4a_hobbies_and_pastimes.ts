@@ -148,6 +148,7 @@ export const discussionQuestions = [
 export const clickablesDistractors = [
   {
     phrase: "barely play them",
+    definition: "play them very rarely or infrequently",
     distractors: [
       "barely plays them",
       "rarely play them",
@@ -156,6 +157,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "I’m more into",
+    definition: "I’m more interested in something else",
     distractors: [
       "I’m more onto",
       "I’m bore into",
@@ -164,6 +166,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "our interests shift",
+    definition: "our preferences or hobbies change over time",
     distractors: [
       "your interests shift",
       "our interests lifts",
@@ -172,6 +175,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "stick with us",
+    definition: "they remain with us for a long period",
     distractors: [
       "stick on us",
       "stack with us",
@@ -180,6 +184,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "I picked up baking",
+    definition: "I started baking as a new hobby",
     distractors: [
       "I picked on baking",
       "I ticked up baking",
@@ -188,6 +193,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "turned their hobby into a full-time job",
+    definition: "turned what they love into a full-time career",
     distractors: [
       "turned their hobby at a full-time job",
       "turned their lobby into a full-time job",
@@ -196,6 +202,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "an ideal way to recharge",
+    definition: "a perfect way to relax and gain energy",
     distractors: [
       "an ideal way on recharge",
       "an ideal way to retake",
@@ -204,6 +211,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "to make new friends",
+    definition: "meet new people and make friendships",
     distractors: [
       "to make new friend",
       "to bake new friends",
@@ -212,6 +220,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "connecting with others",
+    definition: "engaging socially with others",
     distractors: [
       "connecting at others",
       "collecting with others",
@@ -220,6 +229,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "bring people together",
+    definition: "help people connect and unite",
     distractors: [
       "bring people on together",
       "bring peoples together",
@@ -228,6 +238,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "create these little communities",
+    definition: "form small groups or communities with common interests",
     distractors: [
       "create these little commodities",
       "create those little communities",
@@ -236,6 +247,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "enjoy outside of work",
+    definition: "something to enjoy during free time, outside of work responsibilities",
     distractors: [
       "enjoy outside at work",
       "enjoy outside of walk",
@@ -244,6 +256,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "set aside time for",
+    definition: "reserve time specifically for certain activities",
     distractors: [
       "set aside time on",
       "set a side time for",
@@ -252,6 +265,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "ease the tension",
+    definition: "reduce or lessen the stress or pressure",
     distractors: [
       "ease on the tension",
       "please the tension",
@@ -260,6 +274,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "I couldn’t agree more",
+    definition: "I completely agree with what you’re saying",
     distractors: [
       "I wouldn’t agree more",
       "I couldn’t agree on more",
@@ -267,3 +282,4 @@ export const clickablesDistractors = [
     ],
   },
 ];
+

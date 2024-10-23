@@ -163,6 +163,7 @@ export const discussionQuestions = [
 export const clickablesDistractors = [
   {
     phrase: "just wrapped up",
+    definition: "has recently finished or ended",
     distractors: [
       "just wrapped in",
       "just trapped up",
@@ -171,6 +172,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "get so caught up in",
+    definition: "become too engrossed in our routines",
     distractors: [
       "get so caught up on",
       "get so brought up in",
@@ -179,6 +181,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "sneaks up on me",
+    definition: "suddenly approaches unexpectedly",
     distractors: [
       "sneaks up in me",
       "sneaks up one me",
@@ -187,6 +190,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "pop up out of nowhere",
+    definition: "appear suddenly and unexpectedly",
     distractors: [
       "pop up in nowhere",
       "hop up out of nowhere",
@@ -195,6 +199,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "bogged down with",
+    definition: "we become overwhelmed by too many responsibilities",
     distractors: [
       "bogged down in",
       "logged down with",
@@ -203,6 +208,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "pull us in so many directions",
+    definition: "life pulls us in multiple directions simultaneously",
     distractors: [
       "pull us on so many directions",
       "full us in so many directions",
@@ -211,6 +217,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "winding down",
+    definition: "as the year comes to an end",
     distractors: [
       "winding in",
       "finding down",
@@ -219,6 +226,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "It hits hard",
+    definition: "it feels painful when reflecting on past missed goals",
     distractors: [
       "It hits in",
       "It fits hard",
@@ -227,6 +235,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "check off the list",
+    definition: "marking items off a list as completed",
     distractors: [
       "check off on list",
       "check of the list",
@@ -235,6 +244,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "has a way of undermining",
+    definition: "time works against plans despite best efforts",
     distractors: [
       "has a way to undermining",
       "has a say of undermining",
@@ -243,6 +253,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "be more flexible with",
+    definition: "being more adaptable and less rigid",
     distractors: [
       "be more flexible on",
       "be more hexible with",
@@ -251,6 +262,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "pace ourselves",
+    definition: "to take our time and not rush",
     distractors: [
       "pace on ourselves",
       "race ourselves",
@@ -259,6 +271,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "racing against the clock",
+    definition: "feel like we're racing against time limits",
     distractors: [
       "racing against the lock",
       "facing against the clock",
@@ -267,6 +280,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "embrace the slower pace",
+    definition: "accept the slower pace that certain seasons bring",
     distractors: [
       "embrace at slower pace",
       "embrace the blower pace",
@@ -275,6 +289,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "prepare for what’s ahead",
+    definition: "prepare for the future calmly and thoughtfully",
     distractors: [
       "prepare in what’s ahead",
       "repair for what’s ahead",
@@ -283,6 +298,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "running on high speed",
+    definition: "being constantly busy and in a rush",
     distractors: [
       "running at high speed",
       "running on high feed",
@@ -291,6 +307,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "you're falling behind",
+    definition: "feel like you're not progressing as expected",
     distractors: [
       "you're falling at behind",
       "you're balling behind",
@@ -299,6 +316,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "is a bad thing",
+    definition: "slowing down is perceived as a negative thing",
     distractors: [
       "is at bad thing",
       "is a mad thing",
@@ -307,6 +325,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "leave space for",
+    definition: "leaving space for rest and breaks",
     distractors: [
       "leave space on",
       "leave face for",
@@ -315,6 +334,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "making time to",
+    definition: "setting aside time for important things",
     distractors: [
       "making time on",
       "baking time to",
@@ -322,4 +342,3 @@ export const clickablesDistractors = [
     ],
   },
 ];
-

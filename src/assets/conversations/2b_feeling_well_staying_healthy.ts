@@ -163,6 +163,7 @@ export const discussionQuestions = [
 export const clickablesDistractors = [
   {
     phrase: "feeling a bit out of sorts",
+    definition: "feeling slightly unwell or not quite right",
     distractors: [
       "feeling a bit out at sorts",
       "feeling a bit out in sorts",
@@ -171,6 +172,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "catch up with me",
+    definition: "start to impact me negatively",
     distractors: [
       "catch up on me",
       "catch down with me",
@@ -179,6 +181,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "a slippery slope",
+    definition: "a situation that can easily get worse",
     distractors: [
       "a slippery hope",
       "a slippery soap",
@@ -187,6 +190,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "wreak havoc on",
+    definition: "to cause serious damage or disruption to",
     distractors: [
       "wreak havoc in",
       "wreak havoc at",
@@ -195,6 +199,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "my mind is constantly racing",
+    definition: "my mind is constantly active and I can't stop thinking",
     distractors: [
       "my mind is constantly lacing",
       "my mind is constantly tracing",
@@ -203,6 +208,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "all the deadlines looming",
+    definition: "all the approaching deadlines are causing stress",
     distractors: [
       "all the deadlines zooming",
       "all the deadlines booming",
@@ -211,6 +217,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "winding down",
+    definition: "relaxing and calming down after a busy time",
     distractors: [
       "winding in",
       "winding on",
@@ -219,6 +226,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "recipe for disaster",
+    definition: "a situation likely to lead to problems or failure",
     distractors: [
       "recipe of disaster",
       "recipe from disaster",
@@ -227,6 +235,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "skipping meals",
+    definition: "not eating meals",
     distractors: [
       "skimming meals",
       "skipping deals",
@@ -235,6 +244,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "isn’t doing me any favors",
+    definition: "not benefiting me or helping the situation",
     distractors: [
       "isn’t doing at any favors",
       "isn’t going me any favors",
@@ -243,6 +253,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "you’re bound to",
+    definition: "it's inevitable or very likely to happen",
     distractors: [
       "you’re found to",
       "you’re bound at",
@@ -251,6 +262,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "all over the place",
+    definition: "feeling disorganized or scattered",
     distractors: [
       "all in the place",
       "fall over the place",
@@ -259,6 +271,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "grab something healthy",
+    definition: "choose a healthier food option",
     distractors: [
       "grab something wealthy",
       "grab nothing healthy",
@@ -267,6 +280,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "prioritizing my health over work",
+    definition: "making health more important than work",
     distractors: [
       "prioritizing my health on work",
       "prioritizing my health in work",
@@ -275,6 +289,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "on the edge of burning out",
+    definition: "very close to becoming completely exhausted",
     distractors: [
       "on the edge for burning out",
       "on the hedge of burning out",
@@ -283,6 +298,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "should never feel like an afterthought",
+    definition: "should never feel like something unimportant",
     distractors: [
       "should never feel on an afterthought",
       "should never feel at an afterthought",
@@ -291,6 +307,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "fall into place",
+    definition: "things will naturally work out or resolve",
     distractors: [
       "fall onto place",
       "fall into pace",
@@ -299,6 +316,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "establish those habits",
+    definition: "create new healthy habits",
     distractors: [
       "establish those hobbits",
       "establish those habitats",
@@ -307,6 +325,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "break old habits",
+    definition: "stop continuing bad or unhealthy habits",
     distractors: [
       "break old hobbits",
       "brake old habits",
@@ -315,6 +334,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "I’m here to nudge you",
+    definition: "I'm here to gently push you in the right direction",
     distractors: [
       "I’m here to judge you",
       "I’m here to fudge you",

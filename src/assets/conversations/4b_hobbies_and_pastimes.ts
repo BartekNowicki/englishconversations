@@ -163,6 +163,7 @@ export const discussionQuestions = [
 export const clickablesDistractors = [
   {
     phrase: "be really into video games",
+    definition: "to be very interested or passionate about video games",
     distractors: [
       "be really onto video games",
       "be really into video flames",
@@ -171,6 +172,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "I barely play them anymore",
+    definition: "I almost never play them anymore",
     distractors: [
       "I rarely play them anymore",
       "I barely stay them anymore",
@@ -179,6 +181,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "our interests change",
+    definition: "our preferences or hobbies evolve over time",
     distractors: [
       "our interests range",
       "your interests change",
@@ -187,6 +190,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "stick with us",
+    definition: "they remain with us for a long period",
     distractors: [
       "stick on us",
       "stack with us",
@@ -195,6 +199,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "die out",
+    definition: "gradually disappear or stop existing",
     distractors: [
       "lie out",
       "die on",
@@ -203,6 +208,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "picked up photography",
+    definition: "started photography as a new hobby",
     distractors: [
       "picked in photography",
       "picked off photography",
@@ -211,6 +217,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "to soothe the nerves",
+    definition: "to calm and relax the nerves",
     distractors: [
       "to soothe on nerves",
       "to smooth the nerves",
@@ -219,6 +226,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "to make new friends",
+    definition: "to meet new people and make friendships",
     distractors: [
       "to make new friend",
       "to bake new friends",
@@ -227,6 +235,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "bring people together",
+    definition: "help people unite or come together",
     distractors: [
       "bring people apart",
       "bring peoples together",
@@ -235,6 +244,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "create strong connections",
+    definition: "to form deep and meaningful relationships",
     distractors: [
       "create strong corrections",
       "create long connections",
@@ -243,6 +253,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "something meaningful outside of work",
+    definition: "something valuable and fulfilling outside of work",
     distractors: [
       "something meaningful outside at work",
       "something meaningless outside of work",
@@ -251,6 +262,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "set aside time for",
+    definition: "to schedule time specifically for an activity",
     distractors: [
       "set aside time in",
       "set beside time for",
@@ -259,6 +271,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "stay mentally and emotionally healthy",
+    definition: "to maintain mental and emotional well-being",
     distractors: [
       "stay mentally and emotionally wealthy",
       "stay mentally and emotionally stealthy",
@@ -267,6 +280,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "diminish stress",
+    definition: "to reduce the feeling of stress",
     distractors: [
       "diminish success",
       "finish stress",
@@ -275,6 +289,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "give us a break",
+    definition: "to provide a moment of rest and relaxation",
     distractors: [
       "give us a brake",
       "give on a break",
@@ -283,6 +298,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "my go-to activity",
+    definition: "my favorite activity when I need a break",
     distractors: [
       "my go-to captivity",
       "my go-to activity on",
@@ -291,6 +307,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "helps you recharge",
+    definition: "to help restore energy and vitality",
     distractors: [
       "helps you retard",
       "helps you rechart",
@@ -299,6 +316,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "sense of purpose",
+    definition: "a feeling of having a meaningful role or reason",
     distractors: [
       "sense in purpose",
       "sense of porpoise",
@@ -307,6 +325,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "to take time for ourselves",
+    definition: "to find time for self-care",
     distractors: [
       "to take time in ourselves",
       "to make time for ourselves",
@@ -315,6 +334,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "find balance",
+    definition: "to achieve a sense of stability between different aspects of life",
     distractors: [
       "find ballance",
       "find balance on",

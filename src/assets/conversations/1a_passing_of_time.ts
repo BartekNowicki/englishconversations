@@ -148,6 +148,7 @@ export const discussionQuestions = [
 export const clickablesDistractors = [
   {
     phrase: "Time really flies",
+    definition: "time passes very quickly",
     distractors: [
       "Time really cries",
       "Time really fries",
@@ -156,6 +157,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "Same here",
+    definition: "same situation for me",
     distractors: [
       "Same near",
       "Same deer",
@@ -164,6 +166,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "life gets busy",
+    definition: "life becomes too busy with many responsibilities",
     distractors: [
       "life bets busy",
       "life sets busy",
@@ -172,6 +175,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "didn’t stick with it",
+    definition: "stopped doing it before finishing",
     distractors: [
       "didn’t stick on it",
       "didn’t click with it",
@@ -180,6 +184,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "keep up with everything",
+    definition: "to stay on top of all tasks and responsibilities",
     distractors: [
       "keep up on everything",
       "keep hop with everything",
@@ -188,6 +193,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "wonder where the time went",
+    definition: "we question how time passed so fast",
     distractors: [
       "wonder where the time sent",
       "wonder where the time bent",
@@ -196,6 +202,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "we’re always rushing",
+    definition: "we're always in a hurry and don't slow down",
     distractors: [
       "we’re always brushing",
       "we’re always crushing",
@@ -204,6 +211,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "enjoy the little things",
+    definition: "to appreciate small, simple moments in life",
     distractors: [
       "enjoy in little things",
       "enjoy the brittle things",
@@ -212,6 +220,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "hanging out with friends",
+    definition: "spending time with friends in a relaxed way",
     distractors: [
       "hanging out on friends",
       "hanging about with friends",
@@ -220,6 +229,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "enjoying a day off",
+    definition: "taking time to rest and enjoy leisure activities",
     distractors: [
       "enjoying a day of",
       "deploying a day off",
@@ -228,6 +238,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "make time",
+    definition: "to find the time for important moments",
     distractors: [
       "take time",
       "fake time",
@@ -236,6 +247,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "feel bad for",
+    definition: "to feel guilty for not doing work or other tasks",
     distractors: [
       "feel bad on",
       "peel bad for",
@@ -244,6 +256,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "it’s okay to slow down",
+    definition: "it's acceptable to take time and slow your pace",
     distractors: [
       "it’s okay to slow in",
       "it’s okay to blow down",
@@ -252,6 +265,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "make it a priority to",
+    definition: "to treat something as a main goal or priority",
     distractors: [
       "make it a priority on",
       "take it a priority to",
@@ -260,6 +274,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "live in the moment",
+    definition: "to focus on living in the present and enjoying now",
     distractors: [
       "live on the moment",
       "give in the moment",
@@ -267,5 +282,3 @@ export const clickablesDistractors = [
     ],
   },
 ];
-
-

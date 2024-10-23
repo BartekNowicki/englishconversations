@@ -155,6 +155,7 @@ export const definitions = [
 export const clickablesDistractors = [
   {
     phrase: "set my alarm early",
+    definition: "setting the alarm to go off early in the morning",
     distractors: [
       "set my alarm nearly",
       "set my alarm at early",
@@ -163,6 +164,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "hit snooze",
+    definition: "pressing the snooze button on an alarm to delay waking up for a few more minutes",
     distractors: [
       "hit loose",
       "hit snooze on",
@@ -171,6 +173,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "rushing out the door",
+    definition: "leaving the house quickly and often unprepared due to time pressure",
     distractors: [
       "rushing in the door",
       "rushing out on door",
@@ -179,6 +182,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "alarm goes off",
+    definition: "the moment the alarm sounds to wake someone up",
     distractors: [
       "alarm goes on",
       "alarm blows off",
@@ -187,6 +191,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "saves me a lot of stress",
+    definition: "reduces the amount of stress significantly, making things easier or more manageable",
     distractors: [
       "saves me a lot for stress",
       "shaves me a lot of stress",
@@ -195,6 +200,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "After my commute",
+    definition: "the period after traveling from home to work or back",
     distractors: [
       "After by commute",
       "After my compute",
@@ -203,6 +209,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "back-to-back meetings",
+    definition: "a series of meetings scheduled right after another without breaks in between",
     distractors: [
       "back-for-back meetings",
       "pack-to-back meetings",
@@ -211,6 +218,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "stay focused when there are so many distractions",
+    definition: "maintaining concentration despite multiple interruptions or competing stimuli",
     distractors: [
       "stay focused where there are so many distractions",
       "stay focused when there are too many attractions",
@@ -219,6 +227,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "By the time I get off work",
+    definition: "when I finish work and leave for home",
     distractors: [
       "By the time I set off work",
       "By the time I get of work",
@@ -227,6 +236,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "I’m completely wiped out",
+    definition: "feeling extremely tired or exhausted, with no energy left",
     distractors: [
       "I’m completely wiped in",
       "I’m completely hyped out",
@@ -235,6 +245,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "meal prepping on Sundays",
+    definition: "preparing meals in advance on Sunday for the upcoming week to save time during busy days",
     distractors: [
       "meal prepping in Sundays",
       "meal prepping on Monday",
@@ -243,6 +254,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "It’s a lifesaver",
+    definition: "it's something that provides significant help in difficult situations",
     distractors: [
       "It’s a lifesever",
       "It’s in lifesaver",
@@ -251,6 +263,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "How do you unwind",
+    definition: "the process of relaxing and relieving stress after a busy day",
     distractors: [
       "How do you unfind",
       "How you do unwind",
@@ -259,6 +272,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "glued to my phone",
+    definition: "constantly using or looking at the phone, unable to put it down",
     distractors: [
       "glued at my phone",
       "glued to my bone",
@@ -267,6 +281,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "cutting down on screen time",
+    definition: "reducing the amount of time spent looking at screens, such as phones or computers",
     distractors: [
       "cutting down in screen time",
       "cutting crown on screen time",
@@ -275,6 +290,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "You should give it a shot",
+    definition: "encouraging someone to try something or make an attempt at doing it",
     distractors: [
       "You should give at a shot",
       "You should give it a slot",
@@ -283,6 +299,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "Another issue I have",
+    definition: "another thing I struggle with",
     distractors: [
       "Another issue at have",
       "Another tissue I have",
@@ -291,6 +308,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "keep me going",
+    definition: "something that helps to maintain energy and motivation during the day",
     distractors: [
       "keep me glowing",
       "keep me gone",
@@ -299,6 +317,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "fit in at least 30 minutes",
+    definition: "finding time to dedicate at least 30 minutes to an activity, usually exercise",
     distractors: [
       "fit on at least 30 minutes",
       "sit in at least 30 minutes",
@@ -307,6 +326,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "build from there",
+    definition: "starting small and gradually increasing efforts or progress based on previous success",
     distractors: [
       "build on there",
       "build from here",
@@ -314,3 +334,4 @@ export const clickablesDistractors = [
     ],
   },
 ];
+

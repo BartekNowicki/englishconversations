@@ -148,6 +148,7 @@ export const discussionQuestions = [
 export const clickablesDistractors = [
   {
     phrase: "I just can’t help",
+    definition: "I feel unable to stop or control doing something, even though I know I shouldn’t",
     distractors: [
       "I just can’t hold",
       "I just can’t kelp",
@@ -156,6 +157,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "rushing out the door",
+    definition: "leaving the house quickly, often without enough time or preparation",
     distractors: [
       "rushing in the door",
       "rushing out on door",
@@ -164,6 +166,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "saves me time",
+    definition: "helps me have more time by making things more efficient or preparing ahead",
     distractors: [
       "shaves me time",
       "saves on time",
@@ -172,6 +175,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "Once I get to work",
+    definition: "when I arrive at work",
     distractors: [
       "Once I set to work",
       "Once I bet to work",
@@ -180,6 +184,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "I find it hard to stay focused",
+    definition: "it's difficult for me to keep my attention on a task or subject",
     distractors: [
       "I find it hard in stay focused",
       "I bind it hard to stay focused",
@@ -188,6 +193,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "completely drained",
+    definition: "extremely tired or exhausted with no energy left",
     distractors: [
       "completely trained",
       "completely rained",
@@ -196,6 +202,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "by lunchtime",
+    definition: "around the middle of the day, close to lunch",
     distractors: [
       "by munch time",
       "by lunchtime in",
@@ -204,6 +211,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "to wind down",
+    definition: "to relax and reduce stress after a long day or activity",
     distractors: [
       "to wind in",
       "to wind on",
@@ -212,6 +220,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "scroll through my phone",
+    definition: "using my phone, often mindlessly going through apps or websites",
     distractors: [
       "scroll on my phone",
       "scroll threw my phone",
@@ -220,6 +229,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "cutting down on",
+    definition: "reducing or limiting the amount of something",
     distractors: [
       "cutting down at",
       "cutting down in",
@@ -228,6 +238,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "get better sleep",
+    definition: "improving your ability to rest better during sleep",
     distractors: [
       "get better steep",
       "bet better sleep",
@@ -236,6 +247,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "give it a shot",
+    definition: "trying something new, especially after encouragement",
     distractors: [
       "give it a slot",
       "give it a dot",
@@ -244,6 +256,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "on my commute",
+    definition: "during the time you travel from home to work or back",
     distractors: [
       "on my compute",
       "on by commute",
@@ -252,6 +265,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "over time",
+    definition: "gradually happening over a period of time",
     distractors: [
       "under time",
       "over in time",
@@ -260,6 +274,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "things get easier",
+    definition: "as time passes, things become simpler or easier to manage",
     distractors: [
       "things set easier",
       "things get queasier",
@@ -267,3 +282,4 @@ export const clickablesDistractors = [
     ],
   },
 ];
+

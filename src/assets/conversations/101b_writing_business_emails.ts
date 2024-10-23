@@ -164,6 +164,7 @@ export const discussionQuestions = [
 export const clickablesDistractors = [
   {
     phrase: "follow up and ensure",
+    definition: "to contact someone again to confirm something",
     distractors: [
       "follow in and ensure",
       "fallow up and ensure",
@@ -172,6 +173,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "received my previous email",
+    definition: "received my previous email about the subject",
     distractors: [
       "received my previous meal",
       "received on previous email",
@@ -180,6 +182,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "regarding the modifications",
+    definition: "concerning the changes or modifications",
     distractors: [
       "regarding in modifications",
       "regarding the mortifications",
@@ -188,6 +191,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "revert with my feedback",
+    definition: "respond with feedback or comments",
     distractors: [
       "revert at my feedback",
       "revert with my feedblack",
@@ -196,6 +200,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "set to be enforced",
+    definition: "expected to be implemented or applied",
     distractors: [
       "set on be enforced",
       "bet to be enforced",
@@ -204,6 +209,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "in light of",
+    definition: "because of something happening",
     distractors: [
       "in bright of",
       "in light on",
@@ -212,6 +218,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "key adjustments",
+    definition: "important changes that need attention",
     distractors: [
       "key readjustments",
       "key adjustments at",
@@ -220,6 +227,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "reflect the updated requirements",
+    definition: "to update something to meet new requirements",
     distractors: [
       "reflect on the updated requirements",
       "reflect the updated requisites",
@@ -228,6 +236,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "arrange a follow-up meeting",
+    definition: "schedule another meeting to follow up on previous discussions",
     distractors: [
       "arrange in follow-up meeting",
       "arrange a follow-up seating",
@@ -236,6 +245,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "finalize everything",
+    definition: "to complete all tasks and reach a conclusion",
     distractors: [
       "finalize anything",
       "finalize at everything",
@@ -244,6 +254,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "schedule a meeting for",
+    definition: "plan a meeting at a specific time",
     distractors: [
       "schedule a meeting on",
       "schedule a greeting for",
@@ -252,6 +263,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "in line with",
+    definition: "in accordance with the standards or rules",
     distractors: [
       "in line on",
       "in line for",
@@ -260,6 +272,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "comply with the new guidelines",
+    definition: "to meet the legal or official requirements",
     distractors: [
       "comply on the new guidelines",
       "complain with the new guidelines",
@@ -268,6 +281,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "redrafted and circulated for review",
+    definition: "a revised version that is sent for feedback",
     distractors: [
       "redrafted and circulated on review",
       "redrafted and recirculated for review",
@@ -276,6 +290,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "liaise with our internal team",
+    definition: "work with the internal team for coordination",
     distractors: [
       "liaise at our internal team",
       "liaise with your internal team",
@@ -284,6 +299,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "any further developments",
+    definition: "additional progress or changes",
     distractors: [
       "any further developings",
       "any farther developments",
@@ -292,6 +308,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "keep you updated",
+    definition: "provide updates as they happen",
     distractors: [
       "keep on updated",
       "keep your updated",
@@ -300,6 +317,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "in place for the final approval",
+    definition: "everything is prepared for final approval",
     distractors: [
       "in place at the final approval",
       "in place on the final approval",
@@ -308,6 +326,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "include our legal department",
+    definition: "involve the legal team to review",
     distractors: [
       "include on legal department",
       "exclude our legal department",
@@ -316,6 +335,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "cross-check everything",
+    definition: "check all details to ensure accuracy",
     distractors: [
       "cross-check anything",
       "cross-check at everything",
@@ -323,3 +343,4 @@ export const clickablesDistractors = [
     ],
   },
 ];
+

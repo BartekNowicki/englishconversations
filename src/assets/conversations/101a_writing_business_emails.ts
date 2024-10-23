@@ -149,6 +149,7 @@ export const discussionQuestions = [
 export const clickablesDistractors = [
   {
     phrase: "confirm if you received",
+    definition: "to check if someone received your email",
     distractors: [
       "confirm if you deceived",
       "confirm at you received",
@@ -157,6 +158,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "regarding the changes",
+    definition: "concerning the updates or modifications in policy",
     distractors: [
       "regarding the ranges",
       "regarding at the changes",
@@ -165,6 +167,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "the new regulations come into effect",
+    definition: "when the new rules or laws start to apply",
     distractors: [
       "the new regulations come onto effect",
       "the new regulations come in effect",
@@ -173,6 +176,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "Due to",
+    definition: "because of a specific reason",
     distractors: [
       "Due on",
       "Dew to",
@@ -181,6 +185,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "new requirements we need to address",
+    definition: "new conditions or rules that must be dealt with",
     distractors: [
       "new requirements we need at address",
       "new requirements we knead to address",
@@ -189,6 +194,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "adjust our proposal",
+    definition: "to modify or change our proposal to fit the new requirements",
     distractors: [
       "adjust on proposal",
       "adjust their proposal",
@@ -197,6 +203,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "follow-up meeting",
+    definition: "a meeting to review progress or discuss details",
     distractors: [
       "follow-up on meeting",
       "follow-up seating",
@@ -205,6 +212,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "finalize everything",
+    definition: "to complete and bring everything to a conclusion",
     distractors: [
       "finalize anything",
       "finalize everything at",
@@ -213,6 +221,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "send over a calendar invite",
+    definition: "send a digital invitation for a meeting in a calendar app",
     distractors: [
       "send under a calendar invite",
       "send over at calendar invite",
@@ -221,6 +230,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "based on the updated guidelines",
+    definition: "according to the updated rules or instructions",
     distractors: [
       "based in the updated guidelines",
       "based up the updated guidelines",
@@ -229,6 +239,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "heads-up",
+    definition: "an advance notice or warning",
     distractors: [
       "heads-in",
       "heads-down",
@@ -237,6 +248,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "drafted and sent over for review",
+    definition: "prepared and sent to be reviewed",
     distractors: [
       "crafted and sent over for review",
       "drafted and sent in for review",
@@ -245,6 +257,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "we’re aligned",
+    definition: "everyone agrees and is on the same page",
     distractors: [
       "we’re aligned in",
       "we’re aligned at",
@@ -253,6 +266,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "feel free to reach out",
+    definition: "you are welcome to contact if needed",
     distractors: [
       "feel free to teach out",
       "feel free to reach in",
@@ -261,6 +275,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "double-check",
+    definition: "to check something again to ensure accuracy",
     distractors: [
       "double-track",
       "double-check at",
@@ -268,3 +283,4 @@ export const clickablesDistractors = [
     ],
   },
 ];
+

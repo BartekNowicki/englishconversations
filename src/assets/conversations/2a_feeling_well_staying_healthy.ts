@@ -148,6 +148,7 @@ export const discussionQuestions = [
 export const clickablesDistractors = [
   {
     phrase: "feeling a bit off",
+    definition: "feeling slightly unwell",
     distractors: [
       "feeling a bit on",
       "feeling a bit out",
@@ -156,6 +157,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "coming down with something",
+    definition: "starting to get sick",
     distractors: [
       "coming down on something",
       "coming down in something",
@@ -164,6 +166,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "getting enough rest",
+    definition: "getting adequate sleep",
     distractors: [
       "setting enough rest",
       "betting enough rest",
@@ -172,6 +175,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "staying up late working",
+    definition: "staying up late to work",
     distractors: [
       "staying up late walking",
       "staying up late lurking",
@@ -180,6 +184,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "so much on my mind",
+    definition: "having too much on your mind",
     distractors: [
       "so much at my mind",
       "so much of my mind",
@@ -188,6 +193,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "relaxing before bed",
+    definition: "relaxing before going to bed",
     distractors: [
       "relaxing before head",
       "relaxing before shed",
@@ -196,6 +202,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "mess with your sleep",
+    definition: "disrupting your sleep",
     distractors: [
       "mess at your sleep",
       "mess with your leap",
@@ -204,6 +211,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "Your health comes first",
+    definition: "your health is the most important thing",
     distractors: [
       "Your health comes thirst",
       "Your health comes worst",
@@ -212,6 +220,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "to take better care of",
+    definition: "prioritizing your well-being",
     distractors: [
       "to take better care in",
       "to take better care on",
@@ -220,6 +229,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "skipping meals",
+    definition: "missing meals",
     distractors: [
       "skipping deals",
       "skipping seals",
@@ -228,6 +238,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "keep your energy up",
+    definition: "maintaining your energy levels",
     distractors: [
       "keep your energy on",
       "keep your energy down",
@@ -236,6 +247,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "preparing some easy meals",
+    definition: "preparing simple meals in advance",
     distractors: [
       "preparing some easy seals",
       "preparing some easy deals",
@@ -244,6 +256,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "I’ll keep that in mind",
+    definition: "I will remember that",
     distractors: [
       "I’ll keep that on mind",
       "I’ll keep that in bind",
@@ -252,6 +265,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "get back on track",
+    definition: "getting back to a good routine",
     distractors: [
       "get back in track",
       "get back by track",
@@ -260,6 +274,7 @@ export const clickablesDistractors = [
   },
   {
     phrase: "That’s the spirit",
+    definition: "that's the right attitude",
     distractors: [
       "That’s the sprint",
       "That’s the spurt",
