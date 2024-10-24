@@ -22,6 +22,7 @@ interface ConversationModule {
   clickablesPl: string[];
   title: string;
   discussionQuestions: string[];
+  clickableDistractors: any[];
 }
 
 interface ConversationProps {

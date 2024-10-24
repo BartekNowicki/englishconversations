@@ -152,7 +152,7 @@ export const definitions = [
   "starting small and gradually increasing efforts or progress based on previous success",
 ];
 
-export const clickablesDistractors = [
+export const clickableDistractors = [
   {
     phrase: "set my alarm early",
     definition: "setting the alarm to go off early in the morning",

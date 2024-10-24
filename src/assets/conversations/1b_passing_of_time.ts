@@ -160,7 +160,7 @@ export const discussionQuestions = [
   "5. What can you change to manage time more effectively?"
 ];
 
-export const clickablesDistractors = [
+export const clickableDistractors = [
   {
     phrase: "just wrapped up",
     definition: "has recently finished or ended",

@@ -146,7 +146,7 @@ export const discussionQuestions = [
   "5. Why is it important to double-check details in business communication?",
 ];
 
-export const clickablesDistractors = [
+export const clickableDistractors = [
   {
     phrase: "confirm if you received",
     definition: "to check if someone received your email",

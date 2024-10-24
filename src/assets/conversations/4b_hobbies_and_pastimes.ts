@@ -160,7 +160,7 @@ export const discussionQuestions = [
   "5. How does balancing work and hobbies contribute to a fulfilling life?"
 ];
 
-export const clickablesDistractors = [
+export const clickableDistractors = [
   {
     phrase: "be really into video games",
     definition: "to be very interested or passionate about video games",

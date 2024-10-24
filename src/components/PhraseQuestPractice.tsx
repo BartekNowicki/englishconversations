@@ -1,13 +1,16 @@
 
 import React, { useState } from 'react';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import ConversationSelection from './ConversationSelection';
 import { loadConversationById } from '../utils/loadConversation';
 import PhraseQuestPracticeSession from './PhraseQuestPracticeSession';
+import { Learnable } from '../types';
+
 
 interface ClickableDistractor {
   phrase: string;
   distractors: string[];
+  definition: string;
 }
 
 interface PhraseQuestPracticeProps {
@@ -31,7 +34,7 @@ const PhraseQuestPractice: React.FC<PhraseQuestPracticeProps> = ({ token, userLe
         const conversation = await loadConversationById(selectedIds[0]);
         if (conversation) {
           allClickables = conversation.clickables;
-          allClickableDistractors = conversation.clickablesDistractors;
+          allClickableDistractors = conversation.clickableDistractors;
         }
       } catch (error) {
         console.error(`Error loading conversation for ID ${selectedIds[0]}:`, error);

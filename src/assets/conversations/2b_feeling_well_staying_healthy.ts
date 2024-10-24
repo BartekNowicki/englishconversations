@@ -160,7 +160,7 @@ export const discussionQuestions = [
   "5. How can breaking old habits contribute to a healthier lifestyle?"
 ];
 
-export const clickablesDistractors = [
+export const clickableDistractors = [
   {
     phrase: "feeling a bit out of sorts",
     definition: "feeling slightly unwell or not quite right",

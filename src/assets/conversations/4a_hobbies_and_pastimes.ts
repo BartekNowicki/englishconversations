@@ -145,7 +145,7 @@ export const discussionQuestions = [
   "5. What are some hobbies that help you relax and feel good?"
 ];
 
-export const clickablesDistractors = [
+export const clickableDistractors = [
   {
     phrase: "barely play them",
     definition: "play them very rarely or infrequently",

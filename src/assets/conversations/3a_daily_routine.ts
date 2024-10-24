@@ -145,7 +145,7 @@ export const discussionQuestions = [
   "5. What small changes have you made to improve your daily energy levels?"
 ];
 
-export const clickablesDistractors = [
+export const clickableDistractors = [
   {
     phrase: "I just can’t help",
     definition: "I feel unable to stop or control doing something, even though I know I shouldn’t",

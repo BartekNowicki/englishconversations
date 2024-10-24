@@ -145,7 +145,7 @@ export const discussionQuestions = [
   "5. What changes could you make to enjoy life more in the present?"
 ];
 
-export const clickablesDistractors = [
+export const clickableDistractors = [
   {
     phrase: "Time really flies",
     definition: "time passes very quickly",

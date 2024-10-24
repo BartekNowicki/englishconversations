@@ -145,7 +145,7 @@ export const discussionQuestions = [
   "5. How do you prioritize your health when life gets busy?"
 ];
 
-export const clickablesDistractors = [
+export const clickableDistractors = [
   {
     phrase: "feeling a bit off",
     definition: "feeling slightly unwell",

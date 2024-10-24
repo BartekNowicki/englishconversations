@@ -161,7 +161,7 @@ export const discussionQuestions = [
   "5. How can cross-checking ensure compliance in business agreements?",
 ];
 
-export const clickablesDistractors = [
+export const clickableDistractors = [
   {
     phrase: "follow up and ensure",
     definition: "to contact someone again to confirm something",

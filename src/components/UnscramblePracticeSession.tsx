@@ -173,12 +173,13 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
             {word}
           </Button>
         ))}
-    <Button
-                disabled={false}
+            {/* a placeholder button keeping height */}
+            <Button
+                disabled={true}
                 key={999}
                 variant="contained"
                 onClick={() => {}}
-                sx={{ color: 'transparent', backgroundColor: 'transparent' }}
+                sx={{ width: '1px', color: 'transparent', backgroundColor: 'transparent' }}
               >
                 .
               </Button>
@@ -186,7 +187,6 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
 
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
         <Button
-          disabled={isCorrect !== true}
           variant="contained"
           onClick={handleCheckAnswer}
           sx={{
@@ -204,11 +204,10 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
         </Button>
 
         <Button
-          disabled={isCorrect === true}
           variant="contained"
           onClick={handleNext}
           sx={{ backgroundColor: '#00e676', color: '#000' }}
-          disabled={currentIndex >= conversation.clickables.length}
+          disabled={currentIndex >= (conversation.clickables?.length || 0)}
         >
           Next
         </Button>
