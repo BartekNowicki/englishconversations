@@ -27,7 +27,6 @@ export const loadConversationById = async (id: string) => {
 
   try {
     const module = (await conversationModules[matchedFilePath]()) as ConversationModule;
-    console.log("loaded clickables: ", module.clickables)///
     return {
       conversation: module.conversation,
       clickables: module.clickables,

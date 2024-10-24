@@ -124,8 +124,8 @@ function App() {
                 <Route path="/practice/flashcards" element={<FlashCardPractice learnables={userLearnables} token={token || ''}/>} />
 
                 {/* Unscramble Practice Routes */}
-                <Route path="/practice/unscramble/" element={<UnscramblePractice token={token || ''}/>} />
-                <Route path="/practice/unscramble/:id" element={<UnscramblePractice token={token || ''}/>} />
+                <Route path="/practice/unscramble/" element={<UnscramblePractice token={token || ''} userLearnables={userLearnables}/>} />
+                <Route path="/practice/unscramble/:id" element={<UnscramblePractice token={token || '' } userLearnables={userLearnables}/>} />
 
                 {/* Phrase Quest Routes */}
                 <Route path="/practice/phrasequest" element={<PhraseQuestPractice token={token || ''}/>} />

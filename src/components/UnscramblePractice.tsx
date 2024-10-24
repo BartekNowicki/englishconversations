@@ -8,12 +8,12 @@ import { Learnable } from '../types';
 
 interface UnscramblePracticeProps {
   token: string;
+  userLearnables: Learnable[];
 }
 
-const UnscramblePractice: React.FC<UnscramblePracticeProps> = ({ token }) => {
+const UnscramblePractice: React.FC<UnscramblePracticeProps> = ({ token, userLearnables }) => {
   const { id } = useParams<{ id: string }>();
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
-  const [learnables, setLearnables] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -25,7 +25,6 @@ const UnscramblePractice: React.FC<UnscramblePracticeProps> = ({ token }) => {
           setLoading(true);
           const conversationData = await loadConversationById(id);
           setSelectedConversation(conversationData);
-          setLearnables(conversationData.clickables);
         } catch (error) {
           setError('Failed to load conversation');
         } finally {
@@ -58,7 +57,7 @@ const UnscramblePractice: React.FC<UnscramblePracticeProps> = ({ token }) => {
       {error && <div>{error}</div>}
 
       {selectedConversation && (
-        <UnscramblePracticeSession conversation={selectedConversation} token={token} learnables={learnables}/>
+        <UnscramblePracticeSession conversation={selectedConversation} token={token} userLearnables={userLearnables}/>
       )}
     </Box>
   );

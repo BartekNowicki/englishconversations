@@ -10,10 +10,10 @@ interface UnscramblePracticeSessionProps {
     definitions: string[];
   };
   token: string;
-  learnables: Learnable[];
+  userLearnables: Learnable[];
 }
 
-const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ conversation, token, learnables }) => {
+const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ conversation, token, userLearnables }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [scrambledWords, setScrambledWords] = useState<string[]>([]);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
@@ -21,7 +21,6 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const navigate = useNavigate();
 
-  console.log("learnables", learnables);
 
   useEffect(() => {
     setScrambledWords(shuffle(conversation.clickables[currentIndex].split(' ')));
@@ -54,14 +53,14 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
       setIsCorrect(true);
 
       try {
-        const foundLearnable = learnables?.find(l => l.phrase === correctAnswer);
+        const foundLearnable = userLearnables.find(l => l.phrase === correctAnswer);
 
         if (foundLearnable && foundLearnable.id) {
           // If the correct phrase is found in `learnables`, make the API call
           await increaseRetention(foundLearnable.id, token);
           console.log("Retention increased for learnable with ID:", foundLearnable.id);
         } else {
-          console.log("Learnable not found in the fetched learnables. Skipping retention increase.");
+          console.log(`Learnable ${correctAnswer} not found in the fetched userLearnables. Skipping retention increase.`);
         }
       } catch (error) {
         console.error("Error increasing retention:", error);
