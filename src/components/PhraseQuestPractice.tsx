@@ -5,27 +5,33 @@ import ConversationSelection from './ConversationSelection';
 import { loadConversationById } from '../utils/loadConversation';
 import PhraseQuestPracticeSession from './PhraseQuestPracticeSession';
 
-interface PhraseQuestPracticeSessionDistractor {
+interface ClickableDistractor {
   phrase: string;
   distractors: string[];
 }
 
-const PhraseQuestPractice: React.FC = () => {
+interface PhraseQuestPracticeProps {
+  token: string;
+  userLearnables: Learnable[];
+}
+
+
+const PhraseQuestPractice: React.FC<PhraseQuestPracticeProps> = ({ token, userLearnables }) => {
   const [selectedConversations, setSelectedConversations] = useState<string[]>([]);
-  const [learnables, setLearnables] = useState<string[]>([]);
-  const [learnableDistractors, setLearnableDistractors] = useState<PhraseQuestPracticeSessionDistractor[]>([]);
+  const [clickables, setClickables] = useState<string[]>([]);
+  const [clickableDistractors, setClickableDistractors] = useState<ClickableDistractor[]>([]);
 
   const handleStartPractice = async (selectedIds: string[]) => {
     setSelectedConversations(selectedIds);
-    let allLearnables: string[] = [];
-    let allLearnableDistractors: PhraseQuestPracticeSessionDistractor[] = [];
+    let allClickables: string[] = [];
+    let allClickableDistractors: ClickableDistractor[] = [];
 
     if (selectedIds.length === 1) {
       try {
         const conversation = await loadConversationById(selectedIds[0]);
         if (conversation) {
-          allLearnables = conversation.clickables;
-          allLearnableDistractors = conversation.clickablesDistractors;
+          allClickables = conversation.clickables;
+          allClickableDistractors = conversation.clickablesDistractors;
         }
       } catch (error) {
         console.error(`Error loading conversation for ID ${selectedIds[0]}:`, error);
@@ -45,21 +51,20 @@ const PhraseQuestPractice: React.FC = () => {
 
       loadedConversations.forEach(conversation => {
         if (conversation && conversation.clickables) {
-          allLearnables = [...allLearnables, ...conversation.clickables];
-          allLearnableDistractors = [...allLearnableDistractors, ...conversation.clickablesDistractors];
+          allClickables = [...allClickables, ...conversation.clickables];
+          allClickableDistractors = [...allClickableDistractors, ...conversation.clickableDistractors];
         }
       });
     }
 
-    setLearnables(allLearnables);
-    setLearnableDistractors(allLearnableDistractors);
-
+    setClickables(allClickables);
+    setClickableDistractors(allClickableDistractors);
   };
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#141414', width: '100%' }}>
-      {!learnables.length && <ConversationSelection onStartPractice={handleStartPractice} multipleSelection={true} />}
-      {!!learnables.length && <PhraseQuestPracticeSession learnables={learnables} learnableDistractors={learnableDistractors}/>}
+      {!clickables.length && <ConversationSelection onStartPractice={handleStartPractice} multipleSelection={true} />}
+      {!!clickables.length && <PhraseQuestPracticeSession token={token}clickables={clickables} clickableDistractors={clickableDistractors} userLearnables={userLearnables}/>}
     </Box>
   );
 };

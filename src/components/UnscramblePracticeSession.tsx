@@ -49,7 +49,7 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
     const correctAnswer = conversation.clickables[currentIndex];
 
     if (userAnswer === correctAnswer) {
-      setMessage('Correct! You unscrambled the phrase.');
+      setMessage(`Correct!  ${correctAnswer}`);
       setIsCorrect(true);
 
       try {
@@ -120,6 +120,7 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
         {selectedWords.length > 0 ? (
           selectedWords.map((word, index) => (
             <Button
+              disabled={isCorrect === true}
               key={index}
               variant="outlined"
               onClick={() => handleRemoveSelectedWord(word)}
@@ -163,6 +164,7 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
       >
         {scrambledWords.map((word, index) => (
           <Button
+            disabled={isCorrect === true}
             key={index}
             variant="contained"
             onClick={() => handleWordSelect(word)}
@@ -171,10 +173,20 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
             {word}
           </Button>
         ))}
+    <Button
+                disabled={false}
+                key={999}
+                variant="contained"
+                onClick={() => {}}
+                sx={{ color: 'transparent', backgroundColor: 'transparent' }}
+              >
+                .
+              </Button>
       </Box>
 
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
         <Button
+          disabled={isCorrect !== true}
           variant="contained"
           onClick={handleCheckAnswer}
           sx={{
@@ -192,6 +204,7 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
         </Button>
 
         <Button
+          disabled={isCorrect === true}
           variant="contained"
           onClick={handleNext}
           sx={{ backgroundColor: '#00e676', color: '#000' }}
@@ -201,6 +214,7 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
         </Button>
 
         <Button
+          disabled={isCorrect === true}
           variant="contained"
           onClick={() => {
             navigate('/practice/unscramble/');
