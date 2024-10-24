@@ -7,10 +7,12 @@ interface PhraseQuestPracticeSessionProps {
   learnableDistractors: { phrase: string; distractors: string[] }[];
 }
 
+const INITIAL_MESSAGE = 'do you know the correct phrase?'
+
 const PhraseQuestPracticeSession: React.FC<PhraseQuestPracticeSessionProps> = ({ learnables, learnableDistractors }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [message, setMessage] = useState<string | null>('do you know the correct phrase?');
+  const [message, setMessage] = useState<string | null>(INITIAL_MESSAGE);
   const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -35,11 +37,11 @@ const PhraseQuestPracticeSession: React.FC<PhraseQuestPracticeSessionProps> = ({
   };
 
   const handleOptionSelect = (selectedOption: string) => {
-    setSelectedOption(selectedOption); // Track the selected option
+    setSelectedOption(selectedOption);
     const correctPhrase = learnables[currentIndex];
     if (selectedOption === correctPhrase) {
       setIsCorrect(true);
-      setMessage('Correct! You selected the right phrase.');
+      setMessage(INITIAL_MESSAGE);
     } else {
       setIsCorrect(false);
       setMessage('Incorrect! Try again.');
@@ -61,6 +63,8 @@ const PhraseQuestPracticeSession: React.FC<PhraseQuestPracticeSessionProps> = ({
     navigate('/practice/phrasequest/');
     window.location.reload(); // Force page reload after navigation
   };
+
+  const getMessageColor = () => isCorrect === null ? 'gray' : isCorrect === true ? 'green' : 'red';
 
   return (
     <Box
@@ -134,7 +138,7 @@ const PhraseQuestPracticeSession: React.FC<PhraseQuestPracticeSessionProps> = ({
      </Box>
 
       {/* Display feedback message */}
-      <Typography variant="h6" sx={{ color: isCorrect ? 'green' : 'red', marginBottom: '100px', marginTop: '50px' }}>
+      <Typography variant="h6" sx={{ color: getMessageColor(), marginBottom: '100px', marginTop: '50px' }}>
         {message}
       </Typography>
 
