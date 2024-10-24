@@ -20,7 +20,7 @@ interface PhraseQuestPracticeProps {
 
 
 const PhraseQuestPractice: React.FC<PhraseQuestPracticeProps> = ({ token, userLearnables }) => {
-  const [selectedConversations, setSelectedConversations] = useState<string[]>([]);
+  const [_selectedConversations, setSelectedConversations] = useState<string[]>([]); //_unused
   const [clickables, setClickables] = useState<string[]>([]);
   const [clickableDistractors, setClickableDistractors] = useState<ClickableDistractor[]>([]);
 
