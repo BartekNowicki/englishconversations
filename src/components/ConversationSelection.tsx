@@ -8,7 +8,7 @@ interface ConversationSelectionProps {
 }
 
 const ConversationSelection: React.FC<ConversationSelectionProps> = ({ onStartPractice, multipleSelection = false }) => {
-  const [selectedConversationIds, setSelectedConversationIds] = useState<string[]>(multipleSelection ? [] : '');
+  const [selectedConversationIds, setSelectedConversationIds] = useState<string[]>([]);
   const [availableConversations, setAvailableConversations] = useState<{ id: string, title: string }[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -35,16 +35,19 @@ const ConversationSelection: React.FC<ConversationSelectionProps> = ({ onStartPr
 
   const handleConversationSelect = (event: any) => {
     const value = event.target.value;
+
     if (multipleSelection) {
+      // For multiple selection, we use the value as an array
       setSelectedConversationIds(value);
     } else {
+      // For single selection, we ensure the selected value is stored as the first and only element in the array
       setSelectedConversationIds([value]);
     }
   };
 
   const handleStartPractice = () => {
     if (selectedConversationIds.length > 0) {
-      onStartPractice(selectedConversationIds);
+      onStartPractice(multipleSelection ? selectedConversationIds : selectedConversationIds[0]);
     }
   };
 
