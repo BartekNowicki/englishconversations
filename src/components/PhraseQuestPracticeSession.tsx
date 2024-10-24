@@ -3,11 +3,12 @@ import { Box, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { increaseRetention } from '../utils/increaseRetention';
 import { Learnable } from '../types';
+import { ClickableDistractor } from './PhraseQuestPractice';
 
 interface PhraseQuestPracticeSessionProps {
   token: string;
   clickables: string[];
-  clickableDistractors: { phrase: string; distractors: string[] }[];
+  clickableDistractors: ClickableDistractor[];
   userLearnables: Learnable[];
 }
 

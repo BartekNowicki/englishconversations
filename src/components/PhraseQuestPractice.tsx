@@ -7,7 +7,7 @@ import PhraseQuestPracticeSession from './PhraseQuestPracticeSession';
 import { Learnable } from '../types';
 
 
-interface ClickableDistractor {
+export interface ClickableDistractor {
   phrase: string;
   distractors: string[];
   definition: string;

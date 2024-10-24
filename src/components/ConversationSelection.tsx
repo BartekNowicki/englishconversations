@@ -3,7 +3,7 @@ import { Box, Typography, FormControl, InputLabel, Select, MenuItem, Button } fr
 import { conversationModules } from '../utils/loadConversation';
 
 interface ConversationSelectionProps {
-  onStartPractice: (selectedIds: string[]) => void;
+  onStartPractice: Function;
   multipleSelection?: boolean;
 }
 
