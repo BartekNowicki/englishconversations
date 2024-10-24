@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { increaseRetention } from '../utils/increaseRetention';
+import { Learnable } from '../types';
 
 interface PhraseQuestPracticeSessionProps {
   token: string;
