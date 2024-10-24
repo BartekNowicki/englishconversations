@@ -16,9 +16,10 @@ export interface ConversationModule {
  * @returns An object containing the conversation data.
  */
 export const loadConversationById = async (id: string) => {
-  const matchedFilePath = Object.keys(conversationModules).find((filePath) =>
-    filePath.includes(id)
-  );
+  const matchedFilePath = Object.keys(conversationModules).find((filePath) => {
+      const fileName = filePath.split('/').pop()?.replace('.ts', '');
+      return fileName?.startsWith(id);
+    });
 
   if (!matchedFilePath) {
     throw new Error(`No conversation found for this ID: ${id}`);
@@ -26,6 +27,7 @@ export const loadConversationById = async (id: string) => {
 
   try {
     const module = (await conversationModules[matchedFilePath]()) as ConversationModule;
+    console.log("loaded clickables: ", module.clickables)///
     return {
       conversation: module.conversation,
       clickables: module.clickables,

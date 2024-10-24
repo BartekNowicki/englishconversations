@@ -10,7 +10,7 @@ import FlashCardPractice from './components/FlashCardPractice';
 import UnscramblePractice from './components/UnscramblePractice';
 import PhraseQuestPractice from './components/PhraseQuestPractice';
 import { useState, useEffect } from 'react';
-import { useLearnables } from './hooks/useLearnables';
+import { useUserLearnables } from './hooks/useUserLearnables';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -45,7 +45,7 @@ function App() {
     setToken(null);
   };
 
-  const { learnables, loading, error, fetchLearnables } = useLearnables(token || '');
+  const { userLearnables, loading, error, fetchUserLearnables } = useUserLearnables(token || '');
 
   return (
     <ThemeProvider theme={theme}>
@@ -101,7 +101,7 @@ function App() {
                   path="/phrases"
                   element={
                     isLoggedIn ? (
-                      <PhrasesPage learnables={learnables} loading={loading} error={error} />
+                      <PhrasesPage learnables={userLearnables} loading={loading} error={error} />
                     ) : (
                       <Navigate to="/" />
                     )
@@ -111,7 +111,7 @@ function App() {
                 <Route
                   path="/conversation/:id"
                   element={
-                    isLoggedIn ? (<ConversationPage token={token || ''} fetchLearnables={fetchLearnables}/>) : (<Navigate to="/" />)
+                    isLoggedIn ? (<ConversationPage token={token || ''} fetchLearnables={fetchUserLearnables}/>) : (<Navigate to="/" />)
                   }
                 />
 
@@ -121,7 +121,7 @@ function App() {
                   }
                 />
                 <Route path="/practice/1" element={isLoggedIn ? <PrepositionPractice /> : <Navigate to="/" />} />
-                <Route path="/practice/flashcards" element={<FlashCardPractice learnables={learnables} token={token || ''}/>} />
+                <Route path="/practice/flashcards" element={<FlashCardPractice learnables={userLearnables} token={token || ''}/>} />
 
                 {/* Unscramble Practice Routes */}
                 <Route path="/practice/unscramble/" element={<UnscramblePractice token={token || ''}/>} />

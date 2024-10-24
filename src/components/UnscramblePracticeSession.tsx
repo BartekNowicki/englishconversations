@@ -21,6 +21,8 @@ const UnscramblePracticeSession: React.FC<UnscramblePracticeSessionProps> = ({ c
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const navigate = useNavigate();
 
+  console.log("learnables", learnables);
+
   useEffect(() => {
     setScrambledWords(shuffle(conversation.clickables[currentIndex].split(' ')));
   }, [currentIndex, conversation]);

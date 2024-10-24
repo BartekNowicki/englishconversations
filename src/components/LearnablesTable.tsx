@@ -19,7 +19,7 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Learnable } from '../types';
-import { useLearnables } from '../hooks/useLearnables';
+import { useUserLearnables } from '../hooks/useUserLearnables';
 import { saveLearnable } from '../utils/saveLearnable';
 import { deleteLearnable } from '../utils/deleteLearnable';
 import ConfirmationModal from './ConfirmationModal';
@@ -34,7 +34,7 @@ interface LearnablesTableProps {
 }
 
 const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
-  const { learnables, loading, error, fetchLearnables } = useLearnables(token);
+  const { userLearnables, loading, error, fetchUserLearnables } = useUserLearnables(token);
   const [selectedLearnable, setSelectedLearnable] = useState<Learnable | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -78,7 +78,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
 
     try {
       await saveLearnable(learnableData, token, isEditing, selectedLearnable?.id);
-      fetchLearnables();
+      fetchUserLearnables();
       setConfirmationMessage(isEditing ? 'Phrase updated successfully!' : 'Phrase created successfully!');
     } catch (error) {
       console.error('Error during save:', error);
@@ -97,7 +97,7 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
       try {
         await deleteLearnable(learnableToDelete.id, token);
         setConfirmationMessage(`Phrase "${learnableToDelete.phrase}" deleted successfully!`);
-        fetchLearnables();
+        fetchUserLearnables();
       } catch (error) {
         console.error('Error deleting phrase:', error);
       } finally {
@@ -144,14 +144,14 @@ const LearnablesTable: React.FC<LearnablesTableProps> = ({ token }) => {
                   <Typography color="error">{error}</Typography>
                 </TableCell>
               </TableRow>
-            ) : learnables.length === 0 ? (
+            ) : userLearnables.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={5} align="center" sx={{ color: '#fff' }}>
                   <Typography>No phrases found.</Typography>
                 </TableCell>
               </TableRow>
             ) : (
-              learnables.map((learnable) => (
+              userLearnables.map((learnable) => (
                 <TableRow
                   key={learnable.id}
                   sx={{
